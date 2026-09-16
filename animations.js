@@ -22,6 +22,8 @@ if (!reducedMotion) {
     '.story-intro .button',
     '.page-title > *',
     '.board-layout > *',
+    '.card-section-heading > *',
+    '.game-card',
     '.product-gallery',
     '.product-info',
   ].join(','));
@@ -51,15 +53,16 @@ if (!reducedMotion) {
     revealObserver.observe(section);
   });
 
-  document.querySelectorAll('.directory-link').forEach((link) => {
-    const arrow = link.querySelector('strong span');
+  document.querySelectorAll('.directory-link').forEach((link, index) => {
+    const direction = index % 2 === 0 ? -1 : 1;
+    const label = link.querySelector('strong');
     const enter = () => {
-      animate(link, { x: 10, scale: 1.015, duration: 280, ease: 'outExpo' });
-      animate(arrow, { x: 6, y: -6, rotate: -5, duration: 280, ease: 'outExpo' });
+      animate(link, { x: direction * 10, scale: 1.015, duration: 280, ease: 'outExpo' });
+      animate(label, { x: direction * 6, duration: 280, ease: 'outExpo' });
     };
     const leave = () => {
       animate(link, { x: 0, scale: 1, duration: 320, ease: 'outExpo' });
-      animate(arrow, { x: 0, y: 0, rotate: 0, duration: 320, ease: 'outExpo' });
+      animate(label, { x: 0, duration: 320, ease: 'outExpo' });
     };
 
     link.addEventListener('pointerenter', enter);
@@ -70,7 +73,7 @@ if (!reducedMotion) {
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       animate(link, {
-        x: 34,
+        x: direction * 34,
         opacity: [.95, 0],
         duration: 280,
         ease: 'inExpo',
@@ -79,7 +82,7 @@ if (!reducedMotion) {
     });
   });
 
-  const motionCards = document.querySelectorAll('.game-card, .rule-control, .product-thumb');
+  const motionCards = document.querySelectorAll('.game-card, .team-card, .product-thumb');
   motionCards.forEach((card) => {
     card.addEventListener('pointerenter', () => {
       animate(card, { y: -6, rotate: -1, duration: 240, ease: 'outExpo' });
@@ -89,14 +92,4 @@ if (!reducedMotion) {
     });
   });
 
-  const boardCells = document.querySelectorAll('.board span');
-  if (boardCells.length) {
-    animate(boardCells, {
-      opacity: [0, 1],
-      scale: [0, 1],
-      delay: stagger(18, { from: 'center' }),
-      duration: 420,
-      ease: 'outBack',
-    });
-  }
 }

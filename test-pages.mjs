@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 
 const pages = ['index.html', 'story.html', 'rules.html', 'product.html'];
 const source = Object.fromEntries(pages.map((page) => [page, readFileSync(page, 'utf8')]));
+const styles = readFileSync('styles.css', 'utf8');
 
 for (const page of pages) {
   assert.match(source[page], /<script type="module" src="animations\.js"><\/script>/, `${page} loads shared animations`);
@@ -13,5 +14,20 @@ assert.equal((source['index.html'].match(/class="directory-link"/g) ?? []).lengt
 assert.match(source['index.html'], /href="story\.html"/);
 assert.match(source['index.html'], /href="rules\.html"/);
 assert.match(source['index.html'], /href="product\.html"/);
+assert.doesNotMatch(source['index.html'], /↗/, 'home branches contain text without arrow icons');
+assert.match(styles, /\.home-directory::before/, 'home directory draws a central spine');
+assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
+assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
+
+assert.match(source['rules.html'], /cờ cá ngựa/i, 'rules explain the familiar horse-racing foundation');
+assert.match(source['rules.html'], /ô đặc biệt/i, 'rules explain special board spaces');
+assert.match(source['rules.html'], /rút một thẻ/i, 'rules connect special spaces to the card deck');
+assert.equal((source['rules.html'].match(/class="game-card"/g) ?? []).length, 10, 'rules show ten sample action cards');
+assert.match(source['rules.html'], /data-game-board/, 'rules include the playable horse-racing board');
+assert.equal((source['rules.html'].match(/data-demo-action=/g) ?? []).length, 6, 'rules expose six guided demo actions');
+assert.match(source['rules.html'], /data-demo-action="release"/, 'rules include the release action');
+assert.match(source['rules.html'], /data-demo-action="special"/, 'rules include the special-cell action');
+assert.match(source['rules.html'], /data-demo-action="capture"/, 'rules include the capture action');
+assert.match(source['rules.html'], /<script type="module" src="game\.mjs"><\/script>/, 'rules load the game engine');
 
 console.log('Page structure checks passed.');
