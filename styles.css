@@ -328,6 +328,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 @media (max-width: 430px) {
   h1 { font-size: 3rem; }
   .home-copy h1 { font-size: 3.2rem; }
+  .board-action-cue { top: 24%; left: .65rem; translate: none; width: calc(100% - 1.3rem); max-width: none; padding: .45rem .55rem; text-align: center; }
   .card-gallery { gap: .65rem; }
   .game-card { min-height: 165px; }
 }
