@@ -101,12 +101,71 @@ function initDemo() {
   const cardPanel = document.querySelector('[data-drawn-card]');
   const actionButtons = [...document.querySelectorAll('[data-demo-action]')];
   const playerCards = [...document.querySelectorAll('[data-player-card]')];
+  const actionGroup = document.querySelector('.demo-actions');
+  const diceGroup = document.querySelector('.demo-dice');
+  const actionHome = actionGroup.parentElement;
+  const diceHome = diceGroup.parentElement;
+  const cardHome = cardPanel.parentElement;
+  const turnGuide = document.querySelector('.turn-guide');
+  const mobileQuery = window.matchMedia('(max-width: 820px)');
   let timers = [];
+  let diceRoller;
+
+  const dicePhysics = dice.querySelector('[data-dice-physics]');
+  if (dicePhysics) {
+    import('./dice-physics.mjs')
+      .then(({ createDicePhysics }) => {
+        diceRoller = createDicePhysics(dicePhysics);
+        dice.classList.add('has-physics');
+      })
+      .catch(() => {});
+  }
 
   const cue = document.createElement('output');
   cue.className = 'board-action-cue';
   cue.setAttribute('aria-live', 'polite');
   board.append(cue);
+
+  const mobileTrigger = document.createElement('button');
+  mobileTrigger.type = 'button';
+  mobileTrigger.className = 'mobile-board-trigger';
+  mobileTrigger.dataset.mobileBoardTrigger = '';
+  mobileTrigger.setAttribute('aria-expanded', 'false');
+  mobileTrigger.textContent = 'Chạm để thao tác';
+
+  const toggleMobileActions = () => {
+    if (!mobileQuery.matches) return;
+    const isOpen = !board.classList.contains('show-mobile-actions');
+    board.classList.toggle('show-mobile-actions', isOpen);
+    mobileTrigger.setAttribute('aria-expanded', String(isOpen));
+  };
+
+  const hideMobileActions = () => {
+    board.classList.remove('show-mobile-actions');
+    mobileTrigger.setAttribute('aria-expanded', 'false');
+  };
+
+  const syncMobileControls = () => {
+    if (mobileQuery.matches) {
+      board.append(diceGroup, actionGroup, mobileTrigger, cardPanel);
+      return;
+    }
+    actionHome.insertBefore(actionGroup, status);
+    diceHome.insertBefore(diceGroup, actionGroup);
+    cardHome.insertBefore(cardPanel, turnGuide);
+    hideMobileActions();
+  };
+
+  board.addEventListener('click', (event) => {
+    if (event.target.closest('[data-demo-action]')) return;
+    toggleMobileActions();
+  });
+  mobileTrigger.addEventListener('click', (event) => {
+    event.stopPropagation();
+    toggleMobileActions();
+  });
+  mobileQuery.addEventListener('change', syncMobileControls);
+  syncMobileControls();
 
   const makePiece = (color, label) => {
     const piece = document.createElement('div');
@@ -166,7 +225,7 @@ function initDemo() {
       piece.hidden = true;
       piece.classList.remove('is-kicking', 'is-captured', 'is-hopping', 'is-targeted', 'no-transition');
     });
-    dice.textContent = '–';
+    setDice('–');
     dice.classList.remove('is-rolling');
     cardPanel.hidden = true;
     cardPanel.classList.remove('is-drawn');
@@ -178,10 +237,20 @@ function initDemo() {
   };
 
   const rollDice = (value) => {
-    dice.textContent = value;
+    setDice(value);
+    diceRoller?.roll(value);
+    dice.style.setProperty('--dice-spin-x', `${180 + Math.round(Math.random() * 240)}deg`);
+    dice.style.setProperty('--dice-spin-y', `${220 + Math.round(Math.random() * 300)}deg`);
+    dice.style.setProperty('--dice-spin-z', `${Math.round((Math.random() - 0.5) * 180)}deg`);
     dice.classList.remove('is-rolling');
     void dice.offsetWidth;
     dice.classList.add('is-rolling');
+  };
+
+  const setDice = (value) => {
+    dice.querySelector('.dice-value').textContent = value;
+    dice.querySelector('.dice-cube').dataset.value = value;
+    dice.querySelector('.face-front').dataset.number = value;
   };
 
   const revealCard = (card) => {
@@ -226,6 +295,11 @@ function initDemo() {
         showCue('THẺ: TIẾN THÊM 2 Ô', 'card');
         moveAlong(redPiece, action.cardPath, 0, 380);
       }, 1450);
+      later(() => {
+        if (!mobileQuery.matches) return;
+        cardPanel.classList.remove('is-drawn');
+        cardPanel.hidden = true;
+      }, 2450);
     }
 
     if (id === 'capture') {
@@ -251,7 +325,10 @@ function initDemo() {
     }
   };
 
-  actionButtons.forEach((button) => button.addEventListener('click', () => runAction(button.dataset.demoAction)));
+  actionButtons.forEach((button) => button.addEventListener('click', () => {
+    runAction(button.dataset.demoAction);
+    if (mobileQuery.matches) hideMobileActions();
+  }));
   clearStage();
 }
 
