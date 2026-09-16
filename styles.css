@@ -175,7 +175,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .card-section-heading { display: grid; grid-template-columns: 1fr minmax(260px, .65fr); gap: 2rem; align-items: end; margin-top: 5rem; }
 .card-section-heading h2, .card-section-heading p { margin-bottom: 0; }
 .card-gallery { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 2rem; }
-.game-card { position: relative; display: block; width: 100%; overflow: hidden; padding: 0; border: 1.5px solid var(--navy); background: var(--navy); color: var(--white); box-shadow: 5px 6px 0 rgba(2,0,49,.16); font: inherit; text-align: left; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+.game-card { position: relative; display: block; width: 100%; aspect-ratio: 709 / 1063; overflow: hidden; padding: 0; border: 1.5px solid var(--navy); background: var(--navy); color: var(--white); box-shadow: 5px 6px 0 rgba(2,0,49,.16); font: inherit; text-align: left; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
 .game-card:nth-child(even) { margin-top: 1.5rem; }
 .game-card::after { content: ""; position: absolute; inset: 0; background: rgba(2,0,49,.66); opacity: 0; transition: opacity .25s ease; }
 .game-card:hover { z-index: 2; transform: translateY(-.5rem) rotate(-1deg); box-shadow: 10px 12px 0 rgba(2,0,49,.2); }
