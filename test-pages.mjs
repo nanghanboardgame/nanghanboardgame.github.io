@@ -23,6 +23,8 @@ assert.match(source['rules.html'], /cờ cá ngựa/i, 'rules explain the famili
 assert.match(source['rules.html'], /ô đặc biệt/i, 'rules explain special board spaces');
 assert.match(source['rules.html'], /rút một thẻ/i, 'rules connect special spaces to the card deck');
 assert.equal((source['rules.html'].match(/class="game-card"/g) ?? []).length, 10, 'rules show ten sample action cards');
+assert.equal((source['rules.html'].match(/data-card-toggle/g) ?? []).length, 10, 'each action card can be opened');
+assert.match(source['rules.html'], /data-card-detail/, 'cards include an expandable action description');
 assert.match(source['rules.html'], /data-game-board/, 'rules include the playable horse-racing board');
 assert.equal((source['rules.html'].match(/data-demo-action=/g) ?? []).length, 6, 'rules expose six guided demo actions');
 assert.match(source['rules.html'], /data-demo-action="release"/, 'rules include the release action');

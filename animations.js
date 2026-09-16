@@ -82,7 +82,7 @@ if (!reducedMotion) {
     });
   });
 
-  const motionCards = document.querySelectorAll('.game-card, .team-card, .product-thumb');
+  const motionCards = document.querySelectorAll('.team-card, .product-thumb');
   motionCards.forEach((card) => {
     card.addEventListener('pointerenter', () => {
       animate(card, { y: -6, rotate: -1, duration: 240, ease: 'outExpo' });
@@ -93,3 +93,17 @@ if (!reducedMotion) {
   });
 
 }
+
+document.querySelectorAll('[data-card-toggle]').forEach((card) => {
+  card.addEventListener('click', () => {
+    const isOpen = !card.classList.contains('is-open');
+    document.querySelectorAll('[data-card-toggle].is-open').forEach((otherCard) => {
+      otherCard.classList.remove('is-open');
+      otherCard.setAttribute('aria-expanded', 'false');
+      otherCard.querySelector('[data-card-detail]')?.setAttribute('aria-hidden', 'true');
+    });
+    card.classList.toggle('is-open', isOpen);
+    card.setAttribute('aria-expanded', String(isOpen));
+    card.querySelector('[data-card-detail]')?.setAttribute('aria-hidden', String(!isOpen));
+  });
+});
