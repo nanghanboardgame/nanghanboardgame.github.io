@@ -105,6 +105,8 @@ function initDemo() {
   const diceGroup = document.querySelector('.demo-dice');
   const actionHome = actionGroup.parentElement;
   const diceHome = diceGroup.parentElement;
+  const cardHome = cardPanel.parentElement;
+  const turnGuide = document.querySelector('.turn-guide');
   const mobileQuery = window.matchMedia('(max-width: 820px)');
   let timers = [];
 
@@ -128,11 +130,12 @@ function initDemo() {
 
   const syncMobileControls = () => {
     if (mobileQuery.matches) {
-      board.append(diceGroup, actionGroup, mobileTrigger);
+      board.append(diceGroup, actionGroup, mobileTrigger, cardPanel);
       return;
     }
     actionHome.insertBefore(actionGroup, status);
     diceHome.insertBefore(diceGroup, actionGroup);
+    cardHome.insertBefore(cardPanel, turnGuide);
     board.classList.remove('show-mobile-actions');
     mobileTrigger.setAttribute('aria-expanded', 'false');
   };
@@ -203,7 +206,7 @@ function initDemo() {
       piece.hidden = true;
       piece.classList.remove('is-kicking', 'is-captured', 'is-hopping', 'is-targeted', 'no-transition');
     });
-    dice.textContent = '–';
+    setDice('–');
     dice.classList.remove('is-rolling');
     cardPanel.hidden = true;
     cardPanel.classList.remove('is-drawn');
@@ -215,10 +218,16 @@ function initDemo() {
   };
 
   const rollDice = (value) => {
-    dice.textContent = value;
+    setDice(value);
     dice.classList.remove('is-rolling');
     void dice.offsetWidth;
     dice.classList.add('is-rolling');
+  };
+
+  const setDice = (value) => {
+    dice.querySelector('.dice-value').textContent = value;
+    dice.querySelector('.dice-cube').dataset.value = value;
+    dice.querySelector('.face-front').dataset.number = value;
   };
 
   const revealCard = (card) => {
@@ -263,6 +272,11 @@ function initDemo() {
         showCue('THẺ: TIẾN THÊM 2 Ô', 'card');
         moveAlong(redPiece, action.cardPath, 0, 380);
       }, 1450);
+      later(() => {
+        if (!mobileQuery.matches) return;
+        cardPanel.classList.remove('is-drawn');
+        cardPanel.hidden = true;
+      }, 2450);
     }
 
     if (id === 'capture') {
