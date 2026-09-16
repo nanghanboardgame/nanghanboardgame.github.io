@@ -109,6 +109,17 @@ function initDemo() {
   const turnGuide = document.querySelector('.turn-guide');
   const mobileQuery = window.matchMedia('(max-width: 820px)');
   let timers = [];
+  let diceRoller;
+
+  const dicePhysics = dice.querySelector('[data-dice-physics]');
+  if (dicePhysics) {
+    import('./dice-physics.mjs')
+      .then(({ createDicePhysics }) => {
+        diceRoller = createDicePhysics(dicePhysics);
+        dice.classList.add('has-physics');
+      })
+      .catch(() => {});
+  }
 
   const cue = document.createElement('output');
   cue.className = 'board-action-cue';
@@ -223,6 +234,10 @@ function initDemo() {
 
   const rollDice = (value) => {
     setDice(value);
+    diceRoller?.roll(value);
+    dice.style.setProperty('--dice-spin-x', `${180 + Math.round(Math.random() * 240)}deg`);
+    dice.style.setProperty('--dice-spin-y', `${220 + Math.round(Math.random() * 300)}deg`);
+    dice.style.setProperty('--dice-spin-z', `${Math.round((Math.random() - 0.5) * 180)}deg`);
     dice.classList.remove('is-rolling');
     void dice.offsetWidth;
     dice.classList.add('is-rolling');
