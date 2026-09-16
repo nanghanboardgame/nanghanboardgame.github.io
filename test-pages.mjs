@@ -35,7 +35,7 @@ assert.match(source['rules.html'], /data-demo-action="special"/, 'rules include 
 assert.match(source['rules.html'], /data-demo-action="capture"/, 'rules include the capture action');
 assert.match(source['rules.html'], /Thử cách chơi/, 'rules use client-friendly demo language');
 assert.match(source['rules.html'], /chạm vào bàn cờ để mở các nút thao tác/, 'mobile guidance explains board controls');
-assert.match(game, /show-mobile-actions/, 'mobile board can reveal its action controls');
+assert.match(game, /toggleMobileActions/, 'mobile board can toggle its action controls');
 assert.match(game, /mobile-board-trigger/, 'mobile board has an action trigger');
 assert.match(source['rules.html'], /<script type="module" src="game\.mjs"><\/script>/, 'rules load the game engine');
 

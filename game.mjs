@@ -122,10 +122,11 @@ function initDemo() {
   mobileTrigger.setAttribute('aria-expanded', 'false');
   mobileTrigger.textContent = 'Chạm để thao tác';
 
-  const openMobileActions = () => {
+  const toggleMobileActions = () => {
     if (!mobileQuery.matches) return;
-    board.classList.add('show-mobile-actions');
-    mobileTrigger.setAttribute('aria-expanded', 'true');
+    const isOpen = !board.classList.contains('show-mobile-actions');
+    board.classList.toggle('show-mobile-actions', isOpen);
+    mobileTrigger.setAttribute('aria-expanded', String(isOpen));
   };
 
   const syncMobileControls = () => {
@@ -142,9 +143,12 @@ function initDemo() {
 
   board.addEventListener('click', (event) => {
     if (event.target.closest('[data-demo-action]')) return;
-    openMobileActions();
+    toggleMobileActions();
   });
-  mobileTrigger.addEventListener('click', openMobileActions);
+  mobileTrigger.addEventListener('click', (event) => {
+    event.stopPropagation();
+    toggleMobileActions();
+  });
   mobileQuery.addEventListener('change', syncMobileControls);
   syncMobileControls();
 
