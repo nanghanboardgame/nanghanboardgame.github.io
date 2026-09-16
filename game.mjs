@@ -251,7 +251,12 @@ function initDemo() {
     }
   };
 
-  actionButtons.forEach((button) => button.addEventListener('click', () => runAction(button.dataset.demoAction)));
+  actionButtons.forEach((button) => button.addEventListener('click', () => {
+    runAction(button.dataset.demoAction);
+    if (window.matchMedia('(max-width: 820px)').matches) {
+      later(() => board.scrollIntoView({ behavior: 'smooth', block: 'center' }), 40);
+    }
+  }));
   clearStage();
 }
 

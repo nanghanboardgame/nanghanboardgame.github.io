@@ -31,6 +31,8 @@ assert.equal((source['rules.html'].match(/data-demo-action=/g) ?? []).length, 6,
 assert.match(source['rules.html'], /data-demo-action="release"/, 'rules include the release action');
 assert.match(source['rules.html'], /data-demo-action="special"/, 'rules include the special-cell action');
 assert.match(source['rules.html'], /data-demo-action="capture"/, 'rules include the capture action');
+assert.match(source['rules.html'], /Thử cách chơi/, 'rules use client-friendly demo language');
+assert.match(source['rules.html'], /bàn cờ sẽ tự hiện vào giữa màn hình/, 'mobile guidance explains the automatic board focus');
 assert.match(source['rules.html'], /<script type="module" src="game\.mjs"><\/script>/, 'rules load the game engine');
 
 console.log('Page structure checks passed.');

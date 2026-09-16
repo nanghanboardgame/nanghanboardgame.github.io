@@ -153,7 +153,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .team-card img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
 .team-card span { display: block; padding: .35rem; font-size: .72rem; font-weight: 900; text-align: center; }
 .team-card.active { box-shadow: 0 0 0 4px var(--yellow); transform: translateY(-4px); }
-.demo-intro { color: var(--muted); }
+.demo-intro, .mobile-hint { color: var(--muted); }
+.mobile-hint { display: none; margin-top: -.5rem; font-size: .82rem; }
 .demo-dice { display: grid; grid-template-columns: 1fr 84px; gap: .75rem; align-items: center; margin: 1rem 0; font-weight: 900; }
 .dice-face { display: grid; min-height: 76px; place-items: center; border: 1.5px solid var(--navy); background: var(--white); font-family: Georgia, serif; font-size: 2.5rem; font-weight: 900; }
 .dice-face.is-rolling { animation: dice-roll .55s cubic-bezier(.34,1.56,.64,1); }
@@ -249,6 +250,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .section { padding: 4rem 0; }
   .video-card, .product-teaser, .board-layout, .product-detail, .description-panel { grid-template-columns: 1fr; }
   .game-console { position: static; }
+  .mobile-hint { display: block; }
   .card-section-heading { grid-template-columns: 1fr; }
   .character-frame { min-height: 390px; }
   .home-directory { padding: 1rem 0 3rem; }
