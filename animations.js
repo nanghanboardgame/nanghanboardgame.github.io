@@ -21,7 +21,7 @@ if (!reducedMotion) {
     '.story-intro .lead',
     '.story-intro .button',
     '.page-title > *',
-    '.board-layout > *',
+    '.board-panel',
     '.card-section-heading > *',
     '.game-card',
     '.product-gallery',

@@ -147,7 +147,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .board-action-cue[data-tone="capture"] { background: var(--red); color: var(--white); }
 @keyframes board-cue { from { opacity: 0; transform: translateY(-12px) scale(.9); } to { opacity: 1; transform: none; } }
 .board-legend { max-width: 620px; margin: 1.5rem auto 0; padding-left: 1rem; border-left: 3px solid var(--red); }
-.game-console { position: sticky; top: 104px; }
+.game-console { position: sticky; top: 104px; transform: none !important; }
 .team-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: .55rem; margin: 1.25rem 0; }
 .team-card { overflow: hidden; border: 1.5px solid var(--navy); background: var(--white); transition: transform .18s ease, box-shadow .18s ease; }
 .team-card img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
@@ -155,6 +155,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .team-card.active { box-shadow: 0 0 0 4px var(--yellow); transform: translateY(-4px); }
 .demo-intro, .mobile-hint { color: var(--muted); }
 .mobile-hint { display: none; margin-top: -.5rem; font-size: .82rem; }
+.mobile-board-trigger { display: none; }
 .demo-dice { display: grid; grid-template-columns: 1fr 84px; gap: .75rem; align-items: center; margin: 1rem 0; font-weight: 900; }
 .dice-face { display: grid; min-height: 76px; place-items: center; border: 1.5px solid var(--navy); background: var(--white); font-family: Georgia, serif; font-size: 2.5rem; font-weight: 900; }
 .dice-face.is-rolling { animation: dice-roll .55s cubic-bezier(.34,1.56,.64,1); }
@@ -261,6 +262,15 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .directory-link small { font-size: .82rem; }
   .directory-link strong { font-size: clamp(1.65rem, 8vw, 2.3rem); }
   .video-window { min-height: 280px; border-top: 1.5px solid var(--white); border-left: 0; }
+  .art-board { cursor: pointer; }
+  .game-console .demo-dice, .game-console .demo-actions { display: none; }
+  .art-board .demo-dice { position: absolute; top: .65rem; right: .65rem; z-index: 7; display: flex; grid-template-columns: none; width: auto; align-items: center; gap: .4rem; margin: 0; padding: .35rem; border: 1.5px solid var(--navy); background: rgba(255,241,226,.94); box-shadow: 3px 3px 0 var(--navy); }
+  .art-board .demo-dice span { font-size: .58rem; font-weight: 900; line-height: 1; }
+  .art-board .dice-face { min-height: 42px; width: 42px; font-size: 1.5rem; }
+  .art-board .demo-actions { position: absolute; right: .65rem; bottom: .65rem; left: .65rem; z-index: 8; display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; padding: .45rem; border: 1.5px solid var(--navy); background: rgba(255,241,226,.96); box-shadow: 4px 4px 0 var(--navy); backdrop-filter: blur(8px); }
+  .art-board:not(.show-mobile-actions) .demo-actions { display: none; }
+  .mobile-board-trigger { position: absolute; right: .65rem; bottom: .65rem; z-index: 7; display: block; min-height: 38px; padding: .45rem .65rem; border: 1.5px solid var(--navy); background: var(--yellow); color: var(--navy); box-shadow: 3px 3px 0 var(--navy); font-size: .7rem; font-weight: 900; cursor: pointer; }
+  .art-board.show-mobile-actions .mobile-board-trigger { opacity: 0; pointer-events: none; }
   .card-gallery { grid-template-columns: repeat(10, minmax(180px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 .15rem 1rem; }
   .game-card { scroll-snap-align: start; }
   .rule-columns { grid-template-columns: 1fr; }

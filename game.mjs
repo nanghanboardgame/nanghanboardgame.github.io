@@ -101,12 +101,49 @@ function initDemo() {
   const cardPanel = document.querySelector('[data-drawn-card]');
   const actionButtons = [...document.querySelectorAll('[data-demo-action]')];
   const playerCards = [...document.querySelectorAll('[data-player-card]')];
+  const actionGroup = document.querySelector('.demo-actions');
+  const diceGroup = document.querySelector('.demo-dice');
+  const actionHome = actionGroup.parentElement;
+  const diceHome = diceGroup.parentElement;
+  const mobileQuery = window.matchMedia('(max-width: 820px)');
   let timers = [];
 
   const cue = document.createElement('output');
   cue.className = 'board-action-cue';
   cue.setAttribute('aria-live', 'polite');
   board.append(cue);
+
+  const mobileTrigger = document.createElement('button');
+  mobileTrigger.type = 'button';
+  mobileTrigger.className = 'mobile-board-trigger';
+  mobileTrigger.dataset.mobileBoardTrigger = '';
+  mobileTrigger.setAttribute('aria-expanded', 'false');
+  mobileTrigger.textContent = 'Chạm để thao tác';
+
+  const openMobileActions = () => {
+    if (!mobileQuery.matches) return;
+    board.classList.add('show-mobile-actions');
+    mobileTrigger.setAttribute('aria-expanded', 'true');
+  };
+
+  const syncMobileControls = () => {
+    if (mobileQuery.matches) {
+      board.append(diceGroup, actionGroup, mobileTrigger);
+      return;
+    }
+    actionHome.insertBefore(actionGroup, status);
+    diceHome.insertBefore(diceGroup, actionGroup);
+    board.classList.remove('show-mobile-actions');
+    mobileTrigger.setAttribute('aria-expanded', 'false');
+  };
+
+  board.addEventListener('click', (event) => {
+    if (event.target.closest('[data-demo-action]')) return;
+    openMobileActions();
+  });
+  mobileTrigger.addEventListener('click', openMobileActions);
+  mobileQuery.addEventListener('change', syncMobileControls);
+  syncMobileControls();
 
   const makePiece = (color, label) => {
     const piece = document.createElement('div');
@@ -251,12 +288,7 @@ function initDemo() {
     }
   };
 
-  actionButtons.forEach((button) => button.addEventListener('click', () => {
-    runAction(button.dataset.demoAction);
-    if (window.matchMedia('(max-width: 820px)').matches) {
-      later(() => board.scrollIntoView({ behavior: 'smooth', block: 'center' }), 40);
-    }
-  }));
+  actionButtons.forEach((button) => button.addEventListener('click', () => runAction(button.dataset.demoAction)));
   clearStage();
 }
 
