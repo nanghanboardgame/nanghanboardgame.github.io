@@ -140,6 +140,11 @@ function initDemo() {
     mobileTrigger.setAttribute('aria-expanded', String(isOpen));
   };
 
+  const hideMobileActions = () => {
+    board.classList.remove('show-mobile-actions');
+    mobileTrigger.setAttribute('aria-expanded', 'false');
+  };
+
   const syncMobileControls = () => {
     if (mobileQuery.matches) {
       board.append(diceGroup, actionGroup, mobileTrigger, cardPanel);
@@ -148,8 +153,7 @@ function initDemo() {
     actionHome.insertBefore(actionGroup, status);
     diceHome.insertBefore(diceGroup, actionGroup);
     cardHome.insertBefore(cardPanel, turnGuide);
-    board.classList.remove('show-mobile-actions');
-    mobileTrigger.setAttribute('aria-expanded', 'false');
+    hideMobileActions();
   };
 
   board.addEventListener('click', (event) => {
@@ -321,7 +325,10 @@ function initDemo() {
     }
   };
 
-  actionButtons.forEach((button) => button.addEventListener('click', () => runAction(button.dataset.demoAction)));
+  actionButtons.forEach((button) => button.addEventListener('click', () => {
+    runAction(button.dataset.demoAction);
+    if (mobileQuery.matches) hideMobileActions();
+  }));
   clearStage();
 }
 
