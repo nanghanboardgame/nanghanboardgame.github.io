@@ -291,7 +291,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .video-window { min-height: 280px; border-top: 1.5px solid var(--white); border-left: 0; }
   .art-board { cursor: pointer; }
   .game-console .demo-dice, .game-console .demo-actions { display: none; }
-  .art-board .demo-dice { position: absolute; top: .65rem; right: .65rem; z-index: 7; display: flex; grid-template-columns: none; width: auto; align-items: center; gap: .4rem; margin: 0; padding: .35rem; border: 1.5px solid var(--navy); background: rgba(255,241,226,.94); box-shadow: 3px 3px 0 var(--navy); }
+  .board-action-cue { top: .65rem; right: .65rem; left: auto; translate: none; width: min(48%, 280px); max-width: none; padding: .45rem .55rem; text-align: center; }
+  .art-board .demo-dice { position: absolute; top: .65rem; right: auto; left: .65rem; z-index: 7; display: flex; grid-template-columns: none; width: auto; align-items: center; gap: .4rem; margin: 0; padding: .35rem; border: 1.5px solid var(--navy); background: rgba(255,241,226,.94); box-shadow: 3px 3px 0 var(--navy); }
   .art-board .demo-dice span { font-size: .58rem; font-weight: 900; line-height: 1; }
   .art-board .dice-face { min-height: 42px; width: 42px; font-size: 1.5rem; }
   .art-board .dice-cube { width: 27px; height: 27px; transform: rotateX(-18deg) rotateY(28deg) scale(.58); }
@@ -328,7 +329,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 @media (max-width: 430px) {
   h1 { font-size: 3rem; }
   .home-copy h1 { font-size: 3.2rem; }
-  .board-action-cue { top: 24%; left: .65rem; translate: none; width: calc(100% - 1.3rem); max-width: none; padding: .45rem .55rem; text-align: center; }
+  .board-action-cue { width: 42%; }
   .card-gallery { gap: .65rem; }
   .game-card { min-height: 165px; }
 }
