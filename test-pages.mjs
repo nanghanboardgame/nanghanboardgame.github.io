@@ -5,10 +5,17 @@ const pages = ['index.html', 'story.html', 'rules.html', 'product.html'];
 const source = Object.fromEntries(pages.map((page) => [page, readFileSync(page, 'utf8')]));
 const styles = readFileSync('styles.css', 'utf8');
 const game = readFileSync('game.mjs', 'utf8');
+const favicon = readFileSync('favicon.js', 'utf8');
 
 for (const page of pages) {
   assert.match(source[page], /<script type="module" src="animations\.js"><\/script>/, `${page} loads shared animations`);
+  assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png" \/>/, `${page} has a favicon fallback`);
+  assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
 }
+
+assert.match(favicon, /favicon-open\.png/, 'favicon animation includes the open-eye frame');
+assert.match(favicon, /favicon-closed\.png/, 'favicon animation includes the closed-eye frame');
+assert.match(favicon, /prefers-reduced-motion/, 'favicon animation respects reduced-motion preferences');
 
 assert.match(source['index.html'], /class="character-path"/, 'home connects the character and navigation path');
 assert.equal((source['index.html'].match(/class="directory-link"/g) ?? []).length, 3, 'home has three destination links');
