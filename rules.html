@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Luật chơi board game Nàng Han." />
+    <title>Nàng Han — Luật chơi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="rules-screen">
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="index.html">NÀNG <span>HAN</span></a>
+        <nav class="main-nav" aria-label="Điều hướng chính">
+          <a href="story.html">Câu chuyện</a>
+          <a href="rules.html" aria-current="page">Luật chơi</a>
+          <a href="product.html">Sản phẩm</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <section class="section">
+        <div class="wrap">
+          <div class="page-title">
+            <span class="eyebrow">Cách chơi · Bản chơi thử</span>
+            <h1>Nàng Han trên đường đua.</h1>
+            <p>Lấy nhịp chơi quen thuộc của cờ cá ngựa làm nền, rồi thêm các ô đặc biệt để mỗi vòng đua mở ra một câu chuyện và một tình huống mới.</p>
+          </div>
+          <div class="board-layout">
+            <div class="board-panel">
+              <div class="art-board" data-game-board aria-label="Bàn cờ Nàng Han có thể chơi trực tiếp">
+                <img src="assets/board-with-teams.png" alt="Bàn cờ Nàng Han hình chữ thập với bốn khu vực đội chơi" />
+              </div>
+              <p class="board-legend"><strong>Ô hoa đặc biệt:</strong> dừng đúng ô để rút một thẻ và thực hiện công dụng trên thẻ ngay lập tức.</p>
+            </div>
+            <div class="game-console">
+              <span class="eyebrow">Thử cách chơi</span>
+              <h2>Xem từng bước.</h2>
+              <p class="demo-intro">Chạm vào từng nút để xem một lượt chơi diễn ra: ra quân, di chuyển, rút thẻ và đá quân.</p>
+              <p class="mobile-hint">Trên điện thoại, chạm vào bàn cờ để mở các nút thao tác ngay trên bàn.</p>
+              <div class="team-strip" aria-label="Bốn đội chơi">
+                <div class="team-card" data-player-card><img src="assets/team-red.png" alt="" /><span>Đỏ</span></div>
+                <div class="team-card" data-player-card><img src="assets/team-green.png" alt="" /><span>Lục</span></div>
+                <div class="team-card" data-player-card><img src="assets/team-teal.png" alt="" /><span>Lam</span></div>
+                <div class="team-card" data-player-card><img src="assets/team-magenta.png" alt="" /><span>Hồng</span></div>
+              </div>
+              <div class="demo-dice">
+                <span>Kết quả lượt chơi</span>
+                <output class="dice-face" data-dice aria-label="Kết quả xúc xắc"><span class="dice-cube" aria-hidden="true"><span class="dice-cube-face face-front" data-number="–"></span><span class="dice-cube-face face-back" data-number="2"></span><span class="dice-cube-face face-right" data-number="3"></span><span class="dice-cube-face face-left" data-number="4"></span><span class="dice-cube-face face-top" data-number="5"></span><span class="dice-cube-face face-bottom" data-number="6"></span></span><span class="dice-physics" data-dice-physics aria-hidden="true"></span><span class="dice-value">–</span></output>
+              </div>
+              <div class="demo-actions" aria-label="Các tình huống chơi thử">
+                <button type="button" data-demo-action="release">Ra quân</button>
+                <button type="button" data-demo-action="move">Di chuyển</button>
+                <button type="button" data-demo-action="special">Ô đặc biệt</button>
+                <button type="button" data-demo-action="capture">Đá quân</button>
+                <button type="button" data-demo-action="finish">Về đích</button>
+                <button type="button" data-demo-action="reset">Chơi lại</button>
+              </div>
+              <p class="game-status" data-game-status aria-live="polite">Chọn một tình huống để xem cách chơi diễn ra.</p>
+              <article class="drawn-card" data-drawn-card hidden><img src="assets/cards/back.png" alt="" /><div><span>Thẻ vừa rút</span><strong></strong><p></p></div></article>
+              <ol class="turn-guide">
+                <li>Đây là phần xem nhanh các bước chính của một lượt chơi.</li>
+                <li>Có thể chọn lại bất cứ tình huống nào để xem từ đầu.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="card-section-heading">
+            <div><span class="eyebrow">Bộ thẻ hành động</span><h2>Mỗi lá đổi nhịp đường đua.</h2></div>
+            <p>Dừng ở ô hoa, rút một lá và thực hiện ngay công dụng được ghi trên thẻ.</p>
+          </div>
+          <div class="card-gallery" aria-label="Mười thẻ hành động">
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-02"><img src="assets/cards/card-02.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-02" data-card-detail aria-hidden="true"><strong>Vẫn đổi sao dời</strong><small>Hoán đổi vị trí với một đồng đội bất kỳ.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-03"><img src="assets/cards/card-03.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-03" data-card-detail aria-hidden="true"><strong>Thiên ban sinh khí</strong><small>Hồi sinh một đồng đội.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-04"><img src="assets/cards/card-04.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-04" data-card-detail aria-hidden="true"><strong>Phất cờ hiệu lệnh</strong><small>Chỉ định một người tiến hoặc lùi hai ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-05"><img src="assets/cards/card-05.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-05" data-card-detail aria-hidden="true"><strong>Mở lối khí vận</strong><small>Tiến tới ô đặc biệt gần nhất.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-06"><img src="assets/cards/card-06.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-06" data-card-detail aria-hidden="true"><strong>Mưa nguồn cuốn trôi</strong><small>Tất cả lùi lại ba ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-07"><img src="assets/cards/card-07.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-07" data-card-detail aria-hidden="true"><strong>Khói lửa chiến xa</strong><small>Hạ một đối thủ bất kỳ.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-08"><img src="assets/cards/card-08.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-08" data-card-detail aria-hidden="true"><strong>Xòe hoa cùng bước</strong><small>Tất cả cùng tiến lên một ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-09"><img src="assets/cards/card-09.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-09" data-card-detail aria-hidden="true"><strong>Có duyên đồng hành</strong><small>Chọn một người cùng tiến lên một ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-10"><img src="assets/cards/card-10.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-10" data-card-detail aria-hidden="true"><strong>Bản Mường tiếp sức</strong><small>Tiến lên hai ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-11"><img src="assets/cards/card-11.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-11" data-card-detail aria-hidden="true"><strong>Mây mù phủ lối</strong><small>Lùi lại hai ô.</small></span></button>
+          </div>
+        </div>
+      </section>
+      <section class="scroll-rules">
+        <div class="wrap scroll-sheet">
+          <span class="eyebrow">Luật chơi đề xuất</span>
+          <h2>Quen như cờ cá ngựa, vui hơn nhờ bộ thẻ.</h2>
+          <div class="rule-columns">
+            <article><h3>01 · Chuẩn bị</h3><p>Chơi từ 2–4 người. Mỗi người chọn một màu và đặt 4 quân vào chuồng. Xáo bộ thẻ rồi úp cạnh bàn cờ.</p></article>
+            <article><h3>02 · Xuất chuồng</h3><p>Tung được 6 để đưa một quân ra ô bắt đầu. Sau khi ra quân, người chơi được tung thêm một lần.</p></article>
+            <article><h3>03 · Di chuyển</h3><p>Mỗi lượt chọn một quân và đi đúng số ô trên xúc xắc. Dừng đúng ô có quân đối thủ thì đưa quân đó về chuồng.</p></article>
+            <article><h3>04 · Ô đặc biệt</h3><p>Khi dừng đúng ô ✦, rút lá trên cùng, đọc thành tiếng và thực hiện action. Thẻ đã dùng được đặt xuống đáy chồng.</p></article>
+            <article><h3>05 · Về đích</h3><p>Quân đi hết một vòng sẽ vào đường về đích. Cần tung đúng số bước còn thiếu; nếu thừa, hãy di chuyển quân khác.</p></article>
+            <article><h3>06 · Chiến thắng</h3><p>Người đầu tiên đưa đủ 4 quân về đích thắng. Nếu muốn ván ngắn hơn, chỉ cần đưa 2 quân về đích.</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div><h3>NÀNG HAN</h3><p>Board game kể chuyện bằng chất liệu Việt.</p></div>
+        <div><h3>Muốn có một bộ?</h3><p><a href="product.html">Đến trang sản phẩm →</a></p></div>
+        <div class="placeholder footer-logo">Logo</div>
+      </div>
+    </footer>
+    <script type="module" src="game.mjs"></script>
+    <script type="module" src="animations.js"></script>
+  </body>
+</html>
