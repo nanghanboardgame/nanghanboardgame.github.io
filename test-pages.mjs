@@ -9,12 +9,14 @@ const favicon = readFileSync('favicon.js', 'utf8');
 
 for (const page of pages) {
   assert.match(source[page], /<script type="module" src="animations\.js"><\/script>/, `${page} loads shared animations`);
-  assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png" \/>/, `${page} has a favicon fallback`);
+  assert.match(source[page], /<link rel="shortcut icon" type="image\/x-icon" href="favicon\.ico\?v=2" sizes="any" \/>/, `${page} has a root ICO fallback`);
+  assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png\?v=2" sizes="128x128" data-animated-favicon \/>/, `${page} has a cache-busted animated favicon`);
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
 }
 
-assert.match(favicon, /favicon-open\.png/, 'favicon animation includes the open-eye frame');
-assert.match(favicon, /favicon-closed\.png/, 'favicon animation includes the closed-eye frame');
+assert.match(favicon, /\[data-animated-favicon\]/, 'favicon animation targets only the animated PNG link');
+assert.match(favicon, /favicon-open\.png\?v=2/, 'favicon animation includes a cache-busted open-eye frame');
+assert.match(favicon, /favicon-closed\.png\?v=2/, 'favicon animation includes a cache-busted closed-eye frame');
 assert.match(favicon, /prefers-reduced-motion/, 'favicon animation respects reduced-motion preferences');
 
 assert.match(source['index.html'], /class="character-path"/, 'home connects the character and navigation path');
