@@ -30,11 +30,13 @@ assert.doesNotMatch(source['index.html'], /↗/, 'home branches contain text wit
 assert.match(source['index.html'], /assets\/prototype\/character-white\.png/, 'home uses the supplied white character');
 assert.match(source['index.html'], /assets\/prototype\/character-navy\.png/, 'home uses the supplied navy character');
 assert.match(source['index.html'], /assets\/prototype\/brand-mark-yellow\.png/, 'home uses the supplied product mark');
+assert.match(source['index.html'], /Bạn đã sẵn sàng bước vào hành trình/, 'home video follows the supplied wireframe heading');
 assert.match(styles, /assets\/prototype\/directory-frame\.png/, 'home uses the supplied directory frame');
 assert.match(styles, /assets\/prototype\/branch-button\.png/, 'home uses the supplied button motif on each branch');
 assert.match(styles, /assets\/prototype\/video-frame\.png/, 'home uses the supplied video frame');
 assert.match(styles, /assets\/prototype\/product-frame\.png/, 'home uses the supplied product frame');
 assert.match(styles, /\.home-directory::before/, 'home directory draws a central spine');
+assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*100vw/, 'home directory spans the viewport');
 assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
 assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
 
