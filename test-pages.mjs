@@ -12,6 +12,8 @@ for (const page of pages) {
   assert.match(source[page], /<link rel="shortcut icon" type="image\/x-icon" href="favicon\.ico\?v=2" sizes="any" \/>/, `${page} has a root ICO fallback`);
   assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png\?v=2" sizes="128x128" data-animated-favicon \/>/, `${page} has a cache-busted animated favicon`);
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
+  assert.match(source[page], /assets\/prototype\/brand-wordmark\.png/, `${page} uses the supplied wordmark`);
+  assert.match(source[page], /assets\/prototype\/brand-mark-red\.png/, `${page} uses the supplied footer mark`);
 }
 
 assert.match(favicon, /\[data-animated-favicon\]/, 'favicon animation targets only the animated PNG link');
@@ -25,6 +27,12 @@ assert.match(source['index.html'], /href="story\.html"/);
 assert.match(source['index.html'], /href="rules\.html"/);
 assert.match(source['index.html'], /href="product\.html"/);
 assert.doesNotMatch(source['index.html'], /↗/, 'home branches contain text without arrow icons');
+assert.match(source['index.html'], /assets\/prototype\/character-white\.png/, 'home uses the supplied white character');
+assert.match(source['index.html'], /assets\/prototype\/character-navy\.png/, 'home uses the supplied navy character');
+assert.match(source['index.html'], /assets\/prototype\/brand-mark-yellow\.png/, 'home uses the supplied product mark');
+assert.match(styles, /assets\/prototype\/directory-frame\.png/, 'home uses the supplied directory frame');
+assert.match(styles, /assets\/prototype\/video-frame\.png/, 'home uses the supplied video frame');
+assert.match(styles, /assets\/prototype\/product-frame\.png/, 'home uses the supplied product frame');
 assert.match(styles, /\.home-directory::before/, 'home directory draws a central spine');
 assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
 assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
