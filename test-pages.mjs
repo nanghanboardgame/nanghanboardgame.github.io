@@ -31,6 +31,7 @@ assert.match(source['index.html'], /assets\/prototype\/character-white\.png/, 'h
 assert.match(source['index.html'], /assets\/prototype\/character-navy\.png/, 'home uses the supplied navy character');
 assert.match(source['index.html'], /assets\/prototype\/brand-mark-yellow\.png/, 'home uses the supplied product mark');
 assert.match(styles, /assets\/prototype\/directory-frame\.png/, 'home uses the supplied directory frame');
+assert.match(styles, /assets\/prototype\/branch-button\.png/, 'home uses the supplied button motif on each branch');
 assert.match(styles, /assets\/prototype\/video-frame\.png/, 'home uses the supplied video frame');
 assert.match(styles, /assets\/prototype\/product-frame\.png/, 'home uses the supplied product frame');
 assert.match(styles, /\.home-directory::before/, 'home directory draws a central spine');
