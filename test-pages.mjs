@@ -9,7 +9,7 @@ const game = readFileSync('game.mjs', 'utf8');
 const favicon = readFileSync('favicon.js', 'utf8');
 
 for (const page of pages) {
-  assert.match(source[page], /<script type="module" src="animations\.js"><\/script>/, `${page} loads shared animations`);
+  assert.match(source[page], /<script type="module" src="animations\.js\?v=2"><\/script>/, `${page} loads the cache-busted local animations`);
   assert.match(source[page], /<link rel="shortcut icon" type="image\/x-icon" href="favicon\.ico\?v=2" sizes="any" \/>/, `${page} has a root ICO fallback`);
   assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png\?v=2" sizes="128x128" data-animated-favicon \/>/, `${page} has a cache-busted animated favicon`);
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
@@ -47,6 +47,7 @@ assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*100vw/, 'home directory
 assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
 assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
 assert.match(animations, /\[data-animated-button\]/, 'anime.js animates the shared CTA buttons');
+assert.match(animations, /from '\.\/assets\/vendor\/anime\.esm\.min\.js'/, 'anime.js is served locally so CTA animation is not blocked by the browser');
 
 assert.match(source['rules.html'], /cờ cá ngựa/i, 'rules explain the familiar horse-racing foundation');
 assert.match(source['rules.html'], /ô đặc biệt/i, 'rules explain special board spaces');
