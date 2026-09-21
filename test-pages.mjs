@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 const pages = ['index.html', 'story.html', 'rules.html', 'product.html'];
 const source = Object.fromEntries(pages.map((page) => [page, readFileSync(page, 'utf8')]));
 const styles = readFileSync('styles.css', 'utf8');
+const animations = readFileSync('animations.js', 'utf8');
 const game = readFileSync('game.mjs', 'utf8');
 const favicon = readFileSync('favicon.js', 'utf8');
 
@@ -14,6 +15,7 @@ for (const page of pages) {
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
   assert.match(source[page], /assets\/prototype\/brand-wordmark\.png/, `${page} uses the supplied wordmark`);
   assert.match(source[page], /assets\/prototype\/brand-mark-red\.png/, `${page} uses the supplied footer mark`);
+  assert.match(source[page], /class="nav-cta"[^>]*>Trải nghiệm ngay!<\/a>/, `${page} has the outlined experience CTA`);
 }
 
 assert.match(favicon, /\[data-animated-favicon\]/, 'favicon animation targets only the animated PNG link');
@@ -23,6 +25,9 @@ assert.match(favicon, /prefers-reduced-motion/, 'favicon animation respects redu
 
 assert.match(source['index.html'], /class="character-path"/, 'home connects the character and navigation path');
 assert.equal((source['index.html'].match(/class="directory-link"/g) ?? []).length, 3, 'home has three destination links');
+assert.equal((source['index.html'].match(/class="banner-button"/g) ?? []).length, 2, 'home banner has two destination actions');
+assert.match(source['index.html'], /Khám phá câu chuyện/, 'home banner links to the story');
+assert.match(source['index.html'], /Trải nghiệm sản phẩm/, 'home banner links to the product');
 assert.match(source['index.html'], /href="story\.html"/);
 assert.match(source['index.html'], /href="rules\.html"/);
 assert.match(source['index.html'], /href="product\.html"/);
@@ -39,6 +44,7 @@ assert.match(styles, /\.home-directory::before/, 'home directory draws a central
 assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*100vw/, 'home directory spans the viewport');
 assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
 assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
+assert.match(animations, /\[data-animated-button\]/, 'anime.js animates the shared CTA buttons');
 
 assert.match(source['rules.html'], /cờ cá ngựa/i, 'rules explain the familiar horse-racing foundation');
 assert.match(source['rules.html'], /ô đặc biệt/i, 'rules explain special board spaces');

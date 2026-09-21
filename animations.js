@@ -36,6 +36,27 @@ if (!reducedMotion) {
     ease: 'outExpo',
   });
 
+  const animatedButtons = document.querySelectorAll('[data-animated-button]');
+  animate(animatedButtons, {
+    opacity: [0, 1],
+    y: [14, 0],
+    scale: [.94, 1],
+    delay: stagger(90),
+    duration: 520,
+    ease: 'outExpo',
+  });
+
+  animatedButtons.forEach((button) => {
+    const enter = () => animate(button, { y: -4, scale: 1.025, duration: 220, ease: 'outExpo' });
+    const leave = () => animate(button, { y: 0, scale: 1, duration: 260, ease: 'outExpo' });
+    button.addEventListener('pointerenter', enter);
+    button.addEventListener('pointerleave', leave);
+    button.addEventListener('focus', enter);
+    button.addEventListener('blur', leave);
+    button.addEventListener('pointerdown', () => animate(button, { scale: .97, duration: 100 }));
+    button.addEventListener('pointerup', enter);
+  });
+
   const revealObserver = new IntersectionObserver((entries, observer) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;

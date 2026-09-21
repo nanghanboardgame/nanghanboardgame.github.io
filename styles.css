@@ -56,6 +56,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .main-nav a { position: relative; flex: 0 0 auto; padding: .4rem 0; }
 .main-nav a::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 3px; background: var(--yellow); transform: scaleX(0); }
 .main-nav a:hover::after, .main-nav a:focus-visible::after, .main-nav a[aria-current="page"]::after { transform: scaleX(1); }
+.main-nav .nav-cta { padding: .5rem .75rem; border: 2px solid var(--red); color: var(--navy); text-transform: uppercase; }
+.main-nav .nav-cta::after { display: none; }
 .page-shell { min-height: calc(100vh - 72px); }
 .section { padding: 6rem 0; border-bottom: 1.5px solid var(--line); }
 .placeholder { display: grid; place-items: center; border: 1.5px dashed var(--navy); background: rgba(255,241,226,.78); color: var(--navy); font-size: .78rem; font-weight: 900; letter-spacing: .11em; text-align: center; text-transform: uppercase; }
@@ -81,8 +83,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .home-copy { margin-top: 5rem; }
 .home-copy h1 { font-size: clamp(2.5rem, 3.7vw, 4.2rem); }
 .home-copy h1 span { display: block; color: var(--red); }
-.home-actions { display: grid; gap: .75rem; margin-top: 1.6rem; }
-.home-actions .button { width: 100%; }
+.home-actions { position: absolute; right: 4rem; bottom: 2rem; left: 4rem; z-index: 4; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(4rem, 28vw, 28rem); }
+.banner-button { display: inline-flex; min-height: 54px; align-items: center; justify-content: center; padding: .8rem 1.25rem; border: 2px solid var(--yellow); background: var(--navy); color: var(--yellow); box-shadow: 5px 5px 0 var(--green), 9px 9px 0 var(--red); font-weight: 900; text-align: center; text-transform: uppercase; }
 .home-directory { position: relative; z-index: 2; display: grid; width: 100vw; margin-left: calc(50% - 50vw); padding: 2rem 0 4rem; background: var(--navy) url("assets/prototype/directory-frame.png") center / 100% 100% no-repeat; }
 .home-directory::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--yellow); transform: translateX(-50%); }
 .directory-link { position: relative; display: flex; min-height: 180px; flex-direction: column; justify-content: center; color: var(--yellow); will-change: transform; }
@@ -271,6 +273,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .home-note { margin-top: 0; }
   .home-copy { order: 2; margin-top: 0; }
   .character-path { order: 3; }
+  .home-actions { position: static; order: 4; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0 3rem; }
   .character-frame { min-height: 440px; }
   .directory-link { min-height: 170px; }
   .directory-link strong { font-size: clamp(2.4rem, 8vw, 3.8rem); }
@@ -280,7 +283,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .wrap { width: min(100% - 2rem, 640px); }
   .home-hero .wrap { width: min(100% - 2rem, 640px); }
   .header-inner { min-height: 68px; align-items: flex-start; flex-direction: column; gap: .35rem; padding: .8rem 0; }
-  .main-nav { width: 100%; gap: 1.35rem; padding-bottom: .2rem; }
+  .main-nav { width: 100%; justify-content: space-between; gap: .4rem; overflow: visible; padding-bottom: .2rem; font-size: .72rem; }
+  .main-nav .nav-cta { padding: .3rem .35rem; font-size: .62rem; white-space: nowrap; }
   .section { padding: 4rem 0; }
   .product-teaser, .board-layout, .product-detail, .description-panel { grid-template-columns: 1fr; }
   .game-console { position: static; }
@@ -294,6 +298,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .directory-link::before { width: 1.6rem; }
   .directory-link small { font-size: .82rem; }
   .directory-link strong { font-size: clamp(1.45rem, 7vw, 2rem); }
+  .home-actions { gap: .7rem; }
+  .banner-button { min-height: 48px; padding: .65rem .6rem; font-size: .72rem; }
   .video-copy { padding: .25rem 1rem 1.25rem; }
   .video-window { min-height: 280px; width: 86%; }
   .video-character { height: 44%; max-width: 24%; }
