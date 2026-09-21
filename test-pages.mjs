@@ -4,12 +4,14 @@ import { readFileSync } from 'node:fs';
 const pages = ['index.html', 'story.html', 'rules.html', 'product.html'];
 const source = Object.fromEntries(pages.map((page) => [page, readFileSync(page, 'utf8')]));
 const styles = readFileSync('styles.css', 'utf8');
+const mobileStyles = styles.slice(styles.indexOf('@media (max-width: 820px)'), styles.indexOf('@media (max-width: 430px)'));
 const animations = readFileSync('animations.js', 'utf8');
 const game = readFileSync('game.mjs', 'utf8');
 const favicon = readFileSync('favicon.js', 'utf8');
 
 for (const page of pages) {
-  assert.match(source[page], /<script type="module" src="animations\.js\?v=2"><\/script>/, `${page} loads the cache-busted local animations`);
+  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=2" \/>/, `${page} loads the cache-busted responsive styles`);
+  assert.match(source[page], /<script type="module" src="animations\.js\?v=3"><\/script>/, `${page} loads the cache-busted local animations`);
   assert.match(source[page], /<link rel="shortcut icon" type="image\/x-icon" href="favicon\.ico\?v=2" sizes="any" \/>/, `${page} has a root ICO fallback`);
   assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png\?v=2" sizes="128x128" data-animated-favicon \/>/, `${page} has a cache-busted animated favicon`);
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
@@ -46,8 +48,11 @@ assert.match(styles, /\.home-directory::before/, 'home directory draws a central
 assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*100vw/, 'home directory spans the viewport');
 assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
 assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
+assert.match(mobileStyles, /\.story-sheet::before \{ left: 0; \}/, 'left story decoration stays inside mobile viewports');
+assert.match(mobileStyles, /\.story-sheet::after \{ right: 0; \}/, 'right story decoration stays inside mobile viewports');
 assert.match(animations, /\[data-animated-button\]/, 'anime.js animates the shared CTA buttons');
 assert.match(animations, /from '\.\/assets\/vendor\/anime\.esm\.min\.js'/, 'anime.js is served locally so CTA animation is not blocked by the browser');
+assert.doesNotMatch(animations, /main > section:not\(:first-child\), \.site-footer/, 'footer stays inside the mobile scroll range');
 
 assert.match(source['rules.html'], /cờ cá ngựa/i, 'rules explain the familiar horse-racing foundation');
 assert.match(source['rules.html'], /ô đặc biệt/i, 'rules explain special board spaces');

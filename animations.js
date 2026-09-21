@@ -70,7 +70,7 @@ if (!reducedMotion) {
     }
   }, { threshold: .14 });
 
-  document.querySelectorAll('main > section:not(:first-child), .site-footer').forEach((section) => {
+  document.querySelectorAll('main > section:not(:first-child)').forEach((section) => {
     revealObserver.observe(section);
   });
 
