@@ -15,6 +15,8 @@ for (const page of pages) {
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
   assert.match(source[page], /assets\/prototype\/brand-wordmark\.png/, `${page} uses the supplied wordmark`);
   assert.match(source[page], /assets\/prototype\/brand-mark-red\.png/, `${page} uses the supplied footer mark`);
+  assert.match(source[page], /class="footer-wordmark"/, `${page} footer uses the supplied wordmark`);
+  assert.match(source[page], /Lấy cảm hứng từ truyền thuyết Nàng Han/, `${page} footer follows the supplied brand copy layout`);
   assert.match(source[page], /class="nav-cta"[^>]*>Trải nghiệm ngay!<\/a>/, `${page} has the outlined experience CTA`);
 }
 
