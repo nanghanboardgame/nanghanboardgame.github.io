@@ -152,18 +152,19 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .rules-map-board { position: relative; width: 58%; max-width: 620px; }
 .rules-map-board img { display: block; width: 100%; mix-blend-mode: multiply; }
 .map-markers { position: absolute; inset: 0; pointer-events: none; }
-.map-marker { --note-color: var(--navy); position: absolute; width: 6.667%; aspect-ratio: 1; border: 2px solid var(--note-color); box-shadow: 0 0 0 2px rgba(255, 241, 226, .65); }
+.map-marker { --note-color: var(--navy); position: absolute; box-sizing: border-box; width: 6.667%; aspect-ratio: 1; border: 2px solid var(--note-color); box-shadow: 0 0 0 2px rgba(255, 241, 226, .65); }
 .marker-han-start { top: 0; left: 33.333%; }
-.marker-han-goal { top: 0; left: 46.5%; }
+.marker-han-goal { top: 0; left: 46.667%; }
 .marker-north-normal { top: 0; left: 60%; }
 .marker-special { top: 13.333%; left: 60%; }
 .marker-enemy-goal { top: 46.667%; left: 26.667%; }
-.marker-west-normal { top: 40%; left: 0; }
+.marker-west-normal { top: 33.333%; left: 0; }
 .marker-east-start { top: 33.333%; right: 0; }
+.marker-rival-goal { top: 46.667%; left: 73.333%; }
 .marker-enemy-start { top: 60%; left: 0; }
 .marker-east-normal { top: 60%; right: 0; }
-.marker-south-normal { bottom: 0; left: 40%; }
-.marker-ally-goal { bottom: 0; left: 46.5%; }
+.marker-south-normal { top: 86.667%; left: 33.333%; }
+.marker-ally-goal { bottom: 0; left: 46.667%; }
 .marker-ally-start { right: 33.333%; bottom: 0; }
 .rules-map figcaption { position: absolute; inset: 5% 4%; margin: 0; }
 .map-note { --note-color: var(--navy); position: absolute; width: 19%; color: var(--note-color); font-size: clamp(.62rem, 1vw, .84rem); font-weight: 900; line-height: 1.18; }
@@ -172,25 +173,29 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .team-enemy { --note-color: var(--magenta); }
 .team-rival { --note-color: #178e70; }
 .team-ally { --note-color: var(--green); }
-.note-han-start, .note-enemy-goal, .note-west-normal, .note-enemy-start, .note-south-normal { text-align: right; }
+.note-han-start, .note-west-normal, .note-enemy-start, .note-south-normal { text-align: right; }
 .note-north-normal, .note-special, .note-east-start, .note-east-normal, .note-ally-start { text-align: left; }
-.note-han-start::after, .note-enemy-goal::after, .note-west-normal::after, .note-enemy-start::after, .note-south-normal::after { left: calc(100% + .4rem); }
+.note-han-start::after, .note-west-normal::after, .note-enemy-start::after, .note-south-normal::after { left: calc(100% + .4rem); }
 .note-north-normal::after, .note-special::after, .note-east-start::after, .note-east-normal::after, .note-ally-start::after { right: calc(100% + .4rem); }
 .note-han-goal, .note-ally-goal { left: 40.5%; text-align: center; }
 .note-han-goal::after, .note-ally-goal::after { top: calc(100% + .35rem); left: 50%; width: 0; height: 2.2rem; border-top: 0; border-left: 2px solid currentColor; }
 .note-han-goal { top: 0; }
 .note-ally-goal { bottom: 0; }
 .note-ally-goal::after { top: auto; bottom: calc(100% + .35rem); }
-.note-han-start { top: 11%; left: 9%; }
-.note-north-normal { top: 11%; right: 8%; }
-.note-special { top: 28%; right: 4%; }
-.note-enemy-goal { top: 29%; left: 4%; }
-.note-west-normal { top: 45%; left: 0; }
-.note-east-start { top: 45%; right: 0; }
-.note-enemy-start { top: 65%; left: 3%; }
-.note-east-normal { top: 65%; right: 1%; }
-.note-south-normal { bottom: 11%; left: 9%; }
-.note-ally-start { right: 8%; bottom: 9%; }
+.note-han-start { top: 11%; left: 14.2%; }
+.note-north-normal { top: 11%; right: 14%; }
+.note-special { top: 21%; right: 14%; }
+.note-enemy-goal { top: 28%; left: 27%; text-align: center; }
+.note-enemy-goal::after { top: calc(100% + .35rem); left: 50%; width: 0; height: 7.4rem; border-top: 0; border-left: 2px solid currentColor; }
+.note-west-normal { top: 38%; left: -4.3%; }
+.note-west-normal::after, .note-enemy-start::after { width: clamp(1.25rem, 2.25vw, 1.9rem); }
+.note-east-start { top: 38%; right: -7%; }
+.note-rival-goal { right: 27%; bottom: 25%; text-align: center; }
+.note-rival-goal::after { top: auto; bottom: calc(100% + .35rem); left: 50%; width: 0; height: 9rem; border-top: 0; border-left: 2px solid currentColor; }
+.note-enemy-start { top: 59%; left: -4.3%; }
+.note-east-normal { top: 59%; right: -7%; }
+.note-south-normal { bottom: 11%; left: 14.2%; }
+.note-ally-start { right: 14%; bottom: 9%; }
 .faction-section { padding: 5rem 0; background: var(--navy) url("assets/prototype/product-frame.png") center / cover no-repeat; color: var(--beige); text-align: center; }
 .faction-section h2 { margin-bottom: .75rem; color: var(--yellow); font-family: inherit; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: 0; text-transform: uppercase; }
 .faction-section > .wrap > p { margin: 0 auto 2.5rem; color: rgba(255,241,226,.78); }

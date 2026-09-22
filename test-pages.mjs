@@ -39,12 +39,17 @@ assert.match(source['rules.html'], /class="setup-steps"/, 'rules explain the thr
 assert.match(source['rules.html'], /class="rules-demo"/, 'rules keep the live demo in the wireframe flow');
 assert.doesNotMatch(source['rules.html'], /team-strip|data-player-card/, 'live demo does not repeat the faction overview');
 assert.equal((source['rules.html'].match(/data-game-board/g) ?? []).length, 1, 'rules keep exactly one playable board');
-assert.equal((source['rules.html'].match(/class="map-note /g) ?? []).length, 12, 'board overview keeps all twelve wireframe callouts');
-assert.equal((source['rules.html'].match(/class="map-marker /g) ?? []).length, 12, 'each wireframe callout highlights its board cell');
+assert.equal((source['rules.html'].match(/class="map-note /g) ?? []).length, 13, 'board overview keeps all thirteen wireframe callouts');
+assert.equal((source['rules.html'].match(/class="map-marker /g) ?? []).length, 13, 'each wireframe callout highlights its board cell');
 assert.match(styles, /\.rules-map figcaption \{ position: absolute;/, 'desktop board callouts are positioned around the board');
 assert.match(styles, /\.marker-han-start \{ top: 0; left: 33\.333%; \}/, 'board markers use the board asset grid');
 assert.match(styles, /\.marker-east-start \{ top: 33\.333%; right: 0; \}/, 'east start marker matches its board square');
 assert.match(styles, /\.marker-ally-start \{ right: 33\.333%; bottom: 0; \}/, 'ally start marker matches its board square');
+assert.match(styles, /\.marker-west-normal \{ top: 33\.333%; left: 0; \}/, 'west normal marker matches the wireframe row');
+assert.match(styles, /\.marker-south-normal \{ top: 86\.667%; left: 33\.333%; \}/, 'south normal marker matches the wireframe branch');
+assert.match(source['rules.html'], /Hàng về đích<br \/>đội Quân địch/, 'rival finish lane keeps its wireframe callout');
+assert.match(styles, /\.note-enemy-goal::after \{[^}]*border-left: 2px solid currentColor;/, 'enemy finish label points vertically to its lane');
+assert.match(styles, /\.note-rival-goal::after \{[^}]*border-left: 2px solid currentColor;/, 'rival finish label points vertically to its lane');
 assert.match(styles, /\.map-note \{ position: static;/, 'mobile board callouts return to document flow');
 
 assert.match(favicon, /\[data-animated-favicon\]/, 'favicon animation targets only the animated PNG link');
