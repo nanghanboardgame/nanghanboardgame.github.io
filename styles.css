@@ -202,14 +202,28 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .faction-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
 .faction-panels img { display: block; width: 100%; border: 3px solid var(--yellow); background: var(--beige); }
 .rules-guide { padding: 5rem 0; }
-.rules-guide > .wrap > h2, .rules-copy > h2 { font-family: inherit; font-size: clamp(1.7rem, 3.5vw, 2.7rem); letter-spacing: 0; text-align: center; text-transform: uppercase; }
+.guide-title, .rules-copy-heading h2, .win-condition h2 { width: max-content; margin-inline: auto; padding: .5rem 1rem; border: 2px solid var(--green); background: var(--red); color: var(--beige); box-shadow: 4px 4px 0 var(--orange); font-family: inherit; font-size: clamp(1rem, 2vw, 1.35rem); letter-spacing: 0; text-align: center; text-transform: uppercase; }
 .setup-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 2.5rem 0 0; padding: 0; counter-reset: setup; list-style: none; }
-.setup-steps li { position: relative; padding: 1.25rem 0 0 3.5rem; border-top: 2px solid var(--yellow); counter-increment: setup; }
-.setup-steps li::before { content: counter(setup); position: absolute; top: 1rem; left: 0; display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border: 2px solid var(--green); background: var(--red); color: var(--yellow); font-weight: 900; }
-.setup-steps strong, .setup-steps span { display: block; }
-.setup-steps strong { color: var(--red); text-transform: uppercase; }
-.setup-steps span { margin-top: .4rem; color: var(--muted); }
-.rules-copy { margin-top: 5rem; padding-top: 4rem; border-top: 16px solid transparent; border-image: url("assets/prototype/border-horizontal.png") 20 round; }
+.setup-steps li { position: relative; padding: 3.5rem 1rem 0; color: var(--navy); counter-increment: setup; text-align: center; }
+.setup-steps li::before { content: counter(setup); position: absolute; top: 0; left: 50%; display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 2px solid var(--green); border-radius: 50%; background: var(--red); color: var(--beige); font-weight: 900; translate: -50% 0; }
+.rule-divider { position: relative; height: 2px; margin: 3.5rem 1.5rem; background: var(--orange); }
+.rule-divider::before, .rule-divider::after { content: ""; position: absolute; top: 50%; width: 28px; aspect-ratio: 1; background: url("assets/prototype/branch-button.png") center / contain no-repeat; translate: 0 -50%; }
+.rule-divider::before { left: -1.5rem; }
+.rule-divider::after { right: -1.5rem; }
+.rules-copy { margin: 0; }
+.rules-copy-heading, .win-condition { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 1.5rem; }
+.rules-copy-heading h2, .win-condition h2 { margin: 0; }
+.rules-copy-heading h2 { background: var(--magenta); }
+.rules-copy-heading p, .win-condition p { margin: 0; padding: .55rem 1rem; border: 2px solid var(--magenta); text-align: center; }
+.rules-copy-heading strong { display: block; }
+.rule-text { margin-top: 1.5rem; }
+.rule-text article + article { margin-top: 1.25rem; }
+.rule-text h3 { margin: 0; color: var(--magenta); font-family: inherit; font-size: 1rem; }
+.rule-text p { margin: 0; }
+.rule-text ul { margin: .35rem 0 0; padding-left: 1.25rem; }
+.rule-text li::marker { color: var(--green); }
+.win-condition h2 { background: var(--red); }
+.win-condition p { border-color: var(--red); }
 .rules-cards { padding: 5rem 0; border-block: 1.5px solid var(--line); background: #fff8ee; }
 .rules-cards .card-section-heading { margin-top: 0; }
 .rules-demo { padding: 5rem 0; background: var(--beige) url("assets/prototype/video-frame.png") center / 100% 100% no-repeat; }
@@ -301,9 +315,6 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .game-card.is-open .card-detail, .game-card:focus-visible .card-detail { opacity: 1; transform: none; }
 .card-detail strong { font-family: Georgia, serif; font-size: clamp(1rem, 1.8vw, 1.35rem); }
 .card-detail small { color: rgba(255,241,226,.78); font-size: .78rem; line-height: 1.35; }
-.rule-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
-.rule-columns article { padding-top: 1rem; border-top: 2px solid var(--red); }
-.rule-columns p { color: var(--muted); }
 
 /* Sản phẩm — ảnh 1 */
 .product-screen { background: var(--navy); color: var(--beige); }
@@ -368,6 +379,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .story-legacy-inner { grid-template-columns: 120px 1fr; gap: 1.5rem; }
   .faction-panels, .setup-steps { grid-template-columns: 1fr; }
   .setup-steps { gap: 1.25rem; }
+  .rules-copy-heading, .win-condition { grid-template-columns: 1fr; }
+  .rules-copy-heading h2, .win-condition h2 { margin-inline: auto; }
   .game-console { position: static; }
   .mobile-hint { display: block; }
   .card-section-heading { grid-template-columns: 1fr; }
@@ -412,7 +425,6 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .art-board .drawn-card p { font-size: .7rem; }
   .card-gallery { grid-template-columns: repeat(10, minmax(180px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 .15rem 1rem; }
   .game-card { scroll-snap-align: start; }
-  .rule-columns { grid-template-columns: 1fr; }
   .product-gallery { grid-template-columns: 1fr; }
   .product-main-image { min-height: 390px; }
   .product-thumbs { grid-template-columns: repeat(3, 1fr); }

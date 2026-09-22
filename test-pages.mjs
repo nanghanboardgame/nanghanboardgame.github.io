@@ -36,6 +36,11 @@ assert.match(source['rules.html'], /class="rules-overview"/, 'rules start with a
 assert.match(source['rules.html'], /assets\/prototype\/team-allies\.png/, 'rules show the supplied Nàng Han faction panel');
 assert.match(source['rules.html'], /assets\/prototype\/team-opponents\.png/, 'rules show the supplied opposing faction panel');
 assert.match(source['rules.html'], /class="setup-steps"/, 'rules explain the three setup steps before play');
+assert.equal((source['rules.html'].match(/class="rule-divider"/g) ?? []).length, 2, 'rules guide keeps both wireframe dividers');
+assert.match(source['rules.html'], /class="rules-copy-heading"/, 'rules heading keeps the wireframe action sequence');
+assert.match(source['rules.html'], /Lắc xúc xắc → Xuất quân\/Di chuyển → Bốc thẻ bài/, 'rules show the turn order from the wireframe');
+assert.match(source['rules.html'], /class="win-condition"/, 'rules keep the wireframe victory row');
+assert.doesNotMatch(source['rules.html'], /class="rule-columns"/, 'rules are prose instead of an unrelated card grid');
 assert.match(source['rules.html'], /class="rules-demo"/, 'rules keep the live demo in the wireframe flow');
 assert.doesNotMatch(source['rules.html'], /team-strip|data-player-card/, 'live demo does not repeat the faction overview');
 assert.equal((source['rules.html'].match(/data-game-board/g) ?? []).length, 1, 'rules keep exactly one playable board');
