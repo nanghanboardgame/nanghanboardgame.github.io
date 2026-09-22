@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { BOARD_POINTS, DEMO_ACTIONS, DEMO_PATH, getDemoAction } from './game.mjs';
+
+const gameSource = await readFile(new URL('./game.mjs', import.meta.url), 'utf8');
+assert.doesNotMatch(gameSource, /board\.dataset\.demoAction/, 'board state must not masquerade as an action button');
 
 assert.deepEqual(
   DEMO_ACTIONS.map(({ id }) => id),

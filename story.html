@@ -7,7 +7,7 @@
     <title>Nàng Han — Câu chuyện</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2" sizes="any" />
     <link rel="icon" type="image/png" href="assets/favicon-open.png?v=2" sizes="128x128" data-animated-favicon />
-    <link rel="stylesheet" href="styles.css?v=2" />
+    <link rel="stylesheet" href="styles.css?v=3" />
     <script src="favicon.js" defer></script>
   </head>
   <body class="story-screen">
@@ -23,21 +23,53 @@
       </div>
     </header>
     <main class="page-shell">
-      <section class="story-intro wrap">
-        <div class="placeholder story-media">Ảnh hoặc video mở đầu<br />assets bổ sung sau</div>
-        <span class="eyebrow">Câu chuyện Nàng Han</span>
-        <h1>Một cuộc chơi bắt đầu từ ký ức.</h1>
-        <p class="lead">Đây là phần tóm tắt mở đầu theo ảnh số 3. Nội dung chính thức sẽ thay vào khi tài liệu thương hiệu được cung cấp.</p>
-        <a class="button" href="#full-story">Tìm hiểu câu chuyện</a>
+      <section class="story-hero">
+        <div class="wrap story-hero-inner">
+          <h1>Bạn chiến đấu <span>vì điều gì?</span></h1>
+          <div class="story-hero-art" aria-label="Hai nhân vật đại diện cho hành trình của Nàng Han">
+            <img src="assets/prototype/character-white.png" alt="Nhân vật đội Nghĩa quân" />
+            <div class="story-hero-copy">
+              <strong>Một nữ tướng. Một bản mường. Một câu chuyện được lưu truyền.</strong>
+              <p>Từ truyền thuyết Nàng Han đến bàn chơi nơi mỗi lựa chọn đều góp phần bảo vệ quê hương.</p>
+            </div>
+            <img src="assets/prototype/character-navy.png" alt="Nhân vật đội Nàng Han" />
+          </div>
+          <a class="story-cta" href="#full-story" data-animated-button>Tìm hiểu câu chuyện</a>
+        </div>
       </section>
-      <section class="story-sheet-section" id="full-story">
-        <article class="story-sheet">
-          <span class="eyebrow">Chương đầu</span>
-          <h2>Những điều cũ vẫn có thể được kể theo cách mới.</h2>
-          <p>Nàng Han gom những mẩu chuyện nhỏ, ký ức gia đình và chất liệu văn hóa địa phương để tạo thành trải nghiệm mọi người có thể cùng chạm vào.</p>
-          <p>Khối này mô phỏng tờ cuộn dài trong bản vẽ. Khi có nội dung thật, phần văn bản, trích dẫn và hình minh họa sẽ được sắp lại theo đúng nhịp câu chuyện.</p>
-          <div class="placeholder">Ảnh tư liệu trong bài<br />assets bổ sung sau</div>
-        </article>
+
+      <section class="story-legend" id="full-story">
+        <div class="wrap story-legend-layout">
+          <aside class="story-source">
+            <h2>Truyền thuyết Nàng Han</h2>
+            <p>NNƯT. Cầm Văn Vui</p>
+          </aside>
+          <article class="story-sheet">
+            <p>Chuyện kể rằng Nàng Ỏ, con tạo Mường Cang, lớn lên khi giặc cờ vàng cướp phá bản mường. Vì căm thù giặc, nàng cải trang thành trai, lấy tên Tạo Ỏ và xin gia nhập đội quân ở Mường So.</p>
+            <p>Nhờ ngày đêm luyện tập, Tạo Ỏ trở thành vị tướng văn võ song toàn. Nàng dẫn quân đi khắp 16 Châu Thái, từ Lai Châu, Điện Biên đến Mường Lò, được nhân dân góp sức và nhiều chàng trai tình nguyện đồng hành để giải phóng bản mường.</p>
+            <blockquote>Vị nữ tướng được người dân nhớ đến bởi lòng quả cảm, tài thao lược và công lao gìn giữ cuộc sống bình yên nơi miền sơn cước.</blockquote>
+            <p>Sau khi dẹp giặc, nàng trở về Mường So canh giữ biên cương. Người dân dựng miếu thờ, tổ chức lễ hội và lưu truyền câu chuyện Nàng Han qua nhiều thế hệ như một biểu tượng của lòng dũng cảm và tinh thần bảo vệ quê hương.</p>
+          </article>
+          <aside class="story-name">
+            <h2>Quẵm tỗ Nãng Han</h2>
+            <p>(Tiếng Thái)</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="story-legacy">
+        <div class="wrap story-legacy-inner">
+          <img src="assets/prototype/brand-mark-yellow.png" alt="Biểu trưng Nàng Han" loading="lazy" />
+          <div>
+            <h2>Từ truyền thuyết đến một cuộc chơi chung.</h2>
+            <p>Nàng Han đưa tinh thần đồng đội, lựa chọn và bảo vệ bản mường vào từng lượt đi trên bàn cờ.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-product-cta">
+        <img src="assets/prototype/product-board-scene.png" alt="Bàn cờ Nàng Han cùng các quân chơi và xúc xắc" loading="lazy" />
+        <a href="product.html" data-animated-button>Trải nghiệm sản phẩm</a>
       </section>
     </main>
     <footer class="site-footer">
@@ -49,6 +81,6 @@
         <img class="footer-logo" src="assets/prototype/brand-mark-red.png" alt="Biểu trưng Nàng Han" width="1318" height="1712" loading="lazy" />
       </div>
     </footer>
-    <script type="module" src="animations.js?v=3"></script>
+    <script type="module" src="animations.js?v=4"></script>
   </body>
 </html>

@@ -116,24 +116,66 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .product-teaser .lead { color: rgba(255, 241, 226, .76); }
 .product-teaser .button { border-color: var(--yellow); background: var(--yellow); color: var(--navy); }
 
-/* Câu chuyện — ảnh 3 */
-.story-screen { background: var(--navy); color: var(--beige); }
-.story-intro { padding: 3.5rem 0 4.5rem; text-align: center; }
-.story-media { width: min(720px, 100%); min-height: 360px; margin: 0 auto 2rem; background: var(--yellow); }
-.story-intro h1 { max-width: 800px; margin-inline: auto; font-size: clamp(2.8rem, 6vw, 5.2rem); }
-.story-intro .lead { margin-inline: auto; color: rgba(255,241,226,.72); }
-.story-intro .eyebrow { color: var(--yellow); }
-.story-intro .button { border-color: var(--beige); background: var(--beige); color: var(--navy); }
-.story-sheet-section { padding: 5rem 0; background: var(--beige); }
-.story-sheet { position: relative; max-width: 850px; min-height: 540px; margin: 0 auto; padding: clamp(2rem, 6vw, 5rem); border: 1.5px solid var(--navy); background: var(--beige); color: var(--navy); box-shadow: var(--shadow); }
-.story-sheet::before, .story-sheet::after { content: ""; position: absolute; top: 1.2rem; bottom: 1.2rem; width: 16px; border: 1.5px solid var(--navy); background: var(--yellow); }
-.story-sheet::before { left: -18px; }
-.story-sheet::after { right: -18px; }
-.story-sheet p { color: var(--muted); font-size: 1.08rem; }
-.story-sheet .placeholder { min-height: 150px; margin-top: 2rem; background: var(--orange); }
+/* Câu chuyện */
+.story-screen { background: var(--beige); }
+.story-hero { padding: 5rem 0 4.5rem; background: var(--navy) url("assets/prototype/directory-frame.png") center / 100% 100% no-repeat; color: var(--beige); text-align: center; }
+.story-hero h1 { max-width: 920px; margin-inline: auto; font-family: inherit; font-size: clamp(2.4rem, 5vw, 5rem); letter-spacing: -.035em; line-height: 1; text-transform: uppercase; }
+.story-hero h1 span { color: var(--yellow); }
+.story-hero-art { display: grid; min-height: 420px; grid-template-columns: minmax(140px, .65fr) minmax(260px, 1.7fr) minmax(140px, .65fr); align-items: end; gap: 1rem; width: min(920px, 92%); margin: 2rem auto; padding: 2.5rem 2rem 0; border: 3px solid var(--yellow); background: var(--beige); color: var(--navy); }
+.story-hero-art img { display: block; width: 100%; max-height: 330px; object-fit: contain; }
+.story-hero-copy { align-self: center; padding-bottom: 2.5rem; }
+.story-hero-copy strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.6rem, 3vw, 3rem); line-height: 1.05; }
+.story-hero-copy p { max-width: 44ch; margin: 1rem auto 0; color: var(--muted); }
+.story-cta, .story-product-cta a { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; padding: .75rem 1.25rem; border: 2px solid var(--yellow); background: var(--red); color: var(--yellow); box-shadow: 5px 5px 0 var(--green); font-weight: 900; text-transform: uppercase; }
+.story-legend { padding: 5rem 0; background: var(--beige) url("assets/prototype/video-frame.png") center / 100% 100% no-repeat; }
+.story-legend-layout { display: grid; grid-template-columns: minmax(150px, .55fr) minmax(440px, 1.65fr) minmax(150px, .55fr); align-items: center; gap: 2rem; }
+.story-source, .story-name { color: var(--red); }
+.story-source h2, .story-name h2 { margin: 0; font-family: inherit; font-size: clamp(1.35rem, 2.2vw, 2rem); letter-spacing: 0; line-height: 1.12; text-transform: uppercase; }
+.story-source p, .story-name p { margin: .8rem 0 0; color: var(--navy); font-size: .82rem; font-weight: 900; text-transform: uppercase; }
+.story-name { text-align: right; }
+.story-sheet { padding: clamp(2rem, 5vw, 4rem); border: 16px solid var(--navy); background: var(--beige); color: var(--navy); box-shadow: var(--shadow); }
+.story-sheet p, .story-sheet blockquote { max-width: 66ch; margin-right: auto; margin-left: auto; }
+.story-sheet p { color: var(--navy); font-size: 1.02rem; }
+.story-sheet blockquote { margin-top: 2rem; margin-bottom: 2rem; padding: 1.25rem 0; border-block: 2px solid var(--yellow); color: var(--red); font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 900; line-height: 1.25; }
+.story-legacy { padding: 4rem 0; background: var(--navy) url("assets/prototype/product-frame.png") center / cover no-repeat; color: var(--beige); }
+.story-legacy-inner { display: grid; grid-template-columns: 180px 1fr; align-items: center; gap: 3rem; }
+.story-legacy img { display: block; width: auto; max-height: 230px; }
+.story-legacy h2 { color: var(--yellow); }
+.story-legacy p { max-width: 58ch; margin: 0; color: rgba(255,241,226,.78); font-size: 1.08rem; }
+.story-product-cta { position: relative; overflow: hidden; background: var(--beige); }
+.story-product-cta img { display: block; width: 100%; min-height: 360px; object-fit: cover; }
+.story-product-cta a { position: absolute; bottom: 12%; left: 50%; translate: -50% 0; white-space: nowrap; }
 
-/* Luật chơi — ảnh 2 */
+/* Luật chơi */
 .rules-screen { background: var(--beige); }
+.rules-overview { padding: 5rem 0; }
+.rules-title { max-width: 760px; margin: 0 auto 3rem; text-align: center; }
+.rules-title h1 { font-size: clamp(2.6rem, 5vw, 5rem); }
+.rules-title p { margin: 0; color: var(--muted); font-size: 1.08rem; }
+.rules-map { width: min(900px, 100%); margin: 0 auto; padding: clamp(1.25rem, 4vw, 3rem); background: url("assets/prototype/video-frame.png") center / 100% 100% no-repeat; }
+.rules-map img { display: block; width: min(760px, 100%); margin-inline: auto; mix-blend-mode: multiply; }
+.rules-map figcaption { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.rules-map figcaption span { padding-top: .75rem; border-top: 2px solid var(--red); font-size: .82rem; }
+.rules-map figcaption strong { display: block; color: var(--red); text-transform: uppercase; }
+.faction-section { padding: 5rem 0; background: var(--navy) url("assets/prototype/product-frame.png") center / cover no-repeat; color: var(--beige); text-align: center; }
+.faction-section h2 { margin-bottom: .75rem; color: var(--yellow); font-family: inherit; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: 0; text-transform: uppercase; }
+.faction-section > .wrap > p { margin: 0 auto 2.5rem; color: rgba(255,241,226,.78); }
+.faction-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.faction-panels img { display: block; width: 100%; border: 3px solid var(--yellow); background: var(--beige); }
+.rules-guide { padding: 5rem 0; }
+.rules-guide > .wrap > h2, .rules-copy > h2 { font-family: inherit; font-size: clamp(1.7rem, 3.5vw, 2.7rem); letter-spacing: 0; text-align: center; text-transform: uppercase; }
+.setup-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 2.5rem 0 0; padding: 0; counter-reset: setup; list-style: none; }
+.setup-steps li { position: relative; padding: 1.25rem 0 0 3.5rem; border-top: 2px solid var(--yellow); counter-increment: setup; }
+.setup-steps li::before { content: counter(setup); position: absolute; top: 1rem; left: 0; display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border: 2px solid var(--green); background: var(--red); color: var(--yellow); font-weight: 900; }
+.setup-steps strong, .setup-steps span { display: block; }
+.setup-steps strong { color: var(--red); text-transform: uppercase; }
+.setup-steps span { margin-top: .4rem; color: var(--muted); }
+.rules-copy { margin-top: 5rem; padding-top: 4rem; border-top: 16px solid transparent; border-image: url("assets/prototype/border-horizontal.png") 20 round; }
+.rules-cards { padding: 5rem 0; border-block: 1.5px solid var(--line); background: #fff8ee; }
+.rules-cards .card-section-heading { margin-top: 0; }
+.rules-demo { padding: 5rem 0; background: var(--beige) url("assets/prototype/video-frame.png") center / 100% 100% no-repeat; }
+.rules-demo-heading { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
+.rules-demo-heading p { margin: 0; color: var(--muted); }
 .board-layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: start; }
 .board-panel { min-width: 0; }
 .art-board { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 1; background: var(--beige); box-shadow: var(--shadow); }
@@ -225,10 +267,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .game-card.is-open .card-detail, .game-card:focus-visible .card-detail { opacity: 1; transform: none; }
 .card-detail strong { font-family: Georgia, serif; font-size: clamp(1rem, 1.8vw, 1.35rem); }
 .card-detail small { color: rgba(255,241,226,.78); font-size: .78rem; line-height: 1.35; }
-.scroll-rules { padding: 5rem 0; background: var(--navy); }
-.scroll-sheet { min-height: 420px; padding: clamp(2rem, 6vw, 4rem); border: 1.5px solid var(--navy); border-radius: 1rem 3rem 1rem 3rem; background: var(--yellow); box-shadow: var(--shadow); }
 .rule-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
-.rule-columns article { padding-top: 1rem; border-top: 1.5px solid var(--navy); }
+.rule-columns article { padding-top: 1rem; border-top: 2px solid var(--red); }
 .rule-columns p { color: var(--muted); }
 
 /* Sản phẩm — ảnh 1 */
@@ -288,11 +328,16 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .main-nav .nav-cta { padding: .3rem .35rem; font-size: .62rem; white-space: nowrap; }
   .section { padding: 4rem 0; }
   .product-teaser, .board-layout, .product-detail, .description-panel { grid-template-columns: 1fr; }
+  .story-legend-layout { grid-template-columns: 1fr; }
+  .story-source, .story-name { text-align: center; }
+  .story-sheet { border-width: 10px; }
+  .story-legacy-inner { grid-template-columns: 120px 1fr; gap: 1.5rem; }
+  .rules-map figcaption { grid-template-columns: repeat(2, 1fr); }
+  .faction-panels, .setup-steps { grid-template-columns: 1fr; }
+  .setup-steps { gap: 1.25rem; }
   .game-console { position: static; }
   .mobile-hint { display: block; }
   .card-section-heading { grid-template-columns: 1fr; }
-  .story-sheet::before { left: 0; }
-  .story-sheet::after { right: 0; }
   .character-frame { min-height: 390px; }
   .home-directory { padding: 1rem 0 3rem; }
   .directory-link { min-height: 145px; }
@@ -346,6 +391,17 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 @media (max-width: 430px) {
   h1 { font-size: 3rem; }
   .home-copy h1 { font-size: 3.2rem; }
+  .story-hero { padding: 3.5rem 0; }
+  .story-hero-art { min-height: 300px; width: 100%; grid-template-columns: .7fr 1.4fr .7fr; gap: .25rem; padding: 1.5rem .5rem 0; }
+  .story-hero-copy { padding-bottom: 1.5rem; }
+  .story-hero-copy strong { font-size: 1.3rem; }
+  .story-hero-copy p { font-size: .78rem; }
+  .story-legacy-inner { grid-template-columns: 1fr; text-align: center; }
+  .story-legacy img { max-height: 160px; margin-inline: auto; }
+  .story-product-cta img { min-height: 250px; }
+  .rules-overview, .rules-guide, .rules-cards, .rules-demo, .faction-section { padding: 3.5rem 0; }
+  .rules-map { padding: 1rem; }
+  .rules-map figcaption { grid-template-columns: 1fr; gap: .5rem; }
   .board-action-cue { width: 42%; }
   .card-gallery { gap: .65rem; }
   .game-card { min-height: 165px; }

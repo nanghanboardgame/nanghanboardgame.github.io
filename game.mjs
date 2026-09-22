@@ -264,7 +264,7 @@ function initDemo() {
   const runAction = (id) => {
     const action = getDemoAction(id);
     clearStage();
-    board.dataset.demoAction = id;
+    board.dataset.activeAction = id;
     status.textContent = action.status;
     document.querySelector(`[data-demo-action="${id}"]`)?.classList.add('active');
 

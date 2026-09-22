@@ -7,7 +7,7 @@
     <title>Nàng Han — Luật chơi</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2" sizes="any" />
     <link rel="icon" type="image/png" href="assets/favicon-open.png?v=2" sizes="128x128" data-animated-favicon />
-    <link rel="stylesheet" href="styles.css?v=2" />
+    <link rel="stylesheet" href="styles.css?v=3" />
     <script src="favicon.js" defer></script>
   </head>
   <body class="rules-screen">
@@ -23,12 +23,83 @@
       </div>
     </header>
     <main class="page-shell">
-      <section class="section">
+      <section class="rules-overview">
         <div class="wrap">
-          <div class="page-title">
-            <span class="eyebrow">Cách chơi · Bản chơi thử</span>
-            <h1>Nàng Han trên đường đua.</h1>
-            <p>Lấy nhịp chơi quen thuộc của cờ cá ngựa làm nền, rồi thêm các ô đặc biệt để mỗi vòng đua mở ra một câu chuyện và một tình huống mới.</p>
+          <div class="rules-title">
+            <h1>Đọc bàn cờ trước khi vào cuộc.</h1>
+            <p>Lấy nhịp chơi quen thuộc của cờ cá ngựa làm nền: mỗi phe có khu xuất phát và đường về đích riêng, còn các ô hoa tạo thêm biến số cho cuộc đua.</p>
+          </div>
+          <figure class="rules-map">
+            <img src="assets/board.png" alt="Sơ đồ bàn cờ Nàng Han với bốn đường đua và các ô hoa đặc biệt" />
+            <figcaption>
+              <span><strong>Xuất phát</strong> đưa quân vào đường đua.</span>
+              <span><strong>Ô thường</strong> di chuyển theo xúc xắc.</span>
+              <span><strong>Ô hoa</strong> rút và thực hiện một lá thẻ.</span>
+              <span><strong>Về đích</strong> đưa đủ quân để giành chiến thắng.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="faction-section">
+        <div class="wrap">
+          <h2>Hãy chọn lực lượng của bạn</h2>
+          <p>Trò chơi gồm hai phe và bốn đội. Mỗi đội sở hữu bốn quân cùng một thẻ đội tương ứng.</p>
+          <div class="faction-panels">
+            <img src="assets/prototype/team-allies.png" alt="Phe Nàng Han gồm đội Nàng Han và đội Nghĩa quân" loading="lazy" />
+            <img src="assets/prototype/team-opponents.png" alt="Phe đối địch gồm đội Tướng địch và đội Quân địch" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section class="rules-guide">
+        <div class="wrap">
+          <h2>Chuẩn bị trò chơi</h2>
+          <ol class="setup-steps">
+            <li><strong>Chọn phe</strong><span>Xếp các tấm bảng thành bàn chơi và chọn đội của mình.</span></li>
+            <li><strong>Nhận quân</strong><span>Mỗi đội lấy các quân và thẻ đội mang biểu tượng tương ứng.</span></li>
+            <li><strong>Đặt thẻ</strong><span>Xáo bộ thẻ Ý Then, đặt úp cạnh bàn và đặt xúc xắc bên cạnh.</span></li>
+          </ol>
+          <div class="rules-copy">
+            <h2>Luật chơi</h2>
+            <div class="rule-columns">
+              <article><h3>Xuất quân</h3><p>Tung được 6 để đưa một quân ra ô bắt đầu. Sau khi ra quân, người chơi được tung thêm một lần.</p></article>
+              <article><h3>Di chuyển</h3><p>Mỗi lượt chọn một quân và đi đúng số ô trên xúc xắc.</p></article>
+              <article><h3>Đá quân</h3><p>Khi dừng đúng ô có quân đối thủ, quân đó bị đưa về khu đội và phải ra quân lại.</p></article>
+              <article><h3>Ô đặc biệt</h3><p>Khi dừng đúng ô hoa, rút lá trên cùng, đọc thành tiếng và thực hiện ngay công dụng trên thẻ.</p></article>
+              <article><h3>Về đích</h3><p>Quân đi hết một vòng sẽ vào đường về đích. Người chơi cần tung đúng số bước còn thiếu.</p></article>
+              <article><h3>Chiến thắng</h3><p>Đội đầu tiên đưa đủ quân về đích thắng. Có thể chọn mốc hai quân cho một ván chơi ngắn.</p></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rules-cards">
+        <div class="wrap">
+          <div class="card-section-heading">
+            <div><h2>Ý Then</h2><p>Lời Then ban sẽ dẫn bạn đến đâu: là vận may hay điềm gở?</p></div>
+            <p>Chạm vào từng lá để xem công dụng. Dừng đúng ô hoa trên bàn cờ để rút một lá.</p>
+          </div>
+          <div class="card-gallery" aria-label="Mười thẻ hành động">
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-02"><img src="assets/cards/card-02.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-02" data-card-detail aria-hidden="true"><strong>Vẫn đổi sao dời</strong><small>Hoán đổi vị trí với một đồng đội bất kỳ.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-03"><img src="assets/cards/card-03.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-03" data-card-detail aria-hidden="true"><strong>Thiên ban sinh khí</strong><small>Hồi sinh một đồng đội.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-04"><img src="assets/cards/card-04.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-04" data-card-detail aria-hidden="true"><strong>Phất cờ hiệu lệnh</strong><small>Chỉ định một người tiến hoặc lùi hai ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-05"><img src="assets/cards/card-05.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-05" data-card-detail aria-hidden="true"><strong>Mở lối khí vận</strong><small>Tiến tới ô đặc biệt gần nhất.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-06"><img src="assets/cards/card-06.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-06" data-card-detail aria-hidden="true"><strong>Mưa nguồn cuốn trôi</strong><small>Tất cả lùi lại ba ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-07"><img src="assets/cards/card-07.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-07" data-card-detail aria-hidden="true"><strong>Khói lửa chiến xa</strong><small>Hạ một đối thủ bất kỳ.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-08"><img src="assets/cards/card-08.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-08" data-card-detail aria-hidden="true"><strong>Xòe hoa cùng bước</strong><small>Tất cả cùng tiến lên một ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-09"><img src="assets/cards/card-09.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-09" data-card-detail aria-hidden="true"><strong>Có duyên đồng hành</strong><small>Chọn một người cùng tiến lên một ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-10"><img src="assets/cards/card-10.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-10" data-card-detail aria-hidden="true"><strong>Bản Mường tiếp sức</strong><small>Tiến lên hai ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-11"><img src="assets/cards/card-11.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-11" data-card-detail aria-hidden="true"><strong>Mây mù phủ lối</strong><small>Lùi lại hai ô.</small></span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="rules-demo" id="play-demo">
+        <div class="wrap">
+          <div class="rules-demo-heading">
+            <h2>Bàn chơi thử</h2>
+            <p>Chọn một tình huống để xem quân cờ, xúc xắc và thẻ bài hoạt động ngay trên bàn.</p>
           </div>
           <div class="board-layout">
             <div class="board-panel">
@@ -38,8 +109,7 @@
               <p class="board-legend"><strong>Ô hoa đặc biệt:</strong> dừng đúng ô để rút một thẻ và thực hiện công dụng trên thẻ ngay lập tức.</p>
             </div>
             <div class="game-console">
-              <span class="eyebrow">Thử cách chơi</span>
-              <h2>Xem từng bước.</h2>
+              <h2>Xem từng bước</h2>
               <p class="demo-intro">Chạm vào từng nút để xem một lượt chơi diễn ra: ra quân, di chuyển, rút thẻ và đá quân.</p>
               <p class="mobile-hint">Trên điện thoại, chạm vào bàn cờ để mở các nút thao tác ngay trên bàn.</p>
               <div class="team-strip" aria-label="Bốn đội chơi">
@@ -68,36 +138,6 @@
               </ol>
             </div>
           </div>
-          <div class="card-section-heading">
-            <div><span class="eyebrow">Bộ thẻ hành động</span><h2>Mỗi lá đổi nhịp đường đua.</h2></div>
-            <p>Dừng ở ô hoa, rút một lá và thực hiện ngay công dụng được ghi trên thẻ.</p>
-          </div>
-          <div class="card-gallery" aria-label="Mười thẻ hành động">
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-02"><img src="assets/cards/card-02.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-02" data-card-detail aria-hidden="true"><strong>Vẫn đổi sao dời</strong><small>Hoán đổi vị trí với một đồng đội bất kỳ.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-03"><img src="assets/cards/card-03.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-03" data-card-detail aria-hidden="true"><strong>Thiên ban sinh khí</strong><small>Hồi sinh một đồng đội.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-04"><img src="assets/cards/card-04.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-04" data-card-detail aria-hidden="true"><strong>Phất cờ hiệu lệnh</strong><small>Chỉ định một người tiến hoặc lùi hai ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-05"><img src="assets/cards/card-05.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-05" data-card-detail aria-hidden="true"><strong>Mở lối khí vận</strong><small>Tiến tới ô đặc biệt gần nhất.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-06"><img src="assets/cards/card-06.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-06" data-card-detail aria-hidden="true"><strong>Mưa nguồn cuốn trôi</strong><small>Tất cả lùi lại ba ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-07"><img src="assets/cards/card-07.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-07" data-card-detail aria-hidden="true"><strong>Khói lửa chiến xa</strong><small>Hạ một đối thủ bất kỳ.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-08"><img src="assets/cards/card-08.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-08" data-card-detail aria-hidden="true"><strong>Xòe hoa cùng bước</strong><small>Tất cả cùng tiến lên một ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-09"><img src="assets/cards/card-09.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-09" data-card-detail aria-hidden="true"><strong>Có duyên đồng hành</strong><small>Chọn một người cùng tiến lên một ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-10"><img src="assets/cards/card-10.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-10" data-card-detail aria-hidden="true"><strong>Bản Mường tiếp sức</strong><small>Tiến lên hai ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-11"><img src="assets/cards/card-11.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-11" data-card-detail aria-hidden="true"><strong>Mây mù phủ lối</strong><small>Lùi lại hai ô.</small></span></button>
-          </div>
-        </div>
-      </section>
-      <section class="scroll-rules">
-        <div class="wrap scroll-sheet">
-          <span class="eyebrow">Luật chơi đề xuất</span>
-          <h2>Quen như cờ cá ngựa, vui hơn nhờ bộ thẻ.</h2>
-          <div class="rule-columns">
-            <article><h3>01 · Chuẩn bị</h3><p>Chơi từ 2–4 người. Mỗi người chọn một màu và đặt 4 quân vào chuồng. Xáo bộ thẻ rồi úp cạnh bàn cờ.</p></article>
-            <article><h3>02 · Xuất chuồng</h3><p>Tung được 6 để đưa một quân ra ô bắt đầu. Sau khi ra quân, người chơi được tung thêm một lần.</p></article>
-            <article><h3>03 · Di chuyển</h3><p>Mỗi lượt chọn một quân và đi đúng số ô trên xúc xắc. Dừng đúng ô có quân đối thủ thì đưa quân đó về chuồng.</p></article>
-            <article><h3>04 · Ô đặc biệt</h3><p>Khi dừng đúng ô ✦, rút lá trên cùng, đọc thành tiếng và thực hiện action. Thẻ đã dùng được đặt xuống đáy chồng.</p></article>
-            <article><h3>05 · Về đích</h3><p>Quân đi hết một vòng sẽ vào đường về đích. Cần tung đúng số bước còn thiếu; nếu thừa, hãy di chuyển quân khác.</p></article>
-            <article><h3>06 · Chiến thắng</h3><p>Người đầu tiên đưa đủ 4 quân về đích thắng. Nếu muốn ván ngắn hơn, chỉ cần đưa 2 quân về đích.</p></article>
-          </div>
         </div>
       </section>
     </main>
@@ -110,7 +150,7 @@
         <img class="footer-logo" src="assets/prototype/brand-mark-red.png" alt="Biểu trưng Nàng Han" width="1318" height="1712" loading="lazy" />
       </div>
     </footer>
-    <script type="module" src="game.mjs"></script>
-    <script type="module" src="animations.js?v=3"></script>
+    <script type="module" src="game.mjs?v=2"></script>
+    <script type="module" src="animations.js?v=4"></script>
   </body>
 </html>

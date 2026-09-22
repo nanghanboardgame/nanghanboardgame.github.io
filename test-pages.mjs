@@ -10,8 +10,8 @@ const game = readFileSync('game.mjs', 'utf8');
 const favicon = readFileSync('favicon.js', 'utf8');
 
 for (const page of pages) {
-  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=2" \/>/, `${page} loads the cache-busted responsive styles`);
-  assert.match(source[page], /<script type="module" src="animations\.js\?v=3"><\/script>/, `${page} loads the cache-busted local animations`);
+  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=3" \/>/, `${page} loads the cache-busted responsive styles`);
+  assert.match(source[page], /<script type="module" src="animations\.js\?v=4"><\/script>/, `${page} loads the cache-busted local animations`);
   assert.match(source[page], /<link rel="shortcut icon" type="image\/x-icon" href="favicon\.ico\?v=2" sizes="any" \/>/, `${page} has a root ICO fallback`);
   assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png\?v=2" sizes="128x128" data-animated-favicon \/>/, `${page} has a cache-busted animated favicon`);
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
@@ -21,6 +21,21 @@ for (const page of pages) {
   assert.match(source[page], /Lấy cảm hứng từ truyền thuyết Nàng Han/, `${page} footer follows the supplied brand copy layout`);
   assert.match(source[page], /class="nav-cta"[^>]*>Trải nghiệm ngay!<\/a>/, `${page} has the outlined experience CTA`);
 }
+
+assert.match(source['story.html'], /class="story-hero"/, 'story opens with the supplied framed hero composition');
+assert.match(source['story.html'], /Bạn chiến đấu[\s\S]*vì điều gì\?/, 'story hero keeps the wireframe question');
+assert.match(source['story.html'], /class="[^"]*story-legend-layout[^"]*"/, 'story uses the supplied editorial legend layout');
+assert.match(source['story.html'], /Truyền thuyết Nàng Han/, 'story uses the supplied legend title');
+assert.match(source['story.html'], /Quẵm tỗ Nãng Han/, 'story keeps the supplied Thai title');
+assert.match(source['story.html'], /NNƯT\. Cầm Văn Vui/, 'story credits the supplied source document');
+assert.match(source['story.html'], /assets\/prototype\/product-board-scene\.png/, 'story closes with the supplied board scene');
+
+assert.match(source['rules.html'], /class="rules-overview"/, 'rules start with a board overview from the wireframe');
+assert.match(source['rules.html'], /assets\/prototype\/team-allies\.png/, 'rules show the supplied Nàng Han faction panel');
+assert.match(source['rules.html'], /assets\/prototype\/team-opponents\.png/, 'rules show the supplied opposing faction panel');
+assert.match(source['rules.html'], /class="setup-steps"/, 'rules explain the three setup steps before play');
+assert.match(source['rules.html'], /class="rules-demo"/, 'rules keep the live demo in the wireframe flow');
+assert.equal((source['rules.html'].match(/data-game-board/g) ?? []).length, 1, 'rules keep exactly one playable board');
 
 assert.match(favicon, /\[data-animated-favicon\]/, 'favicon animation targets only the animated PNG link');
 assert.match(favicon, /favicon-open\.png\?v=2/, 'favicon animation includes a cache-busted open-eye frame');
@@ -48,8 +63,8 @@ assert.match(styles, /\.home-directory::before/, 'home directory draws a central
 assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*100vw/, 'home directory spans the viewport');
 assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
 assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
-assert.match(mobileStyles, /\.story-sheet::before \{ left: 0; \}/, 'left story decoration stays inside mobile viewports');
-assert.match(mobileStyles, /\.story-sheet::after \{ right: 0; \}/, 'right story decoration stays inside mobile viewports');
+assert.match(mobileStyles, /\.story-legend-layout \{ grid-template-columns: 1fr; \}/, 'story content becomes a single readable mobile column');
+assert.match(mobileStyles, /\.faction-panels, \.setup-steps \{ grid-template-columns: 1fr; \}/, 'rules factions and setup steps stack on mobile');
 assert.match(animations, /\[data-animated-button\]/, 'anime.js animates the shared CTA buttons');
 assert.match(animations, /from '\.\/assets\/vendor\/anime\.esm\.min\.js'/, 'anime.js is served locally so CTA animation is not blocked by the browser');
 assert.doesNotMatch(animations, /main > section:not\(:first-child\), \.site-footer/, 'footer stays inside the mobile scroll range');
@@ -67,10 +82,10 @@ assert.equal((source['rules.html'].match(/data-demo-action=/g) ?? []).length, 6,
 assert.match(source['rules.html'], /data-demo-action="release"/, 'rules include the release action');
 assert.match(source['rules.html'], /data-demo-action="special"/, 'rules include the special-cell action');
 assert.match(source['rules.html'], /data-demo-action="capture"/, 'rules include the capture action');
-assert.match(source['rules.html'], /Thử cách chơi/, 'rules use client-friendly demo language');
+assert.match(source['rules.html'], /Bàn chơi thử/, 'rules use client-friendly demo language');
 assert.match(source['rules.html'], /chạm vào bàn cờ để mở các nút thao tác/, 'mobile guidance explains board controls');
 assert.match(game, /toggleMobileActions/, 'mobile board can toggle its action controls');
 assert.match(game, /mobile-board-trigger/, 'mobile board has an action trigger');
-assert.match(source['rules.html'], /<script type="module" src="game\.mjs"><\/script>/, 'rules load the game engine');
+assert.match(source['rules.html'], /<script type="module" src="game\.mjs\?v=2"><\/script>/, 'rules load the cache-busted game engine');
 
 console.log('Page structure checks passed.');
