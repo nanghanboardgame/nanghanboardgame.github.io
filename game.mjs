@@ -82,7 +82,7 @@ export const DEMO_ACTIONS = [
   {
     id: 'reset',
     label: 'Chơi lại',
-    status: 'Đã đặt lại demo. Chọn một tình huống để xem animation.',
+    status: 'Đã đặt lại hành động. Chọn một tình huống để xem lại.',
   },
 ];
 

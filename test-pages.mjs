@@ -92,6 +92,7 @@ assert.equal((source['rules.html'].match(/data-card-toggle/g) ?? []).length, 10,
 assert.match(source['rules.html'], /data-card-detail/, 'cards include an expandable action description');
 assert.match(styles, /\.game-card\s*\{[^}]*aspect-ratio:\s*709\s*\/\s*1063/, 'action cards share the source card ratio');
 assert.match(styles, /\.game-console\s*\{[^}]*transform:\s*none\s*!important/, 'mobile action bar is not trapped by animation transforms');
+assert.match(styles, /\.horse-piece \{[^}]*width: clamp\(28px, 4vw, 52px\);[^}]*height: clamp\(40px, 5\.6vw, 72px\);/, 'demo pieces stay slightly larger across breakpoints');
 assert.match(source['rules.html'], /data-game-board/, 'rules include the playable horse-racing board');
 assert.equal((source['rules.html'].match(/data-demo-action=/g) ?? []).length, 6, 'rules expose six guided demo actions');
 assert.match(source['rules.html'], /data-demo-action="release"/, 'rules include the release action');

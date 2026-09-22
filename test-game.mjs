@@ -30,6 +30,7 @@ assert.deepEqual(capture.end, capture.opponent.start, 'the attacking piece lands
 assert.deepEqual(capture.opponent.end, BOARD_POINTS.greenYard, 'the captured piece returns to its yard');
 
 assert.deepEqual(getDemoAction('finish').end, BOARD_POINTS.goal, 'the finish demo ends at the board center');
+assert.equal(getDemoAction('reset').status, 'Đã đặt lại hành động. Chọn một tình huống để xem lại.', 'reset uses player-facing language');
 assert.throws(() => getDemoAction('unknown'), /Không có action demo/, 'unknown demo actions are rejected');
 
 console.log('Guided demo checks passed.');
