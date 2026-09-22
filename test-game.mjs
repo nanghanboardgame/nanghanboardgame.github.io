@@ -4,6 +4,7 @@ import { BOARD_POINTS, DEMO_ACTIONS, DEMO_PATH, getDemoAction } from './game.mjs
 
 const gameSource = await readFile(new URL('./game.mjs', import.meta.url), 'utf8');
 assert.doesNotMatch(gameSource, /board\.dataset\.demoAction/, 'board state must not masquerade as an action button');
+assert.doesNotMatch(gameSource, /playerCards|data-player-card/, 'the demo does not repeat the faction cards');
 
 assert.deepEqual(
   DEMO_ACTIONS.map(({ id }) => id),

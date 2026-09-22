@@ -35,6 +35,7 @@ assert.match(source['rules.html'], /assets\/prototype\/team-allies\.png/, 'rules
 assert.match(source['rules.html'], /assets\/prototype\/team-opponents\.png/, 'rules show the supplied opposing faction panel');
 assert.match(source['rules.html'], /class="setup-steps"/, 'rules explain the three setup steps before play');
 assert.match(source['rules.html'], /class="rules-demo"/, 'rules keep the live demo in the wireframe flow');
+assert.doesNotMatch(source['rules.html'], /team-strip|data-player-card/, 'live demo does not repeat the faction overview');
 assert.equal((source['rules.html'].match(/data-game-board/g) ?? []).length, 1, 'rules keep exactly one playable board');
 assert.equal((source['rules.html'].match(/class="map-note /g) ?? []).length, 12, 'board overview keeps all twelve wireframe callouts');
 assert.equal((source['rules.html'].match(/class="map-marker /g) ?? []).length, 12, 'each wireframe callout highlights its board cell');
@@ -90,6 +91,6 @@ assert.match(source['rules.html'], /Bàn chơi thử/, 'rules use client-friendl
 assert.match(source['rules.html'], /chạm vào bàn cờ để mở các nút thao tác/, 'mobile guidance explains board controls');
 assert.match(game, /toggleMobileActions/, 'mobile board can toggle its action controls');
 assert.match(game, /mobile-board-trigger/, 'mobile board has an action trigger');
-assert.match(source['rules.html'], /<script type="module" src="game\.mjs\?v=2"><\/script>/, 'rules load the cache-busted game engine');
+assert.match(source['rules.html'], /<script type="module" src="game\.mjs\?v=3"><\/script>/, 'rules load the cache-busted game engine');
 
 console.log('Page structure checks passed.');

@@ -100,7 +100,6 @@ function initDemo() {
   const status = document.querySelector('[data-game-status]');
   const cardPanel = document.querySelector('[data-drawn-card]');
   const actionButtons = [...document.querySelectorAll('[data-demo-action]')];
-  const playerCards = [...document.querySelectorAll('[data-player-card]')];
   const actionGroup = document.querySelector('.demo-actions');
   const diceGroup = document.querySelector('.demo-dice');
   const actionHome = actionGroup.parentElement;
@@ -233,7 +232,6 @@ function initDemo() {
     cue.classList.remove('is-visible');
     delete cue.dataset.tone;
     actionButtons.forEach((button) => button.classList.remove('active'));
-    playerCards.forEach((card) => card.classList.remove('active'));
   };
 
   const rollDice = (value) => {
@@ -270,7 +268,6 @@ function initDemo() {
 
     if (id === 'reset') return;
 
-    playerCards[0]?.classList.add('active');
     showAt(redPiece, action.start);
     rollDice(action.dice);
 
@@ -303,7 +300,6 @@ function initDemo() {
     }
 
     if (id === 'capture') {
-      playerCards[1]?.classList.add('active');
       showAt(greenPiece, action.opponent.start);
       greenPiece.classList.add('is-targeted');
       showCue('QUÂN LỤC ĐANG CHẮN ĐƯỜNG', 'capture');
