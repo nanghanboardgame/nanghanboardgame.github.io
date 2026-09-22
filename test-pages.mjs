@@ -10,7 +10,7 @@ const game = readFileSync('game.mjs', 'utf8');
 const favicon = readFileSync('favicon.js', 'utf8');
 
 for (const page of pages) {
-  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=3" \/>/, `${page} loads the cache-busted responsive styles`);
+  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=5" \/>/, `${page} loads the cache-busted responsive styles`);
   assert.match(source[page], /<script type="module" src="animations\.js\?v=4"><\/script>/, `${page} loads the cache-busted local animations`);
   assert.match(source[page], /<link rel="shortcut icon" type="image\/x-icon" href="favicon\.ico\?v=2" sizes="any" \/>/, `${page} has a root ICO fallback`);
   assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png\?v=2" sizes="128x128" data-animated-favicon \/>/, `${page} has a cache-busted animated favicon`);
@@ -36,6 +36,10 @@ assert.match(source['rules.html'], /assets\/prototype\/team-opponents\.png/, 'ru
 assert.match(source['rules.html'], /class="setup-steps"/, 'rules explain the three setup steps before play');
 assert.match(source['rules.html'], /class="rules-demo"/, 'rules keep the live demo in the wireframe flow');
 assert.equal((source['rules.html'].match(/data-game-board/g) ?? []).length, 1, 'rules keep exactly one playable board');
+assert.equal((source['rules.html'].match(/class="map-note /g) ?? []).length, 12, 'board overview keeps all twelve wireframe callouts');
+assert.equal((source['rules.html'].match(/class="map-marker /g) ?? []).length, 12, 'each wireframe callout highlights its board cell');
+assert.match(styles, /\.rules-map figcaption \{ position: absolute;/, 'desktop board callouts are positioned around the board');
+assert.match(styles, /\.map-note \{ position: static;/, 'mobile board callouts return to document flow');
 
 assert.match(favicon, /\[data-animated-favicon\]/, 'favicon animation targets only the animated PNG link');
 assert.match(favicon, /favicon-open\.png\?v=2/, 'favicon animation includes a cache-busted open-eye frame');

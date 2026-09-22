@@ -152,11 +152,49 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .rules-title { max-width: 760px; margin: 0 auto 3rem; text-align: center; }
 .rules-title h1 { font-size: clamp(2.6rem, 5vw, 5rem); }
 .rules-title p { margin: 0; color: var(--muted); font-size: 1.08rem; }
-.rules-map { width: min(900px, 100%); margin: 0 auto; padding: clamp(1.25rem, 4vw, 3rem); background: url("assets/prototype/video-frame.png") center / 100% 100% no-repeat; }
-.rules-map img { display: block; width: min(760px, 100%); margin-inline: auto; mix-blend-mode: multiply; }
-.rules-map figcaption { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; }
-.rules-map figcaption span { padding-top: .75rem; border-top: 2px solid var(--red); font-size: .82rem; }
-.rules-map figcaption strong { display: block; color: var(--red); text-transform: uppercase; }
+.rules-map { position: relative; display: grid; width: min(1050px, 100%); aspect-ratio: 4 / 3; place-items: center; margin: 0 auto; background: url("assets/prototype/video-frame.png") center / 100% 100% no-repeat; }
+.rules-map-board { position: relative; width: 58%; max-width: 620px; }
+.rules-map-board img { display: block; width: 100%; mix-blend-mode: multiply; }
+.map-markers { position: absolute; inset: 0; pointer-events: none; }
+.map-marker { --note-color: var(--navy); position: absolute; width: 7%; aspect-ratio: 1; border: 2px solid var(--note-color); box-shadow: 0 0 0 2px rgba(255, 241, 226, .65); }
+.marker-han-start { top: 0; left: 5%; }
+.marker-han-goal { top: 0; left: 46.5%; }
+.marker-north-normal { top: 0; left: 75%; }
+.marker-special { top: 24%; left: 75%; }
+.marker-enemy-goal { top: 40%; left: 24%; }
+.marker-west-normal { top: 32%; left: 0; }
+.marker-east-start { top: 32%; right: 0; }
+.marker-enemy-start { top: 62%; left: 0; }
+.marker-east-normal { top: 62%; right: 0; }
+.marker-south-normal { bottom: 0; left: 25%; }
+.marker-ally-goal { bottom: 0; left: 46.5%; }
+.marker-ally-start { right: 18%; bottom: 0; }
+.rules-map figcaption { position: absolute; inset: 5% 4%; margin: 0; }
+.map-note { --note-color: var(--navy); position: absolute; width: 19%; color: var(--note-color); font-size: clamp(.62rem, 1vw, .84rem); font-weight: 900; line-height: 1.18; }
+.map-note::after { content: ""; position: absolute; top: 50%; width: clamp(1.25rem, 4vw, 4rem); border-top: 2px solid currentColor; }
+.team-han { --note-color: var(--red); }
+.team-enemy { --note-color: var(--magenta); }
+.team-rival { --note-color: #178e70; }
+.team-ally { --note-color: var(--green); }
+.note-han-start, .note-enemy-goal, .note-west-normal, .note-enemy-start, .note-south-normal { text-align: right; }
+.note-north-normal, .note-special, .note-east-start, .note-east-normal, .note-ally-start { text-align: left; }
+.note-han-start::after, .note-enemy-goal::after, .note-west-normal::after, .note-enemy-start::after, .note-south-normal::after { left: calc(100% + .4rem); }
+.note-north-normal::after, .note-special::after, .note-east-start::after, .note-east-normal::after, .note-ally-start::after { right: calc(100% + .4rem); }
+.note-han-goal, .note-ally-goal { left: 40.5%; text-align: center; }
+.note-han-goal::after, .note-ally-goal::after { top: calc(100% + .35rem); left: 50%; width: 0; height: 2.2rem; border-top: 0; border-left: 2px solid currentColor; }
+.note-han-goal { top: 0; }
+.note-ally-goal { bottom: 0; }
+.note-ally-goal::after { top: auto; bottom: calc(100% + .35rem); }
+.note-han-start { top: 11%; left: 9%; }
+.note-north-normal { top: 11%; right: 8%; }
+.note-special { top: 28%; right: 4%; }
+.note-enemy-goal { top: 29%; left: 4%; }
+.note-west-normal { top: 45%; left: 0; }
+.note-east-start { top: 45%; right: 0; }
+.note-enemy-start { top: 65%; left: 3%; }
+.note-east-normal { top: 65%; right: 1%; }
+.note-south-normal { bottom: 11%; left: 9%; }
+.note-ally-start { right: 8%; bottom: 9%; }
 .faction-section { padding: 5rem 0; background: var(--navy) url("assets/prototype/product-frame.png") center / cover no-repeat; color: var(--beige); text-align: center; }
 .faction-section h2 { margin-bottom: .75rem; color: var(--yellow); font-family: inherit; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: 0; text-transform: uppercase; }
 .faction-section > .wrap > p { margin: 0 auto 2.5rem; color: rgba(255,241,226,.78); }
@@ -332,7 +370,6 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .story-source, .story-name { text-align: center; }
   .story-sheet { border-width: 10px; }
   .story-legacy-inner { grid-template-columns: 120px 1fr; gap: 1.5rem; }
-  .rules-map figcaption { grid-template-columns: repeat(2, 1fr); }
   .faction-panels, .setup-steps { grid-template-columns: 1fr; }
   .setup-steps { gap: 1.25rem; }
   .game-console { position: static; }
@@ -400,8 +437,11 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .story-legacy img { max-height: 160px; margin-inline: auto; }
   .story-product-cta img { min-height: 250px; }
   .rules-overview, .rules-guide, .rules-cards, .rules-demo, .faction-section { padding: 3.5rem 0; }
-  .rules-map { padding: 1rem; }
-  .rules-map figcaption { grid-template-columns: 1fr; gap: .5rem; }
+  .rules-map { display: block; aspect-ratio: auto; padding: 2rem 1rem 5rem; }
+  .rules-map-board { width: 92%; margin-inline: auto; }
+  .rules-map figcaption { position: static; display: grid; grid-template-columns: 1fr; gap: .5rem; margin-top: 1.5rem; padding-inline: .75rem; }
+  .map-note { position: static; width: auto; padding-top: .5rem; border-top: 1.5px solid var(--note-color); font-size: .75rem; text-align: left; }
+  .map-note::after { display: none; }
   .board-action-cue { width: 42%; }
   .card-gallery { gap: .65rem; }
   .game-card { min-height: 165px; }

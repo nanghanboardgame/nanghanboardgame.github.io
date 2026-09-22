@@ -7,7 +7,7 @@
     <title>Nàng Han — Luật chơi</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2" sizes="any" />
     <link rel="icon" type="image/png" href="assets/favicon-open.png?v=2" sizes="128x128" data-animated-favicon />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=5" />
     <script src="favicon.js" defer></script>
   </head>
   <body class="rules-screen">
@@ -30,12 +30,36 @@
             <p>Lấy nhịp chơi quen thuộc của cờ cá ngựa làm nền: mỗi phe có khu xuất phát và đường về đích riêng, còn các ô hoa tạo thêm biến số cho cuộc đua.</p>
           </div>
           <figure class="rules-map">
-            <img src="assets/board.png" alt="Sơ đồ bàn cờ Nàng Han với bốn đường đua và các ô hoa đặc biệt" />
-            <figcaption>
-              <span><strong>Xuất phát</strong> đưa quân vào đường đua.</span>
-              <span><strong>Ô thường</strong> di chuyển theo xúc xắc.</span>
-              <span><strong>Ô hoa</strong> rút và thực hiện một lá thẻ.</span>
-              <span><strong>Về đích</strong> đưa đủ quân để giành chiến thắng.</span>
+            <div class="rules-map-board">
+              <img src="assets/board.png" alt="Sơ đồ bàn cờ Nàng Han với bốn đường đua và các ô hoa đặc biệt" />
+              <div class="map-markers" aria-hidden="true">
+                <i class="map-marker marker-han-start team-han"></i>
+                <i class="map-marker marker-han-goal team-han"></i>
+                <i class="map-marker marker-north-normal"></i>
+                <i class="map-marker marker-special"></i>
+                <i class="map-marker marker-enemy-goal team-enemy"></i>
+                <i class="map-marker marker-west-normal"></i>
+                <i class="map-marker marker-east-start team-rival"></i>
+                <i class="map-marker marker-enemy-start team-enemy"></i>
+                <i class="map-marker marker-east-normal"></i>
+                <i class="map-marker marker-south-normal"></i>
+                <i class="map-marker marker-ally-goal team-ally"></i>
+                <i class="map-marker marker-ally-start team-ally"></i>
+              </div>
+            </div>
+            <figcaption aria-label="Chú giải các vị trí trên bàn cờ">
+              <span class="map-note note-han-start team-han">Ô xuất phát<br />đội Nàng Han</span>
+              <span class="map-note note-han-goal team-han">Hàng về đích<br />đội Nàng Han</span>
+              <span class="map-note note-north-normal">Ô di chuyển<br />thường</span>
+              <span class="map-note note-special">Ô đặc biệt để<br />bốc thẻ bài</span>
+              <span class="map-note note-enemy-goal team-enemy">Hàng về đích<br />đội Tướng địch</span>
+              <span class="map-note note-west-normal">Ô di chuyển<br />thường</span>
+              <span class="map-note note-east-start team-rival">Ô xuất phát<br />đội Quân địch</span>
+              <span class="map-note note-enemy-start team-enemy">Ô xuất phát<br />đội Tướng địch</span>
+              <span class="map-note note-east-normal">Ô di chuyển<br />thường</span>
+              <span class="map-note note-south-normal">Ô di chuyển<br />thường</span>
+              <span class="map-note note-ally-goal team-ally">Hàng về đích<br />đội Nghĩa quân</span>
+              <span class="map-note note-ally-start team-ally">Ô xuất phát<br />đội Nghĩa quân</span>
             </figcaption>
           </figure>
         </div>
