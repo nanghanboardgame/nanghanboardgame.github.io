@@ -23,6 +23,8 @@ for (const page of pages) {
 }
 
 assert.match(source['story.html'], /class="story-hero"/, 'story opens with the supplied framed hero composition');
+assert.match(source['story.html'], /class="story-hero-art" aria-hidden="true"><\/div>/, 'story hero keeps the wireframe media frame empty');
+assert.doesNotMatch(source['story.html'], /story-hero-copy/, 'story hero does not fill the wireframe media placeholder');
 assert.match(source['story.html'], /Bạn chiến đấu[\s\S]*vì điều gì\?/, 'story hero keeps the wireframe question');
 assert.match(source['story.html'], /class="[^"]*story-legend-layout[^"]*"/, 'story uses the supplied editorial legend layout');
 assert.match(source['story.html'], /Truyền thuyết Nàng Han/, 'story uses the supplied legend title');
