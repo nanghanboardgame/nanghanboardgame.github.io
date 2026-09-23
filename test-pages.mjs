@@ -35,10 +35,12 @@ assert.match(source['story.html'], /class="story-sheet" tabindex="0"/, 'the long
 assert.match(source['story.html'], /family=Roboto:wght@400;500;700/, 'story loads Roboto for long-form reading');
 assert.match(styles, /--font-reading: "Roboto"/, 'story defines a dedicated Roboto reading token');
 assert.match(styles, /assets\/prototype\/story-frame-floral\.png/, 'story uses the supplied floral frame asset');
+assert.match(styles, /\.story-sheet-frame::before \{[^}]*width: 100vw;[^}]*height: 17\.2%;[^}]*background: #10102d;/, 'story extends the navy base across the full viewport');
 assert.match(styles, /\.story-sheet \{[^}]*top: 16\.5%;[^}]*height: 46\.5%;/, 'story text stays inside the floral frame while scrolling');
 assert.doesNotMatch(source['story.html'], /story-legacy|Từ truyền thuyết đến một cuộc chơi chung/, 'story flows directly from the legend to the product scene');
 assert.match(source['story.html'], /assets\/prototype\/product-board-scene\.png/, 'story closes with the supplied board scene');
 assert.match(styles, /\.story-product-cta a \{[^}]*top: 50%;[^}]*left: 50%;[^}]*translate: -50% -50%;/, 'story product CTA stays centered on the board scene');
+assert.match(styles, /\.story-product-cta::before \{[^}]*assets\/prototype\/border-horizontal\.png[^}]*repeat-x;/, 'story keeps the wireframe triangle divider above the board scene');
 assert.match(styles, /\.story-product-cta img \{ min-height: 0; \}/, 'story board scene keeps its natural mobile aspect ratio');
 
 assert.match(source['rules.html'], /class="rules-overview"/, 'rules start with a board overview from the wireframe');
