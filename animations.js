@@ -56,23 +56,6 @@ if (!reducedMotion) {
     button.addEventListener('pointerup', enter);
   });
 
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      animate(entry.target, {
-        opacity: [0, 1],
-        y: [36, 0],
-        duration: 760,
-        ease: 'outExpo',
-      });
-      observer.unobserve(entry.target);
-    }
-  }, { threshold: .14 });
-
-  document.querySelectorAll('main > section:not(:first-child)').forEach((section) => {
-    revealObserver.observe(section);
-  });
-
   document.querySelectorAll('.directory-link').forEach((link, index) => {
     const direction = index % 2 === 0 ? -1 : 1;
     const text = link.querySelectorAll('small, strong');

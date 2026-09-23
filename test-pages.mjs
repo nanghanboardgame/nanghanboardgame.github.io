@@ -35,7 +35,10 @@ assert.match(source['story.html'], /class="story-sheet" tabindex="0"/, 'the long
 assert.match(source['story.html'], /family=Roboto:wght@400;500;700/, 'story loads Roboto for long-form reading');
 assert.match(styles, /--font-reading: "Roboto"/, 'story defines a dedicated Roboto reading token');
 assert.match(styles, /assets\/prototype\/story-frame-floral\.png/, 'story uses the supplied floral frame asset');
+assert.match(styles, /\.story-sheet \{[^}]*top: 16\.5%;[^}]*height: 46\.5%;/, 'story text stays inside the floral frame while scrolling');
+assert.doesNotMatch(source['story.html'], /story-legacy|Từ truyền thuyết đến một cuộc chơi chung/, 'story flows directly from the legend to the product scene');
 assert.match(source['story.html'], /assets\/prototype\/product-board-scene\.png/, 'story closes with the supplied board scene');
+assert.match(styles, /\.story-product-cta a \{[^}]*left: 50%;[^}]*translate: -50% 0;/, 'story product CTA stays centered on the board scene');
 
 assert.match(source['rules.html'], /class="rules-overview"/, 'rules start with a board overview from the wireframe');
 assert.match(source['rules.html'], /assets\/prototype\/team-allies\.png/, 'rules show the supplied Nàng Han faction panel');
@@ -100,6 +103,7 @@ assert.match(mobileStyles, /\.story-legend-layout \{ grid-template-columns: 1fr;
 assert.match(mobileStyles, /\.faction-panels, \.setup-steps \{ grid-template-columns: 1fr; \}/, 'rules factions and setup steps stack on mobile');
 assert.match(animations, /\[data-animated-button\]/, 'anime.js animates the shared CTA buttons');
 assert.match(animations, /from '\.\/assets\/vendor\/anime\.esm\.min\.js'/, 'anime.js is served locally so CTA animation is not blocked by the browser');
+assert.doesNotMatch(animations, /new IntersectionObserver/, 'scrolling does not transform whole page sections');
 assert.doesNotMatch(animations, /main > section:not\(:first-child\), \.site-footer/, 'footer stays inside the mobile scroll range');
 
 assert.match(source['rules.html'], /cờ cá ngựa/i, 'rules explain the familiar horse-racing foundation');
