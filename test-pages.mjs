@@ -10,8 +10,8 @@ const game = readFileSync('game.mjs', 'utf8');
 const favicon = readFileSync('favicon.js', 'utf8');
 
 for (const page of pages) {
-  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=5" \/>/, `${page} loads the cache-busted responsive styles`);
-  assert.match(source[page], /<script type="module" src="animations\.js\?v=4"><\/script>/, `${page} loads the cache-busted local animations`);
+  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=15" \/>/, `${page} loads the cache-busted responsive styles`);
+  assert.match(source[page], /<script type="module" src="animations\.js\?v=5"><\/script>/, `${page} loads the cache-busted local animations`);
   assert.match(source[page], /<link rel="shortcut icon" type="image\/x-icon" href="favicon\.ico\?v=2" sizes="any" \/>/, `${page} has a root ICO fallback`);
   assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png\?v=2" sizes="128x128" data-animated-favicon \/>/, `${page} has a cache-busted animated favicon`);
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);
@@ -30,6 +30,11 @@ assert.match(source['story.html'], /class="[^"]*story-legend-layout[^"]*"/, 'sto
 assert.match(source['story.html'], /Truyền thuyết Nàng Han/, 'story uses the supplied legend title');
 assert.match(source['story.html'], /Quẵm tỗ Nãng Han/, 'story keeps the supplied Thai title');
 assert.match(source['story.html'], /NNƯT\. Cầm Văn Vui/, 'story credits the supplied source document');
+assert.match(source['story.html'], /Người Thái Tây Bắc có câu chuyện truyền thuyết Nàng Han/, 'story contains the supplied full original text');
+assert.match(source['story.html'], /class="story-sheet" tabindex="0"/, 'the long story is keyboard-scrollable inside its frame');
+assert.match(source['story.html'], /family=Roboto:wght@400;500;700/, 'story loads Roboto for long-form reading');
+assert.match(styles, /--font-reading: "Roboto"/, 'story defines a dedicated Roboto reading token');
+assert.match(styles, /assets\/prototype\/story-frame-floral\.png/, 'story uses the supplied floral frame asset');
 assert.match(source['story.html'], /assets\/prototype\/product-board-scene\.png/, 'story closes with the supplied board scene');
 
 assert.match(source['rules.html'], /class="rules-overview"/, 'rules start with a board overview from the wireframe');
@@ -79,8 +84,14 @@ assert.match(styles, /assets\/prototype\/directory-frame\.png/, 'home uses the s
 assert.match(styles, /assets\/prototype\/branch-button\.png/, 'home uses the supplied button motif on each branch');
 assert.match(styles, /assets\/prototype\/video-frame\.png/, 'home uses the supplied video frame');
 assert.match(styles, /assets\/prototype\/product-frame\.png/, 'home uses the supplied product frame');
+assert.match(styles, /\.home-product::before, \.home-product::after/, 'home product keeps independent responsive side decorations');
+assert.match(styles, /\.home-product::before[^}]*background-position:\s*left center/, 'home product anchors the left frame without stretching');
+assert.match(styles, /\.home-product::after[^}]*background-position:\s*right center/, 'home product anchors the right frame without stretching');
 assert.match(styles, /\.home-directory::before/, 'home directory draws a central spine');
-assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*100vw/, 'home directory spans the viewport');
+assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*min\(100vw, 1440px\)/, 'home directory keeps the complete frame within a fixed maximum width');
+assert.match(styles, /\.home-directory\s*\{[^}]*margin-left:\s*50%[^}]*transform:\s*translateX\(-50%\)/, 'home directory keeps the fixed frame centered');
+assert.match(styles, /\.home-directory\s*\{[^}]*aspect-ratio:\s*2917\s*\/\s*1409/, 'home directory preserves the supplied frame aspect ratio');
+assert.match(styles, /\.home-directory\s*\{[^}]*background-size:\s*contain/, 'home directory scales the decorative frame without distortion');
 assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
 assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
 assert.match(mobileStyles, /\.story-legend-layout \{ grid-template-columns: 1fr; \}/, 'story content becomes a single readable mobile column');

@@ -75,14 +75,22 @@ if (!reducedMotion) {
 
   document.querySelectorAll('.directory-link').forEach((link, index) => {
     const direction = index % 2 === 0 ? -1 : 1;
-    const label = link.querySelector('strong');
+    const text = link.querySelectorAll('small, strong');
     const enter = () => {
-      animate(link, { x: direction * 10, scale: 1.015, duration: 280, ease: 'outExpo' });
-      animate(label, { x: direction * 6, duration: 280, ease: 'outExpo' });
+      animate(text, {
+        x: direction * 8,
+        delay: stagger(35),
+        duration: 300,
+        ease: 'outExpo',
+      });
     };
     const leave = () => {
-      animate(link, { x: 0, scale: 1, duration: 320, ease: 'outExpo' });
-      animate(label, { x: 0, duration: 320, ease: 'outExpo' });
+      animate(text, {
+        x: 0,
+        delay: stagger(25),
+        duration: 340,
+        ease: 'outExpo',
+      });
     };
 
     link.addEventListener('pointerenter', enter);

@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Nàng Han — trò chơi đưa những câu chuyện văn hóa Việt trở lại quanh một chiếc bàn." />
     <title>Nàng Han — Trang chủ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone+Bounce:wght@400;500&amp;family=Phudu:wght@300..900&amp;family=Puppies+Play&amp;family=Roboto:wght@400;500;700&amp;family=Square+Peg&amp;display=swap" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2" sizes="any" />
     <link rel="icon" type="image/png" href="assets/favicon-open.png?v=2" sizes="128x128" data-animated-favicon />
-    <link rel="stylesheet" href="styles.css?v=5" />
+    <link rel="stylesheet" href="styles.css?v=15" />
     <script src="favicon.js" defer></script>
   </head>
   <body>
@@ -66,13 +69,15 @@
       </section>
       <section class="section home-product">
         <div class="wrap product-teaser">
-          <div class="teaser-art"><img src="assets/prototype/brand-mark-yellow.png" alt="Biểu trưng Nàng Han" width="1318" height="1712" loading="lazy" /></div>
-          <div>
-            <span class="eyebrow">Sản phẩm nổi bật</span>
-            <h2>Mở hộp là có chuyện để kể.</h2>
-            <p class="lead">Một khối giới thiệu ngắn dẫn thẳng sang màn sản phẩm, đúng vị trí cuối trang trong bản vẽ tay.</p>
+          <!-- Client thêm ảnh vào hai khung trống có thuộc tính data-client-image-slot. -->
+          <div class="product-image-slot" data-client-image-slot="left"></div>
+          <div class="product-feature">
+            <p class="product-kicker">Sở hữu ngay<br />boardgame</p>
+            <img class="product-feature-mark" src="assets/prototype/brand-mark-yellow.png" alt="Biểu trưng Nàng Han" width="1318" height="1712" loading="lazy" />
+            <h2>Để khám phá hành trình riêng của bạn</h2>
             <a class="button" href="product.html">Khám phá ngay</a>
           </div>
+          <div class="product-image-slot" data-client-image-slot="right"></div>
         </div>
       </section>
     </main>
@@ -85,6 +90,6 @@
         <img class="footer-logo" src="assets/prototype/brand-mark-red.png" alt="Biểu trưng Nàng Han" width="1318" height="1712" loading="lazy" />
       </div>
     </footer>
-    <script type="module" src="animations.js?v=4"></script>
+    <script type="module" src="animations.js?v=5"></script>
   </body>
 </html>
