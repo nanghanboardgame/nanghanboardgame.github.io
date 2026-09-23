@@ -37,9 +37,12 @@ assert.match(styles, /--font-reading: "Roboto"/, 'story defines a dedicated Robo
 assert.match(styles, /assets\/prototype\/story-frame-floral\.png/, 'story uses the supplied floral frame asset');
 assert.match(styles, /\.story-sheet-frame::before \{[^}]*width: 100vw;[^}]*height: 17\.2%;[^}]*background: #10102d;/, 'story extends the navy base across the full viewport');
 assert.match(styles, /\.story-sheet \{[^}]*top: 16\.5%;[^}]*height: 46\.5%;/, 'story text stays inside the floral frame while scrolling');
+assert.match(styles, /\.story-legend-layout \{[^}]*minmax\(0, 800px\)[^}]*width: min\(1480px, calc\(100% - 2rem\)\)/, 'story gives the floral reading frame more room on desktop');
+assert.match(styles, /\.story-sheet p \{[^}]*font-size: clamp\(\.92rem, 1\.05vw, 1\.05rem\)/, 'story body copy grows with the larger reading frame');
 assert.doesNotMatch(source['story.html'], /story-legacy|Từ truyền thuyết đến một cuộc chơi chung/, 'story flows directly from the legend to the product scene');
 assert.match(source['story.html'], /assets\/prototype\/product-board-scene\.png/, 'story closes with the supplied board scene');
 assert.match(styles, /\.story-product-cta a \{[^}]*top: 50%;[^}]*left: 50%;[^}]*translate: -50% -50%;/, 'story product CTA stays centered on the board scene');
+assert.match(styles, /\.story-product-cta a \{[^}]*min-height: 72px;[^}]*padding: 1\.1rem 2rem;[^}]*font-size: 1\.15rem;/, 'story product CTA stays prominent over the board scene');
 assert.match(styles, /\.story-product-cta::before \{[^}]*assets\/prototype\/border-horizontal\.png[^}]*repeat-x;/, 'story keeps the wireframe triangle divider above the board scene');
 assert.match(styles, /\.story-product-cta img \{ min-height: 0; \}/, 'story board scene keeps its natural mobile aspect ratio');
 
@@ -95,6 +98,9 @@ assert.match(styles, /\.home-product::before[^}]*background-position:\s*left cen
 assert.match(styles, /\.home-product::after[^}]*background-position:\s*right center/, 'home product anchors the right frame without stretching');
 assert.match(styles, /\.product-teaser \{[^}]*width:\s*min\(960px, calc\(100% - 4rem\)\)[^}]*gap:\s*clamp\(1\.25rem, 2\.5vw, 2\.5rem\)/, 'home product keeps the three columns compact on desktop');
 assert.match(styles, /\.product-feature-mark \{[^}]*height:\s*clamp\(150px, 17vw, 225px\)/, 'home product mark stays slightly smaller than the side frames');
+assert.match(styles, /\.button \{[^}]*min-height: 56px;[^}]*padding: \.9rem 1\.5rem;/, 'shared text buttons use a larger touch target');
+assert.match(styles, /\.banner-button \{[^}]*min-height: 64px;[^}]*padding: 1rem 1\.5rem;[^}]*font-size: 1\.05rem;/, 'home banner buttons use the larger CTA scale');
+assert.match(styles, /\.demo-actions button \{[^}]*min-height: 54px;[^}]*padding: \.8rem 1rem;[^}]*font-size: 1\.05rem;/, 'rules demo buttons use the larger control scale');
 assert.match(styles, /\.home-directory::before/, 'home directory draws a central spine');
 assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*min\(100vw, 1440px\)/, 'home directory keeps the complete frame within a fixed maximum width');
 assert.match(styles, /\.home-directory\s*\{[^}]*margin-left:\s*50%[^}]*transform:\s*translateX\(-50%\)/, 'home directory keeps the fixed frame centered');
