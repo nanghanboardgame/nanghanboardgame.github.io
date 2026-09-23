@@ -122,11 +122,11 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .home-product::before, .home-product::after { content: ""; position: absolute; z-index: 0; top: 0; bottom: 0; width: clamp(12px, 2.2vw, 28px); background-image: url("assets/prototype/product-frame.png"); background-size: auto 100%; background-repeat: no-repeat; pointer-events: none; }
 .home-product::before { left: 0; background-position: left center; }
 .home-product::after { right: 0; background-position: right center; }
-.product-teaser { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(205px, 1fr) minmax(235px, .82fr) minmax(205px, 1fr); width: min(1040px, calc(100% - 4rem)); align-items: center; justify-content: center; gap: clamp(1.75rem, 4vw, 3.75rem); margin-inline: auto; }
+.product-teaser { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(205px, 1fr) minmax(235px, .82fr) minmax(205px, 1fr); width: min(960px, calc(100% - 4rem)); align-items: center; justify-content: center; gap: clamp(1.25rem, 2.5vw, 2.5rem); margin-inline: auto; }
 .product-image-slot { width: min(100%, 250px); aspect-ratio: 4 / 5; justify-self: center; border: 2px solid rgba(159, 11, 7, .42); background: var(--beige); box-shadow: inset 0 0 0 4px rgba(255, 241, 226, .7); }
 .product-feature { display: grid; width: 100%; justify-self: center; justify-items: center; text-align: center; }
 .product-kicker { margin: 0 0 .4rem; color: var(--yellow); font-size: clamp(.78rem, 1.1vw, .98rem); font-weight: 900; line-height: 1.08; text-transform: uppercase; }
-.product-feature-mark { display: block; width: auto; height: clamp(165px, 19vw, 250px); }
+.product-feature-mark { display: block; width: auto; height: clamp(150px, 17vw, 225px); }
 .product-feature h2 { margin: .7rem 0 .9rem; color: var(--yellow); font-size: clamp(.8rem, 1.1vw, 1.05rem); font-weight: 900; letter-spacing: .01em; line-height: 1.15; text-transform: uppercase; }
 .product-feature .button { min-height: 42px; padding: .58rem 1rem; border: 2px solid var(--green); border-radius: 0; background: var(--red); color: var(--yellow); box-shadow: 3px 3px 0 var(--green); font-size: .74rem; text-transform: uppercase; }
 

@@ -87,6 +87,8 @@ assert.match(styles, /assets\/prototype\/product-frame\.png/, 'home uses the sup
 assert.match(styles, /\.home-product::before, \.home-product::after/, 'home product keeps independent responsive side decorations');
 assert.match(styles, /\.home-product::before[^}]*background-position:\s*left center/, 'home product anchors the left frame without stretching');
 assert.match(styles, /\.home-product::after[^}]*background-position:\s*right center/, 'home product anchors the right frame without stretching');
+assert.match(styles, /\.product-teaser \{[^}]*width:\s*min\(960px, calc\(100% - 4rem\)\)[^}]*gap:\s*clamp\(1\.25rem, 2\.5vw, 2\.5rem\)/, 'home product keeps the three columns compact on desktop');
+assert.match(styles, /\.product-feature-mark \{[^}]*height:\s*clamp\(150px, 17vw, 225px\)/, 'home product mark stays slightly smaller than the side frames');
 assert.match(styles, /\.home-directory::before/, 'home directory draws a central spine');
 assert.match(styles, /\.home-directory\s*\{[^}]*width:\s*min\(100vw, 1440px\)/, 'home directory keeps the complete frame within a fixed maximum width');
 assert.match(styles, /\.home-directory\s*\{[^}]*margin-left:\s*50%[^}]*transform:\s*translateX\(-50%\)/, 'home directory keeps the fixed frame centered');
