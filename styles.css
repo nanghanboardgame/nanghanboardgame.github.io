@@ -152,7 +152,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .story-sheet .story-citation { padding-top: 1rem; border-top: 2px solid var(--yellow); color: var(--red); font-size: clamp(.72rem, .9vw, .86rem); font-weight: 700; }
 .story-product-cta { position: relative; overflow: hidden; background: var(--beige); }
 .story-product-cta img { display: block; width: 100%; min-height: 360px; object-fit: cover; }
-.story-product-cta a { position: absolute; bottom: 12%; left: 50%; translate: -50% 0; white-space: nowrap; }
+.story-product-cta a { position: absolute; top: 50%; left: 50%; translate: -50% -50%; white-space: nowrap; }
 
 /* Luật chơi */
 .rules-screen { background: var(--beige); }
@@ -388,10 +388,13 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .product-teaser { grid-template-columns: minmax(120px, 1fr) minmax(165px, .82fr) minmax(120px, 1fr); width: min(720px, calc(100% - 2.5rem)); gap: 1rem; }
   .product-image-slot { width: min(100%, 180px); }
   .product-feature-mark { height: clamp(135px, 23vw, 190px); }
-  .story-legend-layout { grid-template-columns: 1fr; }
-  .story-source, .story-name { text-align: center; }
-  .story-sheet-frame { width: min(100%, 680px); margin-inline: auto; }
+  .story-legend-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 1rem 0; }
+  .story-source, .story-name { grid-row: 1; padding-inline: 1rem; text-align: center; }
+  .story-source { grid-column: 1; }
+  .story-name { grid-column: 2; }
+  .story-sheet-frame { grid-column: 1 / -1; grid-row: 2; width: min(100%, 680px); margin-inline: auto; }
   .story-sheet { padding: 1.25rem 1rem; }
+  .story-product-cta img { min-height: 0; }
   .faction-panels, .setup-steps { grid-template-columns: 1fr; }
   .setup-steps { gap: 1.25rem; }
   .rules-copy-heading, .win-condition { grid-template-columns: 1fr; }
@@ -456,7 +459,6 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .story-hero-art { min-height: 300px; width: 100%; }
   .story-sheet { padding: .8rem .65rem; }
   .story-sheet p { margin-bottom: .9rem; font-size: .72rem; line-height: 1.5; }
-  .story-product-cta img { min-height: 250px; }
   .product-teaser { grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(340px, calc(100% - 2rem)); gap: 1.25rem; }
   .product-feature { grid-column: 1 / -1; grid-row: 1; }
   .product-image-slot { grid-row: 2; width: min(100%, 132px); }

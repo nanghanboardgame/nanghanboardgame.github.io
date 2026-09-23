@@ -38,7 +38,8 @@ assert.match(styles, /assets\/prototype\/story-frame-floral\.png/, 'story uses t
 assert.match(styles, /\.story-sheet \{[^}]*top: 16\.5%;[^}]*height: 46\.5%;/, 'story text stays inside the floral frame while scrolling');
 assert.doesNotMatch(source['story.html'], /story-legacy|Từ truyền thuyết đến một cuộc chơi chung/, 'story flows directly from the legend to the product scene');
 assert.match(source['story.html'], /assets\/prototype\/product-board-scene\.png/, 'story closes with the supplied board scene');
-assert.match(styles, /\.story-product-cta a \{[^}]*left: 50%;[^}]*translate: -50% 0;/, 'story product CTA stays centered on the board scene');
+assert.match(styles, /\.story-product-cta a \{[^}]*top: 50%;[^}]*left: 50%;[^}]*translate: -50% -50%;/, 'story product CTA stays centered on the board scene');
+assert.match(styles, /\.story-product-cta img \{ min-height: 0; \}/, 'story board scene keeps its natural mobile aspect ratio');
 
 assert.match(source['rules.html'], /class="rules-overview"/, 'rules start with a board overview from the wireframe');
 assert.match(source['rules.html'], /assets\/prototype\/team-allies\.png/, 'rules show the supplied Nàng Han faction panel');
@@ -99,7 +100,8 @@ assert.match(styles, /\.home-directory\s*\{[^}]*aspect-ratio:\s*2917\s*\/\s*1409
 assert.match(styles, /\.home-directory\s*\{[^}]*background-size:\s*contain/, 'home directory scales the decorative frame without distortion');
 assert.match(styles, /\.directory-link:nth-child\(odd\)/, 'odd branches sit on one side');
 assert.match(styles, /\.directory-link:nth-child\(even\)/, 'even branches sit on the other side');
-assert.match(mobileStyles, /\.story-legend-layout \{ grid-template-columns: 1fr; \}/, 'story content becomes a single readable mobile column');
+assert.match(mobileStyles, /\.story-legend-layout \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); width: 100%;/, 'story labels share the row above the full-width mobile frame');
+assert.match(mobileStyles, /\.story-sheet-frame \{ grid-column: 1 \/ -1; grid-row: 2;/, 'story frame ends the legend section before the product scene');
 assert.match(mobileStyles, /\.faction-panels, \.setup-steps \{ grid-template-columns: 1fr; \}/, 'rules factions and setup steps stack on mobile');
 assert.match(animations, /\[data-animated-button\]/, 'anime.js animates the shared CTA buttons');
 assert.match(animations, /from '\.\/assets\/vendor\/anime\.esm\.min\.js'/, 'anime.js is served locally so CTA animation is not blocked by the browser');
