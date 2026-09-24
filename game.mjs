@@ -1,28 +1,29 @@
 export const BOARD_POINTS = {
-  redYard: [80, 20],
-  greenYard: [20, 20],
-  special: [82.7, 36.5],
-  finishStart: [95, 50],
-  goal: [50, 50],
+  hanYard: [80, 80],
+  rivalYard: [20, 80],
+  special: [63.5, 82.7],
+  finishApproach: [43.5, 95.3],
+  finishStart: [50, 95],
+  finishGoal: [50, 59],
 };
 
-// Centers of the six real cells on the upper-right arm of the supplied board artwork.
+// Centers of the six real cells leading from Nàng Han's lower-right yard.
 export const DEMO_PATH = [
-  [95.3, 36.5],
-  [89.3, 36.5],
+  [63.5, 95.3],
+  [63.5, 89.3],
   BOARD_POINTS.special,
-  [76.1, 36.5],
-  [69.4, 36.5],
-  [62.8, 36.5],
+  [63.5, 76.1],
+  [63.5, 69.4],
+  [63.5, 62.8],
 ];
 
 const FINISH_PATH = [
+  BOARD_POINTS.finishApproach,
   BOARD_POINTS.finishStart,
-  [86, 50],
-  [77, 50],
-  [68, 50],
-  [59, 50],
-  BOARD_POINTS.goal,
+  [50, 86],
+  [50, 77],
+  [50, 68],
+  BOARD_POINTS.finishGoal,
 ];
 
 const FORWARD_CARD = {
@@ -37,9 +38,9 @@ export const DEMO_ACTIONS = [
     id: 'release',
     label: 'Ra quân',
     dice: 6,
-    start: BOARD_POINTS.redYard,
+    start: BOARD_POINTS.hanYard,
     end: DEMO_PATH[0],
-    status: 'Xúc xắc ra 6 — Đội Đỏ đưa một quân từ khu đội vào đúng ô xuất phát.',
+    status: 'Xúc xắc ra 6 — Nàng Han đưa một quân từ khu đội vào đúng ô xuất phát.',
   },
   {
     id: 'move',
@@ -48,7 +49,7 @@ export const DEMO_ACTIONS = [
     start: DEMO_PATH[0],
     end: DEMO_PATH[3],
     path: DEMO_PATH.slice(0, 4),
-    status: 'Quân Đỏ đi 3 ô theo kết quả xúc xắc.',
+    status: 'Nàng Han đi 3 ô theo kết quả xúc xắc.',
   },
   {
     id: 'special',
@@ -67,17 +68,17 @@ export const DEMO_ACTIONS = [
     dice: 1,
     start: DEMO_PATH[2],
     end: DEMO_PATH[3],
-    opponent: { start: DEMO_PATH[3], end: BOARD_POINTS.greenYard },
-    status: 'Quân Đỏ dừng đúng ô có quân Lục — quân Lục bị đá về khu đội.',
+    opponent: { start: DEMO_PATH[3], end: BOARD_POINTS.rivalYard },
+    status: 'Nàng Han dừng đúng ô có quân Quân địch — quân Quân địch bị đá về khu đội.',
   },
   {
     id: 'finish',
     label: 'Về đích',
-    dice: 6,
-    start: BOARD_POINTS.finishStart,
-    end: BOARD_POINTS.goal,
+    dice: 5,
+    start: BOARD_POINTS.finishApproach,
+    end: BOARD_POINTS.finishGoal,
     path: FINISH_PATH,
-    status: 'Quân đi đủ số bước trên đường về đích và chạm tâm bàn cờ.',
+    status: 'Quân đi đúng 5 bước vào hàng về đích và dừng ở ô hoa cuối hàng.',
   },
   {
     id: 'reset',
@@ -180,8 +181,8 @@ function initDemo() {
     return piece;
   };
 
-  const redPiece = makePiece('red', 'Quân Đỏ');
-  const greenPiece = makePiece('green', 'Quân Lục');
+  const hanPiece = makePiece('magenta', 'Quân của đội Nàng Han');
+  const rivalPiece = makePiece('green', 'Quân của đội Quân địch');
 
   const place = (piece, point, instant = false) => {
     piece.classList.toggle('no-transition', instant);
@@ -220,7 +221,7 @@ function initDemo() {
   const clearStage = () => {
     timers.forEach(window.clearTimeout);
     timers = [];
-    [redPiece, greenPiece].forEach((piece) => {
+    [hanPiece, rivalPiece].forEach((piece) => {
       piece.hidden = true;
       piece.classList.remove('is-kicking', 'is-captured', 'is-hopping', 'is-targeted', 'no-transition');
     });
@@ -268,29 +269,29 @@ function initDemo() {
 
     if (id === 'reset') return;
 
-    showAt(redPiece, action.start);
+    showAt(hanPiece, action.start);
     rollDice(action.dice);
 
     if (id === 'release') later(() => {
       showCue('XÚC XẮC 6 · RA QUÂN');
-      place(redPiece, action.end);
+      place(hanPiece, action.end);
     }, 420);
     if (id === 'move') {
       showCue('DI CHUYỂN 3 Ô');
-      moveAlong(redPiece, action.path.slice(1), 220);
+      moveAlong(hanPiece, action.path.slice(1), 220);
     }
 
     if (id === 'special') {
       later(() => {
         showCue('DỪNG Ở Ô HOA · RÚT THẺ', 'card');
-        place(redPiece, action.end);
-        redPiece.classList.add('is-targeted');
+        place(hanPiece, action.end);
+        hanPiece.classList.add('is-targeted');
       }, 220);
       later(() => revealCard(action.card), 900);
       later(() => {
-        redPiece.classList.remove('is-targeted');
+        hanPiece.classList.remove('is-targeted');
         showCue('THẺ: TIẾN THÊM 2 Ô', 'card');
-        moveAlong(redPiece, action.cardPath, 0, 380);
+        moveAlong(hanPiece, action.cardPath, 0, 380);
       }, 1450);
       later(() => {
         if (!mobileQuery.matches) return;
@@ -300,24 +301,24 @@ function initDemo() {
     }
 
     if (id === 'capture') {
-      showAt(greenPiece, action.opponent.start);
-      greenPiece.classList.add('is-targeted');
-      showCue('QUÂN LỤC ĐANG CHẮN ĐƯỜNG', 'capture');
+      showAt(rivalPiece, action.opponent.start);
+      rivalPiece.classList.add('is-targeted');
+      showCue('QUÂN ĐỊCH ĐANG CHẮN ĐƯỜNG', 'capture');
       later(() => {
         showCue('ĐÁ QUÂN!', 'capture');
-        redPiece.classList.add('is-kicking');
-        place(redPiece, action.end);
+        hanPiece.classList.add('is-kicking');
+        place(hanPiece, action.end);
       }, 520);
       later(() => {
-        greenPiece.classList.remove('is-targeted');
-        greenPiece.classList.add('is-captured');
-        place(greenPiece, action.opponent.end);
+        rivalPiece.classList.remove('is-targeted');
+        rivalPiece.classList.add('is-captured');
+        place(rivalPiece, action.opponent.end);
       }, 1080);
     }
 
     if (id === 'finish') {
       showCue('TIẾN VÀO ĐÍCH');
-      action.path.slice(1).forEach((point, index) => later(() => place(redPiece, point), 180 * (index + 1)));
+      action.path.slice(1).forEach((point, index) => later(() => place(hanPiece, point), 180 * (index + 1)));
     }
   };
 

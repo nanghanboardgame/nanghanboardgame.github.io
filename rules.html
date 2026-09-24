@@ -30,41 +30,48 @@
         <div class="wrap">
           <div class="rules-title">
             <h1>Đọc bàn cờ trước khi vào cuộc.</h1>
-            <p>Lấy nhịp chơi quen thuộc của cờ cá ngựa làm nền: mỗi phe có khu xuất phát và đường về đích riêng, còn các ô hoa tạo thêm biến số cho cuộc đua.</p>
+            <p>Dựa trên nhịp cờ cá ngựa quen thuộc. Rê chuột hoặc chạm vào từng ô được đánh dấu để xem vai trò của ô đó trên bàn cờ.</p>
           </div>
-          <figure class="rules-map">
+          <figure class="rules-map" data-interactive-map>
             <div class="rules-map-board">
               <img src="assets/board.png" alt="Sơ đồ bàn cờ Nàng Han với bốn đường đua và các ô hoa đặc biệt" />
-              <div class="map-markers" aria-hidden="true">
-                <i class="map-marker marker-han-start team-han"></i>
-                <i class="map-marker marker-han-goal team-han"></i>
-                <i class="map-marker marker-north-normal"></i>
-                <i class="map-marker marker-special"></i>
-                <i class="map-marker marker-enemy-goal team-enemy"></i>
-                <i class="map-marker marker-west-normal"></i>
-                <i class="map-marker marker-east-start team-rival"></i>
-                <i class="map-marker marker-rival-goal team-rival"></i>
-                <i class="map-marker marker-enemy-start team-enemy"></i>
-                <i class="map-marker marker-east-normal"></i>
-                <i class="map-marker marker-south-normal"></i>
-                <i class="map-marker marker-ally-goal team-ally"></i>
-                <i class="map-marker marker-ally-start team-ally"></i>
+              <div class="map-markers" aria-label="Các ô có thể khám phá trên bàn cờ">
+                <button type="button" class="map-marker marker-han-start team-han" data-map-hotspot data-map-group="start" aria-label="Ô xuất phát đội Nàng Han" aria-controls="map-note-han-start" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-han-goal team-han" data-map-hotspot aria-label="Hàng về đích đội Nàng Han" aria-controls="map-note-han-goal" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-north-normal" data-map-hotspot data-map-group="normal" data-map-cell="0-9" aria-label="Ô di chuyển thường phía trên" aria-controls="map-note-north-normal" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-special" data-map-hotspot data-map-group="special" aria-label="Ô đặc biệt để bốc thẻ bài" aria-controls="map-note-special" aria-expanded="false"></button>
+                <button type="button" class="map-marker map-group-cell marker-special-north-west" data-map-hotspot data-map-group-cell="special" aria-label="Ô đặc biệt để bốc thẻ bài" aria-controls="map-note-special" aria-expanded="false"></button>
+                <button type="button" class="map-marker map-group-cell marker-special-west-north" data-map-hotspot data-map-group-cell="special" aria-label="Ô đặc biệt để bốc thẻ bài" aria-controls="map-note-special" aria-expanded="false"></button>
+                <button type="button" class="map-marker map-group-cell marker-special-east-north" data-map-hotspot data-map-group-cell="special" aria-label="Ô đặc biệt để bốc thẻ bài" aria-controls="map-note-special" aria-expanded="false"></button>
+                <button type="button" class="map-marker map-group-cell marker-special-west-south" data-map-hotspot data-map-group-cell="special" aria-label="Ô đặc biệt để bốc thẻ bài" aria-controls="map-note-special" aria-expanded="false"></button>
+                <button type="button" class="map-marker map-group-cell marker-special-east-south" data-map-hotspot data-map-group-cell="special" aria-label="Ô đặc biệt để bốc thẻ bài" aria-controls="map-note-special" aria-expanded="false"></button>
+                <button type="button" class="map-marker map-group-cell marker-special-south-west" data-map-hotspot data-map-group-cell="special" aria-label="Ô đặc biệt để bốc thẻ bài" aria-controls="map-note-special" aria-expanded="false"></button>
+                <button type="button" class="map-marker map-group-cell marker-special-south-east" data-map-hotspot data-map-group-cell="special" aria-label="Ô đặc biệt để bốc thẻ bài" aria-controls="map-note-special" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-enemy-goal team-enemy" data-map-hotspot aria-label="Hàng về đích đội Tướng địch" aria-controls="map-note-enemy-goal" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-west-normal" data-map-hotspot data-map-group="normal" data-map-cell="5-0" aria-label="Ô di chuyển thường bên trái" aria-controls="map-note-west-normal" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-east-start team-rival" data-map-hotspot data-map-group="start" aria-label="Ô xuất phát đội Quân địch" aria-controls="map-note-east-start" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-rival-goal team-rival" data-map-hotspot aria-label="Hàng về đích đội Quân địch" aria-controls="map-note-rival-goal" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-enemy-start team-enemy" data-map-hotspot data-map-group="start" aria-label="Ô xuất phát đội Tướng địch" aria-controls="map-note-enemy-start" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-east-normal" data-map-hotspot data-map-group="normal" data-map-cell="9-14" aria-label="Ô di chuyển thường bên phải" aria-controls="map-note-east-normal" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-south-normal" data-map-hotspot data-map-group="normal" data-map-cell="13-5" aria-label="Ô di chuyển thường phía dưới" aria-controls="map-note-south-normal" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-ally-goal team-ally" data-map-hotspot aria-label="Hàng về đích đội Nghĩa quân" aria-controls="map-note-ally-goal" aria-expanded="false"></button>
+                <button type="button" class="map-marker marker-ally-start team-ally" data-map-hotspot data-map-group="start" aria-label="Ô xuất phát đội Nghĩa quân" aria-controls="map-note-ally-start" aria-expanded="false"></button>
               </div>
             </div>
-            <figcaption aria-label="Chú giải các vị trí trên bàn cờ">
-              <span class="map-note note-han-start team-han">Ô xuất phát<br />đội Nàng Han</span>
-              <span class="map-note note-han-goal team-han">Hàng về đích<br />đội Nàng Han</span>
-              <span class="map-note note-north-normal">Ô di chuyển<br />thường</span>
-              <span class="map-note note-special">Ô đặc biệt để<br />bốc thẻ bài</span>
-              <span class="map-note note-enemy-goal team-enemy">Hàng về đích<br />đội Tướng địch</span>
-              <span class="map-note note-west-normal">Ô di chuyển<br />thường</span>
-              <span class="map-note note-east-start team-rival">Ô xuất phát<br />đội Quân địch</span>
-              <span class="map-note note-rival-goal team-rival">Hàng về đích<br />đội Quân địch</span>
-              <span class="map-note note-enemy-start team-enemy">Ô xuất phát<br />đội Tướng địch</span>
-              <span class="map-note note-east-normal">Ô di chuyển<br />thường</span>
-              <span class="map-note note-south-normal">Ô di chuyển<br />thường</span>
-              <span class="map-note note-ally-goal team-ally">Hàng về đích<br />đội Nghĩa quân</span>
-              <span class="map-note note-ally-start team-ally">Ô xuất phát<br />đội Nghĩa quân</span>
+            <figcaption aria-label="Chú giải ô đang chọn" aria-live="polite">
+              <span class="map-note note-han-start team-han" id="map-note-han-start" hidden>Ô xuất phát<br />đội Nàng Han</span>
+              <span class="map-note note-han-goal team-han" id="map-note-han-goal" hidden>Hàng về đích<br />đội Nàng Han</span>
+              <span class="map-note note-north-normal" id="map-note-north-normal" hidden>Ô di chuyển<br />thường</span>
+              <span class="map-note note-special" id="map-note-special" hidden>Ô đặc biệt để<br />bốc thẻ bài</span>
+              <span class="map-note note-enemy-goal team-enemy" id="map-note-enemy-goal" hidden>Hàng về đích<br />đội Tướng địch</span>
+              <span class="map-note note-west-normal" id="map-note-west-normal" hidden>Ô di chuyển<br />thường</span>
+              <span class="map-note note-east-start team-rival" id="map-note-east-start" hidden>Ô xuất phát<br />đội Quân địch</span>
+              <span class="map-note note-rival-goal team-rival" id="map-note-rival-goal" hidden>Hàng về đích<br />đội Quân địch</span>
+              <span class="map-note note-enemy-start team-enemy" id="map-note-enemy-start" hidden>Ô xuất phát<br />đội Tướng địch</span>
+              <span class="map-note note-east-normal" id="map-note-east-normal" hidden>Ô di chuyển<br />thường</span>
+              <span class="map-note note-south-normal" id="map-note-south-normal" hidden>Ô di chuyển<br />thường</span>
+              <span class="map-note note-ally-goal team-ally" id="map-note-ally-goal" hidden>Hàng về đích<br />đội Nghĩa quân</span>
+              <span class="map-note note-ally-start team-ally" id="map-note-ally-start" hidden>Ô xuất phát<br />đội Nghĩa quân</span>
             </figcaption>
           </figure>
         </div>
@@ -111,20 +118,30 @@
         <div class="wrap">
           <div class="card-section-heading">
             <div><h2>Ý Then</h2><p>Lời Then ban sẽ dẫn bạn đến đâu: là vận may hay điềm gở?</p></div>
-            <p>Chạm vào từng lá để xem công dụng. Dừng đúng ô hoa trên bàn cờ để rút một lá.</p>
+            <p>Chạm vào từng lá để xem hiệu ứng và hướng dẫn đầy đủ. Dừng đúng ô hoa trên bàn cờ để rút một lá.</p>
           </div>
           <div class="card-gallery" aria-label="Mười thẻ hành động">
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-02"><img src="assets/cards/card-02.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-02" data-card-detail aria-hidden="true"><strong>Vẫn đổi sao dời</strong><small>Hoán đổi vị trí với một đồng đội bất kỳ.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-03"><img src="assets/cards/card-03.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-03" data-card-detail aria-hidden="true"><strong>Thiên ban sinh khí</strong><small>Hồi sinh một đồng đội.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-04"><img src="assets/cards/card-04.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-04" data-card-detail aria-hidden="true"><strong>Phất cờ hiệu lệnh</strong><small>Chỉ định một người tiến hoặc lùi hai ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-05"><img src="assets/cards/card-05.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-05" data-card-detail aria-hidden="true"><strong>Mở lối khí vận</strong><small>Tiến tới ô đặc biệt gần nhất.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-06"><img src="assets/cards/card-06.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-06" data-card-detail aria-hidden="true"><strong>Mưa nguồn cuốn trôi</strong><small>Tất cả lùi lại ba ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-07"><img src="assets/cards/card-07.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-07" data-card-detail aria-hidden="true"><strong>Khói lửa chiến xa</strong><small>Hạ một đối thủ bất kỳ.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-08"><img src="assets/cards/card-08.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-08" data-card-detail aria-hidden="true"><strong>Xòe hoa cùng bước</strong><small>Tất cả cùng tiến lên một ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-09"><img src="assets/cards/card-09.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-09" data-card-detail aria-hidden="true"><strong>Có duyên đồng hành</strong><small>Chọn một người cùng tiến lên một ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-10"><img src="assets/cards/card-10.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-10" data-card-detail aria-hidden="true"><strong>Bản Mường tiếp sức</strong><small>Tiến lên hai ô.</small></span></button>
-            <button type="button" class="game-card" data-card-toggle aria-expanded="false" aria-controls="card-detail-11"><img src="assets/cards/card-11.png" alt="" loading="lazy" /><span class="card-detail" id="card-detail-11" data-card-detail aria-hidden="true"><strong>Mây mù phủ lối</strong><small>Lùi lại hai ô.</small></span></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Vận đổi sao dời" data-card-effect="Hoán đổi vị trí với một đồng đội bất kỳ." data-card-description="Hoán đổi vị trí với một đồng đội bất kỳ. Nếu không có đồng đội nào trên bàn thì thẻ bài vô hiệu lực." aria-label="Vận đổi sao dời — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-02.png" alt="Thẻ Ý Then Vận đổi sao dời" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Thiên ban sinh khí" data-card-effect="Hồi sinh một đồng đội." data-card-description="Hồi sinh đồng đội vừa bị hạ gần nhất trở lại bàn cờ. Nếu không có quân nào bị hạ thì thẻ bài vô hiệu lực." aria-label="Thiên ban sinh khí — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-03.png" alt="Thẻ Ý Then Thiên ban sinh khí" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Phất cờ hiệu lệnh" data-card-effect="Chỉ định một người tiến hoặc lùi hai ô." data-card-description="Chỉ định một người bất kỳ tiến hoặc lùi hai ô. Có thể chọn chính mình để di chuyển." aria-label="Phất cờ hiệu lệnh — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-04.png" alt="Thẻ Ý Then Phất cờ hiệu lệnh" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Mở lối khí vận" data-card-effect="Tiến tới ô đặc biệt gần nhất." data-card-description="Chọn một quân của đội mình tiến tới ô đặc biệt gần nhất. Nếu có quân cờ chặn đường hoặc quân đã về đích thì không di chuyển." aria-label="Mở lối khí vận — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-05.png" alt="Thẻ Ý Then Mở lối khí vận" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Mưa nguồn cuốn trôi" data-card-effect="Tất cả lùi lại ba ô." data-card-description="Tất cả quân cùng lùi lại ba ô. Nếu có quân cờ chặn phía sau thì không di chuyển." aria-label="Mưa nguồn cuốn trôi — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-06.png" alt="Thẻ Ý Then Mưa nguồn cuốn trôi" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Khói lửa chiến xa" data-card-effect="Hạ một đối thủ bất kỳ." data-card-description="Hạ một đối thủ bất kỳ. Nếu không có đối thủ nào trên bàn thì thẻ bài vô hiệu lực." aria-label="Khói lửa chiến xa — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-07.png" alt="Thẻ Ý Then Khói lửa chiến xa" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Xòe hoa cùng bước" data-card-effect="Tất cả cùng tiến lên một ô." data-card-description="Tất cả quân cùng tiến lên một ô. Nếu có quân cờ chặn phía trước hoặc quân đã về đích thì không di chuyển." aria-label="Xòe hoa cùng bước — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-08.png" alt="Thẻ Ý Then Xòe hoa cùng bước" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Có duyên đồng hành" data-card-effect="Chọn một người cùng tiến lên một ô." data-card-description="Chọn một người bất kỳ cùng tiến lên một ô. Nếu có quân cờ chặn phía trước hoặc quân đã về đích thì không di chuyển." aria-label="Có duyên đồng hành — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-09.png" alt="Thẻ Ý Then Có duyên đồng hành" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Bản Mường tiếp sức" data-card-effect="Tiến lên hai ô." data-card-description="Chọn một quân của đội mình tiến lên hai ô. Nếu có quân cờ chặn phía trước hoặc quân đã về đích thì không di chuyển." aria-label="Bản Mường tiếp sức — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-10.png" alt="Thẻ Ý Then Bản Mường tiếp sức" loading="lazy" /></button>
+            <button type="button" class="game-card" data-card-toggle data-card-title="Mây mù phủ lối" data-card-effect="Lùi lại hai ô." data-card-description="Chọn một quân của đội mình lùi lại hai ô. Nếu có quân cờ chặn đường hoặc quân đã về đích thì không di chuyển." aria-label="Mây mù phủ lối — xem chi tiết" aria-expanded="false" aria-controls="card-reader"><img src="assets/cards/card-11.png" alt="Thẻ Ý Then Mây mù phủ lối" loading="lazy" /></button>
           </div>
+          <dialog class="card-reader" id="card-reader" data-card-reader aria-labelledby="card-reader-title">
+            <button type="button" class="card-reader-close" data-card-reader-close aria-label="Đóng chi tiết thẻ">×</button>
+            <img src="assets/cards/back.png" alt="" data-card-reader-image />
+            <div>
+              <span>Chi tiết thẻ Ý Then</span>
+              <h3 id="card-reader-title" data-card-reader-title></h3>
+              <strong data-card-reader-effect></strong>
+              <p data-card-reader-description></p>
+            </div>
+          </dialog>
         </div>
       </section>
 
@@ -177,7 +194,7 @@
         <img class="footer-logo" src="assets/prototype/brand-mark-red.png" alt="Biểu trưng Nàng Han" width="1318" height="1712" loading="lazy" />
       </div>
     </footer>
-    <script type="module" src="game.mjs?v=3"></script>
-    <script type="module" src="animations.js?v=5"></script>
+    <script type="module" src="game.mjs?v=7"></script>
+    <script type="module" src="animations.js?v=6"></script>
   </body>
 </html>
