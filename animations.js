@@ -1,21 +1,7 @@
 import { animate, stagger } from './assets/vendor/anime.esm.min.js';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const heroVideo = document.querySelector('.hero-video');
-if (reducedMotion) heroVideo?.pause();
-
-const heroClouds = document.querySelector('.hero-clouds');
-if (heroVideo && heroClouds) {
-  const syncClouds = () => {
-    const { currentTime, duration } = heroVideo;
-    if (!Number.isFinite(duration) || duration <= 0) return;
-    const fade = duration * .17;
-    heroClouds.style.opacity = Math.max(0, 1 - currentTime / fade, 1 - (duration - currentTime) / fade).toFixed(3);
-  };
-  heroVideo.addEventListener('loadedmetadata', syncClouds);
-  heroVideo.addEventListener('timeupdate', syncClouds);
-  heroVideo.addEventListener('seeked', syncClouds);
-}
+if (reducedMotion) document.querySelector('.hero-video')?.pause();
 
 function initMapExplorer() {
   const map = document.querySelector('[data-interactive-map]');
