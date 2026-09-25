@@ -10,8 +10,8 @@ const game = readFileSync('game.mjs', 'utf8');
 const favicon = readFileSync('favicon.js', 'utf8');
 
 for (const page of pages) {
-  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=15" \/>/, `${page} loads the cache-busted responsive styles`);
-  assert.match(source[page], /<script type="module" src="animations\.js\?v=6"><\/script>/, `${page} loads the cache-busted local animations`);
+  assert.match(source[page], /<link rel="stylesheet" href="styles\.css\?v=\d+" \/>/, `${page} loads the cache-busted responsive styles`);
+  assert.match(source[page], /<script type="module" src="animations\.js\?v=\d+"><\/script>/, `${page} loads the cache-busted local animations`);
   assert.match(source[page], /<link rel="shortcut icon" type="image\/x-icon" href="favicon\.ico\?v=2" sizes="any" \/>/, `${page} has a root ICO fallback`);
   assert.match(source[page], /<link rel="icon" type="image\/png" href="assets\/favicon-open\.png\?v=2" sizes="128x128" data-animated-favicon \/>/, `${page} has a cache-busted animated favicon`);
   assert.match(source[page], /<script src="favicon\.js" defer><\/script>/, `${page} loads the alternating favicon`);

@@ -75,16 +75,14 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .home-hero::before, .home-hero::after { content: ""; position: absolute; border: 1.5px solid var(--navy); border-radius: 50%; }
 .home-hero::before { top: 9%; right: -7rem; width: 260px; height: 260px; background: var(--yellow); }
 .home-hero::after { top: 17%; left: -6rem; width: 180px; height: 180px; background: var(--green); }
-.home-stage { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(170px, .55fr) minmax(540px, 1.9fr) minmax(220px, .65fr); align-items: start; gap: 0 2.5rem; min-height: 560px; }
-.home-note { align-self: start; margin-top: 4rem; }
+.home-stage { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(170px, .55fr) minmax(540px, 1.9fr) minmax(220px, .65fr); align-items: start; gap: 0 2.5rem; min-height: max(560px, 48.4375vw); }
+.home-note { position: relative; z-index: 2; align-self: start; margin-top: 4rem; padding: 1rem; background: rgba(255, 241, 226, .88); }
 .home-note strong { display: block; max-width: 230px; margin-bottom: 1rem; font-family: var(--font-primary); font-size: clamp(2rem, 4vw, 3.7rem); line-height: .95; }
 .home-note span { display: inline-block; padding: .45rem .7rem; border: 1.5px solid var(--navy); background: var(--yellow); font-weight: 900; transform: rotate(-3deg); }
-.character-path { align-self: start; }
-.character-frame { position: relative; min-height: 560px; border: 1.5px solid var(--navy); border-bottom: 0; border-radius: 48% 48% 0 0; background: var(--white); box-shadow: var(--shadow); }
-.character-frame::before { content: ""; position: absolute; top: 14%; left: 50%; width: 150px; height: 150px; border: 1.5px solid var(--navy); border-radius: 50%; background: var(--yellow); transform: translateX(-50%); }
-.character-frame::after { content: ""; position: absolute; right: 15%; bottom: 0; left: 15%; height: 270px; border: 1.5px solid var(--navy); border-bottom: 0; border-radius: 52% 52% 0 0; background: var(--teal); }
-.character-frame .placeholder { position: absolute; z-index: 2; top: 48%; left: 50%; width: 160px; min-height: 70px; padding: .7rem; transform: translate(-50%, -50%) rotate(-3deg); }
-.home-copy { position: relative; z-index: 2; }
+.character-path { position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); }
+.character-frame { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--beige); }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.home-copy { position: relative; z-index: 2; grid-column: 3; padding: 1rem; background: rgba(255, 241, 226, .88); }
 .home-copy { margin-top: 5rem; }
 .home-copy h1 { font-size: clamp(2.5rem, 3.7vw, 4.2rem); }
 .home-copy h1 span { display: block; color: var(--red); }
@@ -417,10 +415,10 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .home-hero .wrap { width: min(100% - 2rem, 760px); }
   .home-stage { grid-template-columns: 1fr; padding-top: 1rem; }
   .home-note { margin-top: 0; }
-  .home-copy { order: 2; margin-top: 0; }
-  .character-path { order: 3; }
+  .home-note, .home-copy { padding: 0; background: none; }
+  .home-copy { grid-column: auto; order: 2; margin-top: 0; }
+  .character-path { position: relative; top: auto; bottom: auto; left: auto; order: 3; height: 440px; margin-left: calc(50% - 50vw); transform: none; }
   .home-actions { position: static; order: 4; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0 3rem; }
-  .character-frame { min-height: 440px; }
   .directory-link strong { font-size: clamp(1.55rem, 4.8vw, 2.5rem); }
 }
 
@@ -450,7 +448,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .game-console { position: static; }
   .mobile-hint { display: block; }
   .card-section-heading { grid-template-columns: 1fr; }
-  .character-frame { min-height: 390px; }
+  .character-path { height: 390px; }
   .home-directory { padding: .75rem 0 1rem; }
   .directory-link:nth-child(odd) { padding: 1rem calc(50% + 2rem) 1rem .25rem; }
   .directory-link:nth-child(even) { padding: 1rem .25rem 1rem calc(50% + 2rem); }

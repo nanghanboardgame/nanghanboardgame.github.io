@@ -1,6 +1,7 @@
 import { animate, stagger } from './assets/vendor/anime.esm.min.js';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reducedMotion) document.querySelector('.hero-video')?.pause();
 
 function initMapExplorer() {
   const map = document.querySelector('[data-interactive-map]');
