@@ -70,7 +70,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .page-title p { max-width: 610px; color: var(--muted); }
 
 /* Trang chủ — ảnh 4 */
-.home-hero { position: relative; overflow: hidden; padding: 4.5rem 0 0; background: var(--beige); }
+.home-hero { position: relative; overflow: hidden; background: var(--beige); }
 .home-hero .wrap { width: min(1480px, calc(100% - 3rem)); }
 .home-hero::before, .home-hero::after { content: ""; position: absolute; border: 1.5px solid var(--navy); border-radius: 50%; }
 .home-hero::before { top: 9%; right: -7rem; width: 260px; height: 260px; background: var(--yellow); }
@@ -101,20 +101,15 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .directory-link:hover, .directory-link:focus-visible { color: var(--beige); }
 .directory-link:hover::before, .directory-link:focus-visible::before { background: var(--beige); }
 .directory-link:hover::after, .directory-link:focus-visible::after { transform: translate(-50%, -50%) scale(1.24); }
-.directory-link small { position: absolute; bottom: calc(50% + .75rem); display: block; margin: 0; color: var(--orange); font-size: clamp(.72rem, .8vw, .9rem); font-weight: 900; line-height: 1; transition: color .28s ease; will-change: transform; }
-.directory-link strong { position: absolute; top: 50%; font-family: var(--font-primary); font-size: clamp(1.55rem, 2.1vw, 2.5rem); line-height: 1; translate: 0 -50%; transition: color .28s ease; will-change: transform; }
-.directory-link:nth-child(odd) small, .directory-link:nth-child(odd) strong { right: calc(50% + 3.5rem); }
-.directory-link:nth-child(even) small, .directory-link:nth-child(even) strong { left: calc(50% + 3.5rem); }
+.directory-link small { display: block; margin: 0 0 .5rem; color: var(--orange); font-size: clamp(.72rem, .8vw, .9rem); font-weight: 900; line-height: 1; transition: color .28s ease; }
+.directory-link strong { font-family: var(--font-primary); font-size: clamp(1.55rem, 2.1vw, 2.5rem); line-height: 1.1; transition: color .28s ease; }
 .directory-link:hover small, .directory-link:hover strong, .directory-link:focus-visible small, .directory-link:focus-visible strong { color: var(--beige); }
 .home-video { background: var(--beige); color: var(--navy); }
 .video-card { padding: clamp(2rem, 4vw, 3.5rem); background: url("assets/prototype/video-frame.png") center / 100% 100% no-repeat; }
 .video-copy { padding: .25rem 2rem 1.75rem; text-align: center; }
-.video-copy h2 { margin: 0; font-family: inherit; font-size: clamp(1rem, 1.9vw, 1.55rem); letter-spacing: 0; line-height: 1.25; text-transform: uppercase; }
+.video-copy h2 { margin: 0; font-family: inherit; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: 0; line-height: 1.25; text-transform: uppercase; }
 .video-copy h2 span { color: var(--red); }
-.video-window { position: relative; min-height: clamp(390px, 50vw, 660px); width: min(82%, 940px); display: grid; overflow: visible; place-items: center; margin-inline: auto; border: 4px solid var(--green); background: var(--navy); }
-.video-character { position: absolute; bottom: 1.5%; height: 36%; max-width: 17%; object-fit: contain; pointer-events: none; filter: drop-shadow(0 12px 12px rgba(2, 0, 49, .3)); }
-.video-character-left { left: -2%; transform: scaleX(-1); transform-origin: center bottom; }
-.video-character-right { right: -2%; }
+.video-window { position: relative; width: min(72%, 760px); aspect-ratio: 16 / 9; display: grid; place-items: center; margin-inline: auto; border: 4px solid var(--green); background: var(--navy); }
 .play-mark { position: relative; z-index: 1; display: grid; width: 88px; height: 88px; place-items: center; border: 1.5px solid var(--white); border-radius: 50%; color: var(--yellow); font-size: 2rem; }
 .home-product { position: relative; overflow: hidden; padding: clamp(3rem, 5vw, 5rem) 0; background: var(--navy); color: var(--beige); }
 .home-product::before, .home-product::after { content: ""; position: absolute; z-index: 0; top: 0; bottom: 0; width: clamp(12px, 2.2vw, 28px); background-image: url("assets/prototype/product-frame.png"); background-size: auto 100%; background-repeat: no-repeat; pointer-events: none; }
@@ -452,16 +447,14 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .home-directory { padding: .75rem 0 1rem; }
   .directory-link:nth-child(odd) { padding: 1rem calc(50% + 2rem) 1rem .25rem; }
   .directory-link:nth-child(even) { padding: 1rem .25rem 1rem calc(50% + 2rem); }
-  .directory-link:nth-child(odd) small, .directory-link:nth-child(odd) strong { right: calc(50% + 2rem); }
-  .directory-link:nth-child(even) small, .directory-link:nth-child(even) strong { left: calc(50% + 2rem); }
   .directory-link::before { width: 1.6rem; }
-  .directory-link small { bottom: calc(50% + .6rem); font-size: .7rem; }
+  .directory-link small { font-size: .7rem; }
   .directory-link strong { font-size: clamp(1.2rem, 4.8vw, 1.7rem); }
   .home-actions { gap: .7rem; }
   .banner-button { min-height: 56px; padding: .8rem .75rem; font-size: .82rem; }
   .video-copy { padding: .25rem 1rem 1.25rem; }
-  .video-window { min-height: 280px; width: 86%; }
-  .video-character { height: 34%; max-width: 20%; }
+  .video-window { width: 86%; }
+  .play-mark { width: 64px; height: 64px; font-size: 1.5rem; }
   .art-board { cursor: pointer; }
   .game-console .demo-dice, .game-console .demo-actions { display: none; }
   .board-action-cue { top: .65rem; right: .65rem; left: auto; translate: none; width: min(48%, 280px); max-width: none; padding: .45rem .55rem; text-align: center; }
@@ -511,7 +504,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .product-image-slot { grid-row: 2; width: min(100%, 132px); }
   .product-feature-mark { height: 165px; }
   .rules-overview, .rules-guide, .rules-cards, .rules-demo, .faction-section { padding: 3.5rem 0; }
-  .directory-link small { bottom: calc(50% + .5rem); margin: 0; font-size: .65rem; }
+  .directory-link small { font-size: .65rem; }
   .directory-link strong { font-size: clamp(1rem, 6vw, 1.35rem); }
   .rules-map { display: block; aspect-ratio: auto; padding: 2rem 1rem 5rem; }
   .rules-map-board { width: 92%; margin-inline: auto; }
