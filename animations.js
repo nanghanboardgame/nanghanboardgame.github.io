@@ -3,6 +3,22 @@ import { animate, stagger } from './assets/vendor/anime.esm.min.js';
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (reducedMotion) document.querySelector('.hero-video')?.pause();
 
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo && !reducedMotion) {
+  const stage = heroVideo.closest('.home-stage');
+  const syncCopy = () => {
+    const time = heroVideo.currentTime;
+    const beforeTransition = time < heroVideo.duration - 1.05;
+    stage.classList.add('is-video-synced');
+    stage.classList.toggle('show-left-copy', time >= .15 && beforeTransition);
+    stage.classList.toggle('show-right-copy', time >= .8 && beforeTransition);
+  };
+  heroVideo.addEventListener('loadedmetadata', syncCopy);
+  heroVideo.addEventListener('timeupdate', syncCopy);
+  heroVideo.addEventListener('error', () => stage.classList.remove('is-video-synced'));
+  if (heroVideo.readyState >= 1) syncCopy();
+}
+
 function initMapExplorer() {
   const map = document.querySelector('[data-interactive-map]');
   if (!map) return;
@@ -183,9 +199,7 @@ if (!reducedMotion) {
   });
 
   const introTargets = document.querySelectorAll([
-    '.home-note',
     '.character-frame',
-    '.home-copy',
     '.directory-link',
     '.story-hero h1',
     '.story-hero-art',
