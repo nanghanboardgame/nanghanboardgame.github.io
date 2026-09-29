@@ -187,6 +187,6 @@ assert.match(source['rules.html'], /Bàn chơi thử/, 'rules use client-friendl
 assert.match(source['rules.html'], /chạm vào bàn cờ để mở các nút thao tác/, 'mobile guidance explains board controls');
 assert.match(game, /toggleMobileActions/, 'mobile board can toggle its action controls');
 assert.match(game, /mobile-board-trigger/, 'mobile board has an action trigger');
-assert.match(source['rules.html'], /<script type="module" src="game\.mjs\?v=7"><\/script>/, 'rules load the cache-busted game engine');
+assert.match(source['rules.html'], /<script type="module" src="game\.mjs\?v=\d+"><\/script>/, 'rules load the cache-busted game engine');
 
 console.log('Page structure checks passed.');

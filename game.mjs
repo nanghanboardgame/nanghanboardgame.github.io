@@ -1,18 +1,18 @@
 export const BOARD_POINTS = {
   hanYard: [80, 80],
   rivalYard: [20, 80],
-  special: [63.5, 82.7],
+  special: [63.5, 76.1],
   finishApproach: [43.5, 95.3],
   finishStart: [50, 95],
-  finishGoal: [50, 59],
+  finishGoal: [50, 61.8],
 };
 
 // Centers of the six real cells leading from Nàng Han's lower-right yard.
 export const DEMO_PATH = [
   [63.5, 95.3],
   [63.5, 89.3],
+  [63.5, 82.7],
   BOARD_POINTS.special,
-  [63.5, 76.1],
   [63.5, 69.4],
   [63.5, 62.8],
 ];
@@ -55,11 +55,11 @@ export const DEMO_ACTIONS = [
     id: 'special',
     label: 'Ô đặc biệt',
     dice: 1,
-    start: DEMO_PATH[1],
+    start: DEMO_PATH[2],
     end: BOARD_POINTS.special,
     card: FORWARD_CARD,
-    cardEnd: DEMO_PATH[4],
-    cardPath: DEMO_PATH.slice(3, 5),
+    cardEnd: DEMO_PATH[5],
+    cardPath: DEMO_PATH.slice(4, 6),
     status: 'Quân dừng ở ô hoa, rút thẻ “Bản Mường tiếp sức” và tiến thêm 2 ô.',
   },
   {
@@ -186,6 +186,7 @@ function initDemo() {
 
   const place = (piece, point, instant = false) => {
     piece.classList.toggle('no-transition', instant);
+    piece.classList.toggle('is-cell-centered', board.dataset.activeAction === 'special' || point === BOARD_POINTS.special || point === BOARD_POINTS.finishGoal);
     piece.style.left = `${point[0]}%`;
     piece.style.top = `${point[1]}%`;
   };

@@ -27,9 +27,11 @@ assert.deepEqual(move.start, DEMO_PATH[0]);
 assert.deepEqual(move.end, DEMO_PATH[3], 'the move demo advances through visible track cells');
 
 const special = getDemoAction('special');
+assert.deepEqual(special.end, [63.5, 76.1], 'the special action stops on the lower-right flower cell');
+assert.deepEqual(special.start, DEMO_PATH[2], 'the special action starts one cell before the flower');
 assert.deepEqual(special.end, BOARD_POINTS.special, 'the special demo lands on the flower cell');
 assert.equal(special.card.id, 'forward', 'the special cell draws the two-step card');
-assert.deepEqual(special.cardEnd, DEMO_PATH[4], 'the drawn card moves the piece two more visible cells');
+assert.deepEqual(special.cardEnd, DEMO_PATH[5], 'the drawn card moves the piece two more visible cells');
 
 const capture = getDemoAction('capture');
 assert.deepEqual(capture.end, capture.opponent.start, 'the attacking piece lands on the opponent');
@@ -42,6 +44,7 @@ assert.match(gameSource, /showAt\(rivalPiece, action\.opponent\.start\)/, 'the o
 assert.doesNotMatch(gameSource, /Quân Lục/, 'the allied green piece is not used as the captured opponent');
 
 const finish = getDemoAction('finish');
+assert.deepEqual(finish.end, [50, 61.8], 'the finish action stops in the center of the home flower cell');
 assert.equal(finish.dice, 5, 'the finish demo uses the exact roll needed for the five-cell home lane');
 assert.deepEqual(finish.start, BOARD_POINTS.finishApproach, 'the piece starts immediately before the home lane');
 assert.deepEqual(finish.end, BOARD_POINTS.finishGoal, 'the piece ends on the flower cell at the end of the home lane');
