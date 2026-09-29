@@ -77,14 +77,15 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .home-hero::after { top: 17%; left: -6rem; width: 180px; height: 180px; background: var(--green); }
 .home-stage { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(170px, .55fr) minmax(540px, 1.9fr) minmax(220px, .65fr); align-items: start; gap: 0 2.5rem; min-height: max(560px, 56.25vw); }
 .home-note { position: relative; z-index: 2; align-self: start; margin-top: 4rem; padding: 1rem; background: rgba(255, 241, 226, .88); }
-.home-note strong { display: block; max-width: 230px; margin-bottom: 1rem; font-family: var(--font-primary); font-size: clamp(1.8rem, 2.8vw, 2.8rem); line-height: 1.05; }
-.home-note span { display: inline-block; padding: .45rem .7rem; border: 1.5px solid var(--navy); background: var(--yellow); font-weight: 900; transform: rotate(-3deg); }
+.home-note strong, .home-copy h1 { font-family: var(--font-primary); font-size: clamp(2rem, 2.8vw, 2.8rem); font-weight: 900; letter-spacing: -.035em; line-height: 1.05; }
+.home-note strong { display: block; max-width: 230px; margin-bottom: 1rem; }
+.home-note span, .home-copy .eyebrow { font-family: var(--font-primary); font-size: 1rem; font-weight: 900; letter-spacing: .02em; text-transform: uppercase; }
+.home-note span { display: inline-block; padding: .45rem .7rem; border: 1.5px solid var(--navy); background: var(--yellow); transform: rotate(-3deg); }
 .character-path { position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); }
 .character-frame { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--beige); }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .home-copy { position: relative; z-index: 2; grid-column: 3; padding: 1rem; background: rgba(255, 241, 226, .88); }
 .home-copy { margin-top: 5rem; }
-.home-copy h1 { font-size: clamp(2.3rem, 3.4vw, 3.8rem); }
 .home-copy h1 span { display: block; color: var(--red); }
 @media (min-width: 1081px) {
   .home-stage.is-video-synced .home-note { opacity: 0; transform: translateX(-22px); transition: opacity .65s ease, transform .75s cubic-bezier(.16,1,.3,1); }
@@ -502,7 +503,6 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 
 @media (max-width: 430px) {
   h1 { font-size: 3rem; }
-  .home-copy h1 { font-size: 3.2rem; }
   .story-hero { padding: 3.5rem 0; }
   .story-hero-art { min-height: 300px; width: 100%; }
   .story-product-cta a { min-height: 56px; padding: .8rem 1rem; font-size: 1.05rem; }
