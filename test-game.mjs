@@ -27,7 +27,7 @@ assert.deepEqual(move.start, DEMO_PATH[0]);
 assert.deepEqual(move.end, DEMO_PATH[3], 'the move demo advances through visible track cells');
 
 const special = getDemoAction('special');
-assert.deepEqual(special.end, [63.5, 76.1], 'the special action stops on the lower-right flower cell');
+assert.deepEqual(special.end, [63.5, 76.7], 'the special action stops on the lower-right flower cell');
 assert.deepEqual(special.start, DEMO_PATH[2], 'the special action starts one cell before the flower');
 assert.deepEqual(special.end, BOARD_POINTS.special, 'the special demo lands on the flower cell');
 assert.equal(special.card.id, 'forward', 'the special cell draws the two-step card');

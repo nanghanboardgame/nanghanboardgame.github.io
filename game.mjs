@@ -1,7 +1,7 @@
 export const BOARD_POINTS = {
   hanYard: [80, 80],
   rivalYard: [20, 80],
-  special: [63.5, 76.1],
+  special: [63.5, 76.7],
   finishApproach: [43.5, 95.3],
   finishStart: [50, 95],
   finishGoal: [50, 61.8],
