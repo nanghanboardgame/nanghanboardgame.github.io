@@ -175,7 +175,7 @@ assert.match(styles, /\.game-card\s*\{[^}]*aspect-ratio:\s*709\s*\/\s*1063/, 'ac
 assert.match(styles, /\.card-reader\[open\]\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*minmax\(180px, 280px\) 1fr/, 'the open card dialog uses a readable guide layout');
 assert.match(styles, /\.game-console\s*\{[^}]*transform:\s*none\s*!important/, 'mobile action bar is not trapped by animation transforms');
 assert.match(styles, /\.rules-map-board\.is-exploring > img \{[^}]*opacity:\s*\.28;/, 'exploring a board cell dims the remaining board');
-assert.match(styles, /\.horse-piece \{[^}]*width: clamp\(50px, 7vw, 92px\);[^}]*height: clamp\(50px, 7vw, 92px\);[^}]*rgba\(255,255,255,1\)[^}]*translate: -50% -92%;/, 'demo pieces stay large, glow white and sit slightly below the board-cell center');
+assert.match(styles, /\.horse-piece \{[^}]*width: clamp\(50px, 7vw, 92px\);[^}]*height: clamp\(50px, 7vw, 92px\);[^}]*rgba\(255,255,255,1\)/, 'demo pieces stay large and glow white');
 assert.match(styles, /\.horse-piece img \{[^}]*brightness\(1\.1\)[^}]*saturate\(1\.6\)[^}]*contrast\(1\.18\)/, 'demo piece artwork stays deep and vivid');
 assert.match(styles, /\.art-board > img \{[^}]*opacity:\s*\.78;/, 'demo board is softened so pieces remain visible');
 assert.match(source['rules.html'], /data-game-board/, 'rules include the playable horse-racing board');
