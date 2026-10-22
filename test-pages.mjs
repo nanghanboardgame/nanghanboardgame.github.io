@@ -118,6 +118,7 @@ assert.match(favicon, /prefers-reduced-motion/, 'favicon animation respects redu
 assert.match(source['index.html'], /class="character-path"/, 'home connects the character and navigation path');
 assert.equal((source['index.html'].match(/class="directory-link"/g) ?? []).length, 3, 'home has three destination links');
 assert.equal((source['index.html'].match(/class="banner-button"/g) ?? []).length, 2, 'home banner has two destination actions');
+assert.match(styles, /@media \(max-width: 1080px\)[\s\S]*?\.home-actions \{ position: absolute;[^}]*bottom: 1rem;/, 'banner actions stay over the video on phones');
 assert.match(source['index.html'], /Khám phá câu chuyện/, 'home banner links to the story');
 assert.match(source['index.html'], /Trải nghiệm sản phẩm/, 'home banner links to the product');
 assert.match(source['index.html'], /href="story\.html"/);
@@ -136,14 +137,15 @@ assert.match(styles, /\.home-product::before[^}]*background-position:\s*left cen
 assert.match(styles, /\.home-product::after[^}]*background-position:\s*right center/, 'home product anchors the right frame without stretching');
 assert.match(styles, /\.product-teaser \{[^}]*width:\s*min\(1440px, max\(960px, 75vw\), calc\(100% - 4rem\)\)[^}]*gap:\s*clamp\(1\.25rem, 3\.125vw, 3\.75rem\)/, 'home product scales with wide desktop viewports');
 assert.match(styles, /\.product-image-slot \{[^}]*width:\s*min\(100%, clamp\(250px, 17\.5vw, 400px\)\)/, 'home product side frames grow on wide screens');
-assert.match(styles, /@media \(max-width: 430px\)[\s\S]*?\.product-teaser \{ grid-template-columns: minmax\(0, 1fr\) minmax\(108px, 1\.1fr\) minmax\(0, 1fr\)/, 'home product keeps images beside the mark on phones');
+assert.match(mobileStyles, /\.product-teaser \{ grid-template-columns: minmax\(0, 1fr\) minmax\(108px, \.82fr\) minmax\(0, 1fr\)/, 'home product keeps images beside the mark across phones and tablets');
 assert.match(styles, /\.product-kicker \{[^}]*font-size:\s*clamp\(1\.3rem, 1\.8vw, 2\.25rem\)/, 'home product ownership label stays prominent');
 assert.match(styles, /\.product-feature-mark \{[^}]*height:\s*clamp\(260px, 17\.5vw, 400px\)/, 'home product mark leaves more room for the surrounding copy');
 assert.match(source['index.html'], /data-client-image-slot="left"><img src="assets\/product\/product-01\.webp"/, 'home left showcase uses Drive image 1');
 assert.match(source['index.html'], /data-client-image-slot="right"><img src="assets\/product\/product-03\.webp"[^>]*><\/div>\s*<div class="product-action">/, 'home right showcase uses Drive image 3 before the CTA');
 assert.equal((source['product.html'].match(/class="product-thumb"/g) ?? []).length, 13, 'product gallery includes all 13 Drive images');
 assert.match(source['product.html'], /data-product-slider/, 'product description includes a slideshow');
-assert.match(source['product.html'], /src="product-gallery\.js\?v=1"/, 'product page loads the gallery controls');
+assert.match(source['product.html'], /src="product-gallery\.js\?v=2"/, 'product page loads the gallery controls');
+assert.match(source['product.html'], /data-slide-toggle/, 'auto slideshow has a pause control');
 for (let image = 1; image <= 13; image++) {
   assert.ok(existsSync(`assets/product/product-${String(image).padStart(2, '0')}.webp`), `product image ${image} exists locally`);
 }
