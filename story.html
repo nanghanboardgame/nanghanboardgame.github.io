@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Birthstone+Bounce:wght@400;500&amp;family=Phudu:wght@300..900&amp;family=Puppies+Play&amp;family=Roboto:wght@400;500;700&amp;family=Square+Peg&amp;display=swap" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2" sizes="any" />
     <link rel="icon" type="image/png" href="assets/favicon-open.png?v=2" sizes="128x128" data-animated-favicon />
-    <link rel="stylesheet" href="styles.css?v=33" />
+    <link rel="stylesheet" href="styles.css?v=34" />
     <script src="favicon.js" defer></script>
   </head>
   <body class="story-screen">
@@ -41,6 +41,26 @@
             <p>NNƯT. Cầm Văn Vui</p>
           </aside>
           <div class="story-sheet-frame">
+            <!-- The artwork has an opaque cream background; clear it below the reading panel on narrow screens. -->
+            <svg class="story-sheet-mobile-art" viewBox="0 0 2917 2209" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <clipPath id="story-flower-area"><rect x="0" y="1250" width="2917" height="959" /></clipPath>
+                <filter id="story-flower-clear-beige" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+                  <feFlood flood-color="#fff0e2" result="beige" />
+                  <feBlend in="SourceGraphic" in2="beige" mode="difference" result="color-difference" />
+                  <feColorMatrix in="color-difference" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 1 0 0" result="beige-difference" />
+                  <feComponentTransfer in="beige-difference" result="artwork-mask"><feFuncA type="discrete" tableValues="0 0 1 1 1" /></feComponentTransfer>
+                  <feComposite in="SourceGraphic" in2="artwork-mask" operator="in" />
+                </filter>
+              </defs>
+              <image href="assets/prototype/story-frame-floral.png" width="2917" height="2209" />
+              <g clip-path="url(#story-flower-area)">
+                <rect x="0" y="1250" width="2917" height="959" fill="#10102d" />
+                <image href="assets/prototype/story-frame-floral.png" width="2917" height="2209" filter="url(#story-flower-clear-beige)" />
+                <rect x="0" y="1770" width="714" height="70" fill="#10102d" />
+                <rect x="2203" y="1770" width="714" height="70" fill="#10102d" />
+              </g>
+            </svg>
             <article class="story-sheet" tabindex="0" aria-label="Nội dung đầy đủ truyền thuyết Nàng Han">
               <p>Người Thái Tây Bắc có câu chuyện truyền thuyết Nàng Han đã được gìn giữ và lưu truyền đến tận bây giờ. Chuyện kể rằng, ngày xưa đời cháu chắt của Lạng Chượng tổ tiên của người Thái ở Mường Lò, có một cô gái tên là Nàng Ỏ con tạo Mường Cang (Than Uyên). Nàng Ỏ lớn lên vào thời bản mường có giặc cờ vàng cướp phá. Vì căm thù giặc, Nàng Ỏ mặc quần áo đóng giả trai, đổi tên là Tạo Ỏ đi theo các bạn lên Mường So (Lai Châu) xin nhập vào hàng quân ngày đêm hăng say luyện tập sau này thành vị tướng tài giỏi, văn võ song toàn. Tạo Ỏ được phong làm tướng quân lên đường đi dẹp giặc khắp 16 Châu Thái ở Tây Bắc Việt Nam. Nàng đi từ Lai Châu lên Điện Biên, Sông Mã về Tuần Giáo, Thuận Châu, xuống Quỳnh Nhai, về Mường Trai, lên Mường La cũ (TP Sơn La ngày nay), đi xuống Yên Châu, Mộc Châu, vượt sông Đà đi Phù Yên, vào Mường Lò về quê cha đất tổ, cuối cùng vòng về Lai Châu. Đi đến đâu nàng cũng được nhân dân yêu quý góp tiền, góp của và được nhiều chàng trai tình nguyện xin nhập vào đoàn quân đi đánh giặc giải phóng cho bản mường.</p>
               <p>Dẹp xong giặc, Nàng Han cho quân lính trở về quê nhà với bố mẹ, vợ con khi nào có giặc nàng sẽ gọi. Còn bản thân nàng thì quay về Mường So nơi đóng quân năm xưa sinh sống và tiếp tục canh giữ vùng biên cương. Cũng trong năm ấy đến ngày 30 tết theo phong tục dân cả Mường đi xuống suối gội đầu năm mới để lấy lộc. Nàng Han cũng ra suối gần nhà để gội đầu, nàng cởi áo để bên bờ suối lộ ra thân hình con gái trắng trẻo, không ngờ có kẻ xấu là tàn quân thua trận năm nào rình bắn lén, mũi tên tẩm thuốc độc trúng ngực, nàng chết tại bờ suối. Vì nàng ở một mình cho nên không ai biết nàng Han bị kẻ xấu sát hại. Ngày mồng 3 tết có ba chàng trai trẻ gia đình nghèo không có tết, họ rủ nhau lên rừng kiếm củi về bán lấy tiền mới nhìn thấy một cô gái chết trong suối, họ vào gần xem kỹ thì đúng vị tướng quân, lúc này họ mới biết tướng quân không phải đàn ông mà là con gái. Thương tiếc vị nữ tướng anh hùng tài giỏi, ba người họ mới đào hố chôn cất, đắp mộ cho nàng. Được 3 năm sau tự nhiên cả ba người làm ăn phất lên gia đình giàu có. Người dân trong Mường thấy lạ mới đến hỏi nguyên do. Cả ba người kể đầu đuôi câu chuyện gặp nàng Han chết trong suối và chôn cất cho nàng mới ăn nên làm ra. Lúc này dân Mường So góp tiền của đi xây mộ mới cho nàng Han. Đến 3 năm sau cả Mường So làm ăn phát triển thịnh vượng. Tiếng lành đồn xa vì nàng có công lớn trong việc dẹp giặc cứu lấy bản mường. Nhà vua Thái mới triệu tập các tạo phìa cả 16 Châu Thái đến góp tiền của xây miếu thờ nàng Han và cho phép các Mường rước hồn nàng về mường mình thờ cúng cho tiện. Tạo Mường Lò là quê cha đất tổ nên lấy hồn đầu và hồn trai gái về thờ cúng ở hang thẳm Lé, Tạo Mường Lay thì lấy hồn eo cho nên mới múa dẻo, tạo Mường Thanh (Điện Biên), Mường Muổi (Thuận Châu), Nặm Ma (Sông Mã) thì lấy hồn cổ cho nên mới biết hát và hát hay, tạo Mường Chiên (Quỳnh Nhai) đến sau các hồn đều bị các mường lấy hết cho nên xin lấy hồn… chỗ bộ phận sinh dục về thờ cúng cho con người phát triển sinh sôi.</p>
