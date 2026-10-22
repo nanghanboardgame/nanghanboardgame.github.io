@@ -516,6 +516,20 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .footer-logo { height: 150px; justify-self: center; }
 }
 
+@media (max-width: 600px) {
+  .home-hero::before, .home-hero::after,
+  .home-product::before, .home-product::after { display: none; }
+  .home-note, .home-copy { width: 100%; justify-self: center; text-align: center; }
+  .home-note strong, .home-copy h1 { font-size: clamp(1.125rem, 5.1vw, 1.5rem); letter-spacing: 0; line-height: 1.2; }
+  .home-note strong span, .home-copy h1 span { margin-top: .12em; }
+  .home-copy { margin-top: .75rem; margin-bottom: .75rem; }
+  .home-actions { bottom: 1.5rem; }
+  .product-teaser { width: min(720px, calc(100% - 2rem)); }
+  .product-action { gap: 1rem; }
+  .product-action h2 { font-size: clamp(1rem, 4vw, 1.25rem); letter-spacing: 0; line-height: 1.25; }
+  .product-action .button { min-height: 52px; padding: .65rem 1.5rem; font-size: 1rem; }
+}
+
 @media (max-width: 430px) {
   h1 { font-size: 3rem; }
   .story-hero { padding: 3.5rem 0; }
