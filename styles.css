@@ -119,8 +119,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .home-product::before { left: 0; background-position: left center; }
 .home-product::after { right: 0; background-position: right center; }
 .product-teaser { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(205px, 1fr) minmax(235px, .82fr) minmax(205px, 1fr); width: min(1440px, max(960px, 75vw), calc(100% - 4rem)); align-items: center; justify-content: center; gap: clamp(1.25rem, 3.125vw, 3.75rem); margin-inline: auto; }
-.product-image-slot { width: min(100%, clamp(250px, 17.5vw, 400px)); aspect-ratio: 4 / 5; justify-self: center; border: 2px solid rgba(159, 11, 7, .42); background: var(--beige); box-shadow: inset 0 0 0 4px rgba(255, 241, 226, .7); }
-.product-image-slot img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.product-image-slot { width: min(100%, clamp(250px, 17.5vw, 400px)); aspect-ratio: 3 / 4; justify-self: center; overflow: hidden; border: 2px solid rgba(159, 11, 7, .42); background: var(--beige); box-shadow: inset 0 0 0 4px rgba(255, 241, 226, .7); }
+.product-image-slot img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .product-feature { display: grid; width: 100%; justify-self: center; justify-items: center; text-align: center; }
 .product-kicker { margin: 0 0 .75rem; color: var(--yellow); font-size: clamp(1.3rem, 1.8vw, 2.25rem); font-weight: 900; line-height: 1.05; text-transform: uppercase; }
 .product-feature-mark { display: block; width: auto; height: clamp(260px, 17.5vw, 400px); }
