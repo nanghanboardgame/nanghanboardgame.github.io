@@ -526,12 +526,14 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .story-source, .story-name { padding-inline: .25rem; }
   .story-source h2, .story-name h2 { font-size: clamp(.875rem, 4vw, 1.125rem); letter-spacing: -.01em; line-height: 1.15; white-space: nowrap; }
   .story-source p, .story-name p { margin-top: .5rem; font-size: clamp(.8rem, 3vw, .875rem); }
-  .story-sheet-frame { aspect-ratio: 5 / 7; background-size: 150% 100%; }
-  .story-sheet { top: 8.5%; height: 51.5%; }
+  .story-sheet-frame { aspect-ratio: 5 / 7; background-size: 115% 100%; }
+  .story-sheet-frame::before { z-index: 0; top: 5.5%; bottom: auto; width: 78%; height: 56.5%; }
+  .story-sheet { z-index: 1; top: 8.5%; height: 51.5%; }
   .story-sheet p { font-size: clamp(.82rem, 3vw, .875rem); line-height: 1.55; }
   .story-product-cta a { min-height: 50px; padding: .65rem 1rem; font-size: .95rem; }
   .home-hero::before, .home-hero::after,
   .home-product::before, .home-product::after { display: none; }
+  .video-copy h2 { font-size: clamp(1.05rem, 4vw, 1.4rem); line-height: 1.2; }
   .home-note, .home-copy { width: 100%; justify-self: center; text-align: center; }
   .home-note strong, .home-copy h1 { font-size: clamp(1.125rem, 5.1vw, 1.5rem); letter-spacing: 0; line-height: 1.2; }
   .home-note strong span, .home-copy h1 span { margin-top: .12em; }
