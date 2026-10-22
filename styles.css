@@ -517,6 +517,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 }
 
 @media (max-width: 600px) {
+  .story-screen .site-header::after { display: none; }
+  .story-hero { background-image: none; }
   .home-hero::before, .home-hero::after,
   .home-product::before, .home-product::after { display: none; }
   .home-note, .home-copy { width: 100%; justify-self: center; text-align: center; }
