@@ -528,8 +528,8 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .story-source h2, .story-name h2 { font-size: clamp(.875rem, 4vw, 1.125rem); letter-spacing: -.01em; line-height: 1.15; white-space: nowrap; }
   .story-source p, .story-name p { margin-top: .5rem; font-size: clamp(.8rem, 3vw, .875rem); }
   .story-sheet-frame { aspect-ratio: 5 / 7; overflow: hidden; background: none; }
-  .story-sheet-mobile-art { position: absolute; top: 0; left: -17.5%; display: block; width: 135%; height: 100%; pointer-events: none; }
-  .story-sheet-frame::before { z-index: 0; top: 5.5%; bottom: auto; width: 78%; height: 56.5%; }
+  .story-sheet-mobile-art { position: absolute; z-index: 0; top: 0; left: -17.5%; display: block; width: 135%; height: 100%; pointer-events: none; }
+  .story-sheet-frame::before { display: none; }
   .story-sheet { z-index: 1; top: 8.5%; height: 51.5%; }
   .story-sheet p { font-size: clamp(.82rem, 3vw, .875rem); line-height: 1.55; }
   .story-product-cta a { min-height: 50px; padding: .65rem 1rem; font-size: .95rem; }
