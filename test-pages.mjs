@@ -136,6 +136,7 @@ assert.match(styles, /\.home-product::before[^}]*background-position:\s*left cen
 assert.match(styles, /\.home-product::after[^}]*background-position:\s*right center/, 'home product anchors the right frame without stretching');
 assert.match(styles, /\.product-teaser \{[^}]*width:\s*min\(1440px, max\(960px, 75vw\), calc\(100% - 4rem\)\)[^}]*gap:\s*clamp\(1\.25rem, 3\.125vw, 3\.75rem\)/, 'home product scales with wide desktop viewports');
 assert.match(styles, /\.product-image-slot \{[^}]*width:\s*min\(100%, clamp\(250px, 17\.5vw, 400px\)\)/, 'home product side frames grow on wide screens');
+assert.match(styles, /@media \(max-width: 430px\)[\s\S]*?\.product-teaser \{ grid-template-columns: minmax\(0, 1fr\) minmax\(108px, 1\.1fr\) minmax\(0, 1fr\)/, 'home product keeps images beside the mark on phones');
 assert.match(styles, /\.product-kicker \{[^}]*font-size:\s*clamp\(1\.3rem, 1\.8vw, 2\.25rem\)/, 'home product ownership label stays prominent');
 assert.match(styles, /\.product-feature-mark \{[^}]*height:\s*clamp\(260px, 17\.5vw, 400px\)/, 'home product mark leaves more room for the surrounding copy');
 assert.match(source['index.html'], /data-client-image-slot="left"><img src="assets\/product\/product-01\.webp"/, 'home left showcase uses Drive image 1');
