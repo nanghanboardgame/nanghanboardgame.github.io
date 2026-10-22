@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const pages = ['index.html', 'story.html', 'rules.html', 'product.html'];
 const source = Object.fromEntries(pages.map((page) => [page, readFileSync(page, 'utf8')]));
@@ -138,7 +138,14 @@ assert.match(styles, /\.product-teaser \{[^}]*width:\s*min\(1440px, max\(960px, 
 assert.match(styles, /\.product-image-slot \{[^}]*width:\s*min\(100%, clamp\(250px, 17\.5vw, 400px\)\)/, 'home product side frames grow on wide screens');
 assert.match(styles, /\.product-kicker \{[^}]*font-size:\s*clamp\(1\.3rem, 1\.8vw, 2\.25rem\)/, 'home product ownership label stays prominent');
 assert.match(styles, /\.product-feature-mark \{[^}]*height:\s*clamp\(260px, 17\.5vw, 400px\)/, 'home product mark leaves more room for the surrounding copy');
-assert.match(source['index.html'], /data-client-image-slot="right"><\/div>\s*<div class="product-action">/, 'home product copy follows all three showcase columns');
+assert.match(source['index.html'], /data-client-image-slot="left"><img src="assets\/product\/product-01\.webp"/, 'home left showcase uses Drive image 1');
+assert.match(source['index.html'], /data-client-image-slot="right"><img src="assets\/product\/product-03\.webp"[^>]*><\/div>\s*<div class="product-action">/, 'home right showcase uses Drive image 3 before the CTA');
+assert.equal((source['product.html'].match(/class="product-thumb"/g) ?? []).length, 13, 'product gallery includes all 13 Drive images');
+assert.match(source['product.html'], /data-product-slider/, 'product description includes a slideshow');
+assert.match(source['product.html'], /src="product-gallery\.js\?v=1"/, 'product page loads the gallery controls');
+for (let image = 1; image <= 13; image++) {
+  assert.ok(existsSync(`assets/product/product-${String(image).padStart(2, '0')}.webp`), `product image ${image} exists locally`);
+}
 assert.match(styles, /\.product-action \{[^}]*grid-column:\s*1 \/ -1;[^}]*gap:\s*clamp\(1\.5rem, 1\.75vw, 2rem\)/, 'home product copy and CTA keep clear separation');
 assert.match(styles, /\.product-action h2 \{[^}]*font-size:\s*clamp\(1\.5rem, 2\.5vw, 2\.75rem\)/, 'home product tagline stays prominent beneath the showcase');
 assert.match(styles, /\.product-action \.button \{[^}]*min-height:\s*80px;[^}]*font-size:\s*clamp\(1\.25rem, 1\.35vw, 1\.5rem\)/, 'home product CTA keeps the enlarged readable treatment');
