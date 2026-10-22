@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Birthstone+Bounce:wght@400;500&amp;family=Phudu:wght@300..900&amp;family=Puppies+Play&amp;family=Roboto:wght@400;500;700&amp;family=Square+Peg&amp;display=swap" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2" sizes="any" />
     <link rel="icon" type="image/png" href="assets/favicon-open.png?v=2" sizes="128x128" data-animated-favicon />
-    <link rel="stylesheet" href="styles.css?v=35" />
+    <link rel="stylesheet" href="styles.css?v=36" />
     <script src="favicon.js" defer></script>
   </head>
   <body class="story-screen">
@@ -41,23 +41,25 @@
             <p>NNƯT. Cầm Văn Vui</p>
           </aside>
           <div class="story-sheet-frame">
-            <!-- Preserve the reading frame and clear the artwork's opaque cream background behind the flower on narrow screens. -->
-            <svg class="story-sheet-mobile-art" viewBox="0 0 2917 2209" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <!-- Place the flower over the reading frame at the artwork's original proportions on narrow screens. -->
+            <svg class="story-sheet-mobile-art" viewBox="0 0 2917 2209" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
               <defs>
-                <clipPath id="story-flower-area"><rect x="0" y="1390" width="2917" height="819" /></clipPath>
-                <filter id="story-flower-clear-beige" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+                <clipPath id="story-flower-area"><rect x="0" y="1200" width="2917" height="1009" /></clipPath>
+                <filter id="story-flower-isolate" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
                   <feFlood flood-color="#fff0e2" result="beige" />
                   <feBlend in="SourceGraphic" in2="beige" mode="difference" result="color-difference" />
                   <feColorMatrix in="color-difference" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 1 0 0" result="beige-difference" />
                   <feComponentTransfer in="beige-difference" result="artwork-mask"><feFuncA type="discrete" tableValues="0 0 1 1 1" /></feComponentTransfer>
-                  <feComposite in="SourceGraphic" in2="artwork-mask" operator="in" />
+                  <feFlood flood-color="#10102d" result="navy" />
+                  <feBlend in="SourceGraphic" in2="navy" mode="difference" result="navy-difference" />
+                  <feColorMatrix in="navy-difference" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 1 1 0 0" result="navy-difference-alpha" />
+                  <feComponentTransfer in="navy-difference-alpha" result="navy-mask"><feFuncA type="discrete" tableValues="0 1 1 1 1 1 1 1" /></feComponentTransfer>
+                  <feComposite in="artwork-mask" in2="navy-mask" operator="in" result="flower-mask" />
+                  <feComposite in="SourceGraphic" in2="flower-mask" operator="in" />
                 </filter>
               </defs>
-              <image href="assets/prototype/story-frame-floral.png" width="2917" height="2209" />
-              <rect x="616" y="122" width="1685" height="1268" fill="#10102d" />
               <g clip-path="url(#story-flower-area)">
-                <rect x="0" y="1390" width="2917" height="819" fill="#10102d" />
-                <image href="assets/prototype/story-frame-floral.png" width="2917" height="2209" filter="url(#story-flower-clear-beige)" />
+                <image href="assets/prototype/story-frame-floral.png" width="2917" height="2209" filter="url(#story-flower-isolate)" />
                 <rect x="0" y="1770" width="714" height="70" fill="#10102d" />
                 <rect x="2203" y="1770" width="714" height="70" fill="#10102d" />
               </g>
