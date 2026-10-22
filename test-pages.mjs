@@ -140,8 +140,8 @@ assert.match(styles, /\.product-image-slot \{[^}]*width:\s*min\(100%, clamp\(250
 assert.match(mobileStyles, /\.product-teaser \{ grid-template-columns: minmax\(0, 1fr\) minmax\(108px, \.82fr\) minmax\(0, 1fr\)/, 'home product keeps images beside the mark across phones and tablets');
 assert.match(styles, /\.product-kicker \{[^}]*font-size:\s*clamp\(1\.3rem, 1\.8vw, 2\.25rem\)/, 'home product ownership label stays prominent');
 assert.match(styles, /\.product-feature-mark \{[^}]*height:\s*clamp\(260px, 17\.5vw, 400px\)/, 'home product mark leaves more room for the surrounding copy');
-assert.match(source['index.html'], /data-client-image-slot="left"><img src="assets\/product\/product-01\.webp"/, 'home left showcase uses Drive image 1');
-assert.match(source['index.html'], /data-client-image-slot="right"><img src="assets\/product\/product-03\.webp"[^>]*><\/div>\s*<div class="product-action">/, 'home right showcase uses Drive image 3 before the CTA');
+assert.match(source['index.html'], /data-client-image-slot="left"><img src="assets\/product\/product-02\.webp"/, 'home left showcase uses Drive image 2');
+assert.match(source['index.html'], /data-client-image-slot="right"><img src="assets\/product\/product-04\.webp"[^>]*><\/div>\s*<div class="product-action">/, 'home right showcase uses Drive image 4 before the CTA');
 assert.equal((source['product.html'].match(/class="product-thumb"/g) ?? []).length, 13, 'product gallery includes all 13 Drive images');
 assert.match(source['product.html'], /data-product-slider/, 'product description includes a slideshow');
 assert.match(source['product.html'], /src="product-gallery\.js\?v=2"/, 'product page loads the gallery controls');
