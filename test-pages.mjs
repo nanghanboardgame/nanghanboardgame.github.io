@@ -25,9 +25,15 @@ for (const page of pages) {
 assert.match(source['story.html'], /class="story-hero"/, 'story opens with the supplied framed hero composition');
 assert.match(source['story.html'], /class="story-hero-art" id="intro-video" data-video-player>/, 'story hero has a stable video link for the QR code');
 assert.match(source['index.html'], /class="video-window" data-video-player>/, 'home intro has a working video player');
-for (const page of ['index.html', 'story.html']) {
-  assert.match(source[page], /<source src="assets\/story-intro-v1\.mp4" type="video\/mp4"/, `${page} uses the shared introduction video`);
-}
+const featureMedia = ['index.html', 'story.html'].map((page) => {
+  const video = source[page].match(/<video class="feature-video"[^>]*poster="([^"]+)"[^>]*>[\s\S]*?<source src="([^"]+)" type="video\/mp4"/);
+  assert.ok(video, `${page} has the introduction video and poster`);
+  assert.match(video[2], /^assets\/story-intro-v\d+\.mp4$/, `${page} uses a versioned introduction video`);
+  assert.match(video[1], /^assets\/story-intro-poster-v\d+\.jpg$/, `${page} uses a versioned poster`);
+  assert.ok(existsSync(video[1]) && existsSync(video[2]), `${page} media files exist`);
+  return { poster: video[1], video: video[2] };
+});
+assert.deepEqual(featureMedia[0], featureMedia[1], 'home and story use the same introduction media');
 assert.match(source['index.html'], /assets\/banner-forward-loop-v4\.mp4/, 'the homepage banner keeps its original video');
 assert.doesNotMatch(source['story.html'], /story-hero-copy/, 'story hero does not fill the wireframe media placeholder');
 assert.match(source['story.html'], /Bạn chiến đấu[\s\S]*vì điều gì\?/, 'story hero keeps the wireframe question');

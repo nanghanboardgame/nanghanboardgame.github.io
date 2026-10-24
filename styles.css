@@ -527,6 +527,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
   .main-nav .nav-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: .4rem .55rem; text-align: center; }
   .story-screen .site-header::after { display: none; }
   .story-hero { background-image: none; }
+  .story-hero h1 { max-width: none; font-size: clamp(1.55rem, 7.1vw, 2.15rem); letter-spacing: -.04em; white-space: nowrap; }
   .story-source, .story-name { padding-inline: .25rem; }
   .story-source h2, .story-name h2 { font-size: clamp(.875rem, 4vw, 1.125rem); letter-spacing: -.01em; line-height: 1.15; white-space: nowrap; }
   .story-source p, .story-name p { margin-top: .5rem; font-size: clamp(.8rem, 3vw, .875rem); }
