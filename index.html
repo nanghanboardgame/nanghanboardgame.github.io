@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Birthstone+Bounce:wght@400;500&amp;family=Phudu:wght@300..900&amp;family=Puppies+Play&amp;family=Roboto:wght@400;500;700&amp;family=Square+Peg&amp;display=swap" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2" sizes="any" />
     <link rel="icon" type="image/png" href="assets/favicon-open.png?v=2" sizes="128x128" data-animated-favicon />
-    <link rel="stylesheet" href="styles.css?v=36" />
+    <link rel="stylesheet" href="styles.css?v=37" />
     <script src="favicon.js" defer></script>
   </head>
   <body>
@@ -60,8 +60,12 @@
           <div class="video-copy">
             <h2>Bạn đã sẵn sàng bước vào hành trình <span>bảo vệ bản mường?</span></h2>
           </div>
-          <div class="video-window" aria-label="Vị trí video giới thiệu">
-            <span class="play-mark">▶</span>
+          <div class="video-window" data-video-player>
+            <video class="feature-video" controls playsinline preload="metadata" poster="assets/story-intro-poster-v1.jpg" width="1888" height="1080" aria-label="Video giới thiệu Nàng Han">
+              <source src="assets/story-intro-v1.mp4" type="video/mp4" />
+              Trình duyệt của bạn không hỗ trợ phát video.
+            </video>
+            <button class="play-mark" type="button" aria-label="Phát video giới thiệu Nàng Han" data-video-play>▶</button>
           </div>
         </div>
       </section>
@@ -89,6 +93,6 @@
         <img class="footer-logo" src="assets/prototype/brand-mark-red.png" alt="Biểu trưng Nàng Han" width="1318" height="1712" loading="lazy" />
       </div>
     </footer>
-    <script type="module" src="animations.js?v=10"></script>
+    <script type="module" src="animations.js?v=11"></script>
   </body>
 </html>

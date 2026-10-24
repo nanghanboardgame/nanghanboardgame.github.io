@@ -113,7 +113,10 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .video-copy h2 { margin: 0; font-family: inherit; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: 0; line-height: 1.25; text-transform: uppercase; }
 .video-copy h2 span { color: var(--red); }
 .video-window { position: relative; width: min(72%, 760px); aspect-ratio: 16 / 9; display: grid; place-items: center; margin-inline: auto; border: 4px solid var(--green); background: var(--navy); }
-.play-mark { position: relative; z-index: 1; display: grid; width: 88px; height: 88px; place-items: center; border: 1.5px solid var(--white); border-radius: 50%; color: var(--yellow); font-size: 2rem; }
+.feature-video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; background: var(--navy); }
+.play-mark { position: absolute; z-index: 1; inset: 50% auto auto 50%; transform: translate(-50%, -50%); display: grid; width: 88px; height: 88px; place-items: center; padding: 0; border: 1.5px solid var(--white); border-radius: 50%; background: rgba(2, 0, 49, .7); color: var(--yellow); font: inherit; font-size: 2rem; cursor: pointer; }
+.play-mark[hidden] { display: none; }
+.play-mark:hover, .play-mark:focus-visible { background: var(--navy); outline: 2px solid var(--yellow); outline-offset: 4px; }
 .home-product { position: relative; overflow: hidden; padding: clamp(3rem, 5vw, 5rem) 0; background: var(--navy); color: var(--beige); }
 .home-product::before, .home-product::after { content: ""; position: absolute; z-index: 0; top: 0; bottom: 0; width: clamp(12px, 2.2vw, 28px); background-image: url("assets/prototype/product-frame.png"); background-size: auto 100%; background-repeat: no-repeat; pointer-events: none; }
 .home-product::before { left: 0; background-position: left center; }
@@ -133,7 +136,7 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 .story-hero { padding: 5rem 0 4.5rem; background: var(--navy) url("assets/prototype/directory-frame.png") center / 100% 100% no-repeat; color: var(--beige); text-align: center; }
 .story-hero h1 { max-width: 920px; margin-inline: auto; font-family: inherit; font-size: clamp(2.4rem, 5vw, 5rem); letter-spacing: -.035em; line-height: 1; text-transform: uppercase; }
 .story-hero h1 span { color: var(--yellow); }
-.story-hero-art { min-height: 420px; width: min(920px, 92%); margin: 2rem auto; border: 3px solid var(--yellow); background: var(--beige); }
+.story-hero-art { position: relative; width: min(920px, 92%); min-height: 420px; aspect-ratio: 16 / 9; margin: 2rem auto; border: 3px solid var(--yellow); background: var(--navy); scroll-margin-top: 8rem; }
 .story-cta, .story-product-cta a { display: inline-flex; min-height: 60px; align-items: center; justify-content: center; padding: .9rem 1.5rem; border: 2px solid var(--yellow); background: var(--red); color: var(--yellow); box-shadow: 5px 5px 0 var(--green); font-size: 1.05rem; font-weight: 900; text-transform: uppercase; }
 .story-legend { overflow: hidden; padding: 3rem 0 0; background: var(--beige); }
 .story-legend-layout { position: relative; z-index: 0; display: grid; grid-template-columns: minmax(120px, .5fr) minmax(0, 800px) minmax(120px, .5fr); width: min(1480px, calc(100% - 2rem)); align-items: center; gap: clamp(1rem, 2.5vw, 2.5rem); }
@@ -549,8 +552,10 @@ h3 { margin-bottom: .5rem; font-size: 1.45rem; line-height: 1.1; }
 
 @media (max-width: 430px) {
   h1 { font-size: 3rem; }
+  .video-card { padding: 1.25rem 1.25rem 3.5rem; }
+  .video-window { width: 100%; }
   .story-hero { padding: 3.5rem 0; }
-  .story-hero-art { min-height: 300px; width: 100%; }
+  .story-hero-art { width: 100%; min-height: 300px; }
   .story-sheet { padding: .8rem .65rem; }
   .story-sheet p { margin-bottom: .9rem; font-size: .82rem; line-height: 1.55; }
   .rules-overview, .rules-guide, .rules-cards, .rules-demo, .faction-section { padding: 3.5rem 0; }

@@ -23,7 +23,12 @@ for (const page of pages) {
 }
 
 assert.match(source['story.html'], /class="story-hero"/, 'story opens with the supplied framed hero composition');
-assert.match(source['story.html'], /class="story-hero-art" aria-hidden="true"><\/div>/, 'story hero keeps the wireframe media frame empty');
+assert.match(source['story.html'], /class="story-hero-art" id="intro-video" data-video-player>/, 'story hero has a stable video link for the QR code');
+assert.match(source['index.html'], /class="video-window" data-video-player>/, 'home intro has a working video player');
+for (const page of ['index.html', 'story.html']) {
+  assert.match(source[page], /<source src="assets\/story-intro-v1\.mp4" type="video\/mp4"/, `${page} uses the shared introduction video`);
+}
+assert.match(source['index.html'], /assets\/banner-forward-loop-v4\.mp4/, 'the homepage banner keeps its original video');
 assert.doesNotMatch(source['story.html'], /story-hero-copy/, 'story hero does not fill the wireframe media placeholder');
 assert.match(source['story.html'], /Bạn chiến đấu[\s\S]*vì điều gì\?/, 'story hero keeps the wireframe question');
 assert.match(source['story.html'], /class="[^"]*story-legend-layout[^"]*"/, 'story uses the supplied editorial legend layout');

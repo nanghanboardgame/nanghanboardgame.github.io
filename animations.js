@@ -19,6 +19,16 @@ if (heroVideo && !reducedMotion) {
   if (heroVideo.readyState >= 1) syncCopy();
 }
 
+document.querySelectorAll('[data-video-player]').forEach((player) => {
+  const video = player.querySelector('video');
+  const playButton = player.querySelector('[data-video-play]');
+  if (!video || !playButton) return;
+
+  playButton.addEventListener('click', () => video.play().catch(() => { playButton.hidden = false; }));
+  video.addEventListener('play', () => { playButton.hidden = true; });
+  video.addEventListener('pause', () => { playButton.hidden = false; });
+});
+
 function initMapExplorer() {
   const map = document.querySelector('[data-interactive-map]');
   if (!map) return;
